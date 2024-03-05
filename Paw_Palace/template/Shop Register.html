@@ -1,0 +1,532 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Paw Palace-shopregister</title>
+  <link href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Template CSS -->
+{% load static %}
+    <link rel="icon" type="image/png" sizes="32x32" href="{%static 'petsitting/images/paw-01.png' %}">
+  <link rel="stylesheet" href="{% static 'petspial/css/style-starter.css'%}">
+  <style>
+    .fixed-form {
+    position:absolute;
+    width:500px;
+    top: 50%; /* Adjust the top position as needed */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 2; /* Ensure the form is above the slider content */
+}
+    #log{
+    display:none;
+    position:absolute;
+    width:500px;
+    top: 50%; /* Adjust the top position as needed */
+    left: 50%;
+    transform: translate(-130%, -40%);
+    padding: 20px;
+    z-index: 2; /* Ensure the form is above the slider content */
+}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+        $(document).ready(function(){
+        $(".loged").click(function(){
+        $("#reg").hide();
+        $("#log").show();
+        $("#r1").parent().removeClass("active");
+        $(".loged").parent().addClass("active");
+      });
+    });
+    </script>
+  <style>
+    footer {
+        background-color: #f8f9fa;
+    }
+
+    .footer-logo a {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .footer-logo a .sublog {
+        font-weight: normal;
+    }
+
+    .footer-top-29 {
+        padding: 30px 0;
+    }
+
+    .footer-top-29 p {
+        color: #666;
+    }
+
+    .main-social-footer-29 a {
+        font-size: 18px;
+        color: #333;
+        margin-right: 15px;
+    }
+
+    .main-social-footer-29 a:hover {
+        color: #007bff;
+    }
+
+    .footer-heading {
+        font-size: 20px;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .list-unstyled li a {
+        color: #666;
+        display: block;
+        padding: 8px 0;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .list-unstyled li a:hover {
+        color: #007bff;
+    }
+
+    .block-23 {
+        margin-top: 30px;
+    }
+
+    .block-23 li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .block-23 li .icon {
+        margin-right: 10px;
+        color: #333;
+    }
+
+    .block-23 li .text {
+        color: #666;
+    }
+</style>
+</head>
+<body>
+  <header id="site-header" class="fixed-top">
+    <section class="w3l-header-4">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <h1> <a class="navbar-brand" href="../">
+              Paw<span class="sublog">Palace.</span>
+            </a></h1>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa icon-expand fa-bars"></span>
+            <span class="fa icon-close fa-times"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="../">Home </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about">About</a>
+              </li>
+              <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Register<span class="fa fa-angle-down"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item active" href="#">Shop</a>
+                  <a class="dropdown-item" href="userreg">User</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link loged" href="#">Log in</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav search-right mt-lg-0 mt-2">
+              <li class="nav-item mx-xl-4"><a href="tel:+(91)7736881574"
+                  class="btn btn-primary btn-white d-none d-lg-block btn-style mr-2 phone-btn"><span class="fa fa-phone mr-xl-3"
+                    aria-hidden="true"></span> +91 7736881574</a></li>
+            </ul>
+
+            <!-- //toggle switch for light and dark theme -->
+          </div>
+          <!-- toggle switch for light and dark theme -->
+          <div class="mobile-position">
+            <nav class="navigation">
+              <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                  <input type="checkbox" id="checkbox">
+                  <div class="mode-container">
+                    <i class="gg-sun"></i>
+                    <i class="gg-moon"></i>
+                  </div>
+                </label>
+              </div>
+            </nav>
+          </div>
+        </nav>
+      </div>
+    </section>
+  </header>
+  <!--//header-->
+  <!-- main-slider -->
+  <section class="w3l-main-slider banner-slider" id="home">
+    <div class="owl-one owl-carousel owl-theme">
+      <div class="item">
+        <div class="slider-info banner-view banner-top1">
+          <div class="container">
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="slider-info banner-view banner-top2">
+          <div class="container">
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="slider-info banner-view banner-top3">
+          <div class="container">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <form id="reg" class="fixed-form" action="" method="post" onsubmit="return validateForm()" style="text-align:center;margin-top:100px;">
+    {% csrf_token %}
+    <input type="text" class="form-control" name="pts1" placeholder="Pet Shop's Name" required><br>
+    <input type="text" class="form-control" name="pts2" placeholder="Owner's Name" required><br>
+    <textarea class="form-control" name="pts3" placeholder="Address" required></textarea><br>
+    <input type="text" class="form-control" name="pts4" placeholder="Phone" id="phone" maxlength="10" required><br>
+    <input type="text" class="form-control" name="pts5" placeholder="Email" id="email" required><br>
+    <input type="text" class="form-control" name="pts6" placeholder="Username" id="username" required><br>
+    <input type="password" class="form-control" name="pts7" placeholder="Password" id="password" required><br>
+    <input type="submit" value="Register" class="btn btn-primary py-3 px-4">
+</form>
+
+<script>
+    function validateForm() {
+        // Phone number validation
+        var phoneRegex = /^\d{10}$/;
+        var phoneInput = document.getElementById('phone').value;
+        if (!phoneRegex.test(phoneInput)) {
+            alert('Please enter a valid 10-digit phone number');
+            return false;
+        }
+
+        // Email validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var emailInput = document.getElementById('email').value;
+        if (!emailRegex.test(emailInput)) {
+            alert('Please enter a valid email address');
+            return false;
+        }
+
+        // Username validation
+        var usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+        var usernameInput = document.getElementById('username').value;
+        if (!usernameRegex.test(usernameInput)) {
+            alert('Username must be 3-20 characters and can only contain letters, numbers, and underscores');
+            return false;
+        }
+
+        // Password validation
+
+        var passwordInput = document.getElementById('password').value;
+        if (passwordInput.length < 8) {
+            alert('Password must be at least 8 characters');
+            return false;
+        }
+
+        // Additional validations can be added as needed
+
+        // If all validations pass, return true to submit the form
+        return true;
+    }
+</script>
+  <form id="log" action="log" method="post" style="text-align:center;margin-top:70px;margin-left:400px;color:#00bd56;">
+    {% csrf_token %}
+  <input type="text" class="form-control border-0" style="height:55px;" name="un" placeholder="username" required><br>
+  <input type="password" class="form-control border-0" style="height:55px;" name="ps" placeholder="password" required><br>
+  <input type="submit" value="Log in" class="btn btn-primary py-3 px-4">
+</form>
+  {% if messages %}
+<div class="alert alert-info alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    {% for message in messages %}
+    <p {% if message.tags %} class="{{ message.tags }}" {% endif %}><b>{{ message }}</b></p>
+    {% endfor %}
+</div>
+{% endif %}
+
+  <section class="w3l-index2" id="about1">
+    <div class="midd-w3 py-5">
+      <div class="container py-lg-5 py-md-4 py-2">
+        <div class="row">
+          <div class="col-lg-6 mt-5 pt-lg-4">
+            <div class="position-relative">
+              <img src="{% static 'petspial/images/ParrotPlaying.jpg' %}" alt="" class="radius-image img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 align-self pl-lg-5 pt-lg-4">
+            <div class="title-content text-left">
+              <h6 class="title-subhny mb-2"><span>How Was Your Business?</span></h6>
+              <h3 class="title-w3l">Make Profit with Paw Palace.</h3>
+            </div>
+
+            <p class="mt-md-4 mt-3">"Paw Palace employs a comprehensive strategy to drive
+                profitability and customer satisfaction. The business stands out by offering
+                a diverse range of pet products and exclusive services, attracting a broad
+                customer base. Loyalty is fostered through membership programs, while a strong
+                online presence and digital marketing enhance accessibility."</p>
+            <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="about"> Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="w3l-footer-29-main">
+    <div class="footer-29-w3l py-5">
+        <div class="container py-lg-4">
+            <div class="row footer-top-29 justify-content-center">
+                <div class="col-lg-4 col-md-6  footer-list-29 footer-1 pr-lg-5">
+                    <div class="footer-logo mb-3">
+                        <a class="footer-brand-logo" href="../">Paw<span class="sublog">Palace</span></a>
+                    </div>
+                    <p>When I look into a bird's eyes<br>
+                        ■ I don't see a price tag.<br>
+
+■ I don't see a status symbol<br>
+
+■ I don't see a pet.<br>
+
+♡ I see a being.<br>
+
+♡ I see a friend.<br>
+
+♡ I see a soul.</p>
+                    <div class="main-social-footer-29 mt-4">
+                        <a href="#" class="facebook"><span class="fa fa-facebook"></span></a>
+                        <a href="#" class="twitter"><span class="fa fa-twitter"></span></a>
+                        <a href="#" class="instagram"><span class="fa fa-instagram"></span></a>
+                        <a href="#" class="linkedin"><span class="fa fa-linkedin"></span></a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
+                    <h2 class="footer-heading" style="color:green">Quick Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="../" class="py-2 d-block">Home</a></li>
+                        <li><a href="about" class="py-2 d-block">About</a></li>
+                        <li><a href="#" class="py-2 d-block loged">Login</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
+                    <h2 class="footer-heading" style="color:green">Have a Questions?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                            <li><a href="tel:+(91)7736881574"><span class="icon fa fa-phone"></span><span class="text">+91 7736881574</span></a></li>
+                            <li><a href="mailto:pawpalace@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">pawpalace@gmail.com</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+  <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        &#10548;
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+
+  <!-- //copyright -->
+  <!-- Template JavaScript -->
+  <script src="{% static 'petspial/js/jquery-3.3.1.min.js'%}"></script>
+  <script src="{% static 'petspial/js/theme-change.js'%}"></script>
+  <!-- owlcarousel -->
+  <!-- owl carousel -->
+  <script src="{% static 'petspial/js/owl.carousel.js'%}"></script>
+  <!-- script for banner slider-->
+  <script>
+    $(document).ready(function () {
+      $('.owl-one').owlCarousel({
+        loop: true,
+        margin: 0,
+        nav: false,
+        responsiveClass: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplaySpeed: 1000,
+        autoplayHoverPause: false,
+        responsive: {
+          0: {
+            items: 1
+          },
+          480: {
+            items: 1
+          },
+          667: {
+            items: 1
+          },
+          1000: {
+            items: 1
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script -->
+  <!-- script for tesimonials carousel slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo2").owlCarousel({
+        loop: true,
+        nav: false,
+        margin: 50,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          },
+          991: {
+            items: 2,
+            margin: 30,
+            nav: false
+          },
+          1080: {
+            items: 2,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+
+  <!-- stats number counter-->
+  <script src="{% static 'petspial/js/jquery.waypoints.min.js'%}"></script>
+  <script src="{% static 'petspial/js/jquery.countup.js'%}"></script>
+  <script>
+    $('.counter').countUp();
+  </script>
+  <!-- //stats number counter -->
+  <!-- video popup -->
+  <script src="{% static 'petspial/js/jquery.magnific-popup.min.js'%}"></script>
+  <script>
+    $(document).ready(function () {
+      $('.popup-with-zoom-anim').magnificPopup({
+        type: 'inline',
+
+        fixedContentPos: false,
+        fixedBgPos: true,
+
+        overflowY: 'auto',
+
+        closeBtnInside: true,
+        preloader: false,
+
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-zoom-in'
+      });
+
+      $('.popup-with-move-anim').magnificPopup({
+        type: 'inline',
+
+        fixedContentPos: false,
+        fixedBgPos: true,
+
+        overflowY: 'auto',
+
+        closeBtnInside: true,
+        preloader: false,
+
+        midClick: true,
+        removalDelay: 300,
+        mainClass: 'my-mfp-slide-bottom'
+      });
+    });
+  </script>
+  <!-- //video popup -->
+  <!--/MENU-JS-->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+  <!--//MENU-JS-->
+
+  <script src="{% static 'petspial/js/bootstrap.min.js'%}"></script>
+
+</body>
+
+</html>
