@@ -1,0 +1,496 @@
+case_id,animal_type,pet_age,symptoms_text,predicted_illness,confidence_override,severity_override
+1,dog,1,vomiting blood bloody stool lethargy loss of appetite fever not vaccinated puppy,Canine Parvovirus,0.92,critical
+2,dog,2,bloody diarrhea vomiting lethargy sudden onset not vaccinated,Canine Parvovirus,0.89,critical
+3,dog,0.5,puppy vomiting lethargy not eating fever bloody stool,Canine Parvovirus,0.91,critical
+4,dog,3,lethargy loss of appetite vomiting diarrhea not vaccinated dog,Canine Parvovirus,0.85,critical
+5,dog,1,vomiting bloody stool sudden onset puppy lethargy not vaccinated,Canine Parvovirus,0.93,critical
+6,dog,4,coughing nasal discharge fever eye discharge seizures tremors hard paw pads not vaccinated,Canine Distemper,0.94,critical
+7,dog,2,lethargy coughing nasal discharge neurological signs tremors hard paw pads,Canine Distemper,0.90,critical
+8,dog,5,coughing nasal discharge fever neurological symptoms seizures young dog,Canine Distemper,0.87,critical
+9,dog,1,coughing nasal discharge lethargy loss of appetite eye discharge tremors,Canine Distemper,0.88,critical
+10,dog,3,seizures tremors neurological hard paw pads coughing fever,Canine Distemper,0.91,critical
+11,dog,2,persistent cough harsh barking cough gagging nasal discharge sneezing kennel boarding,Infectious Tracheobronchitis,0.93,moderate
+12,dog,5,harsh cough gagging nasal discharge low fever lethargy loss of appetite,Harsh Coughing kennel,0.88,moderate
+13,dog,1,coughing nasal discharge low fever runcible nose recent kennel stay,Harsh Coughing kennel,0.86,moderate
+14,dog,4,harsh barking cough gagging persistent cough lethargy recent boarding,Harsh Coughing kennel,0.90,moderate
+15,dog,3,sneezing nasal discharge coughing low fever recent shelter exposure,Harsh Coughing kennel,0.84,moderate
+16,dog,5,vomiting lethargy loss of appetite increased thirst increased urination jaundice yellow gums,Canine Leptospirosis,0.91,critical
+17,dog,3,increased thirst increased urination vomiting lethargy bloody urine muscle pain,Canine Leptospirosis,0.89,critical
+18,dog,4,vomiting jaundice yellow eyes lethargy increased urination kidney pain fever,Canine Leptospirosis,0.87,critical
+19,dog,2,fever vomiting lethargy increased thirst jaundice muscle pain contact with rodents,Canine Leptospirosis,0.85,critical
+20,dog,6,increased thirst increased urination jaundice lethargy vomiting muscle pain stagnant water area,Canine Leptospirosis,0.88,critical
+21,dog,3,limping lameness joint swelling fever lethargy tick exposure tick bite,Canine Lyme Disease,0.92,moderate
+22,dog,5,limping lameness stiffness warm joints reluctant to move swollen lymph nodes tick bite,Canine Lyme Disease,0.89,moderate
+23,dog,4,joint swelling lameness fever lethargy loss of appetite recent tick exposure,Canine Lyme Disease,0.86,moderate
+24,dog,2,limping lameness warm joints reluctance to exercise tick bite history,Canine Lyme Disease,0.84,moderate
+25,dog,7,limping joint swelling stiffness lethargy tick exposure older dog,Canine Lyme Disease,0.83,moderate
+26,dog,3,red skin moist sores itching scratching hair loss overnight sudden warm to touch,Hot Spot Dermatitis,0.91,moderate
+27,dog,4,itching scratching red skin moist sores painful swollen overnight sudden,Hot Spot Dermatitis,0.89,moderate
+28,dog,2,moist sores red skin scratching hair loss warm to touch painful swollen,Hot Spot Dermatitis,0.87,moderate
+29,dog,5,scratching itching red skin hair loss warm area swollen painful,Hot Spot Dermatitis,0.85,moderate
+30,dog,3,hair loss red skin moist sore overnight sudden hot humid weather,Hot Spot Dermatitis,0.84,moderate
+31,dog,4,ear scratching head shaking ear odor discharge from ear red ear canal painful ear,Otitis Externa,0.94,moderate
+32,dog,2,head shaking ear scratching brown discharge ear odor balance loss circling,Ear Infection,0.91,moderate
+33,dog,5,ear odor discharge from ear ear scratching head shaking swollen ear painful,Ear Infection,0.89,moderate
+34,dog,3,head shaking ear scratching red ear canal discharge smell balance issues,Ear Infection,0.86,moderate
+35,dog,6,ear odor discharge head shaking ear scratching painful ear red canal,Ear Infection,0.84,moderate
+36,dog,3,vomiting nausea loss of appetite lethargy drooling abdominal pain eating grass foam,Acute Gastritis,0.92,moderate
+37,dog,4,vomiting retching lethargy loss of appetite drooling gurgling stomach,Gastritis,0.89,moderate
+38,dog,2,vomiting foam nausea abdominal pain lethargy eating grass,Gastritis,0.87,moderate
+39,dog,5,vomiting loss of appetite drooling lethargy retching bloody vomit,Gastritis,0.85,moderate
+40,dog,1,vomiting nausea loss of appetite lethargy abdominal pain retching puppy,Gastritis,0.83,moderate
+41,dog,4,difficulty standing limping reluctant to climb hip pain stiffness bunny hopping large breed,Canine Hip Dysplasia,0.91,moderate
+42,dog,6,difficulty standing bunny hopping hip pain decreased activity stiffness weight gain,Canine Hip Dysplasia,0.88,moderate
+43,dog,5,limping hip pain reluctant to climb stairs stiffness narrow stance large breed,Canine Hip Dysplasia,0.86,moderate
+44,dog,7,limping difficulty standing hip pain stiffness older dog decreased activity,Canine Hip Dysplasia,0.84,moderate
+45,dog,3,limping bunny hopping reluctance to exercise hip pain large breed young dog,Canine Hip Dysplasia,0.82,moderate
+46,dog,3,intense itching scratching hair loss red bumps fleas flea dirt tail base back legs,Flea Allergy Dermatitis,0.93,moderate
+47,dog,4,itching scratching hair loss scabs skin infection flea dirt tail base,Flea Allergy Dermatitis,0.90,moderate
+48,dog,2,hair loss red bumps itching scratching flea evidence tail base leg base,Flea Allergy Dermatitis,0.88,moderate
+49,dog,5,intense itching scratching hair loss scabs fleas skin infection,Flea Allergy Dermatitis,0.86,moderate
+50,dog,1,hair loss itching scratching red bumps fleas flea dirt puppy,Flea Allergy Dermatitis,0.85,moderate
+51,dog,5,vomiting severe abdominal pain hunched back lethargy diarrhea fever fatty food recently,Canine Pancreatitis,0.91,critical
+52,dog,4,vomiting lethargy loss of appetite diarrhea severe abdominal pain hunched posture,Canine Pancreatitis,0.89,critical
+53,dog,6,vomiting diarrhea fever swollen abdomen severe pain lethargy fatty treat,Canine Pancreatitis,0.87,critical
+54,dog,3,vomiting lethargy severe abdominal pain loss of appetite diarrhea,Canine Pancreatitis,0.86,critical
+55,dog,7,vomiting severe abdominal pain hunched back lethargy dehydration fatty meal,Canine Pancreatitis,0.84,critical
+56,dog,2,circular lesion bald patches scaly skin itching red ring crusty skin,Canine Ringworm,0.91,low
+57,dog,4,bald patches scaly skin red ring hair loss broken hair crusty patches,Canine Ringworm,0.88,low
+58,dog,1,itching circular lesions scaly skin hair loss red patches spreading,Canine Ringworm,0.86,low
+59,dog,3,circular lesion hair loss scaly skin crusty skin red ring spreading,Canine Ringworm,0.84,low
+60,dog,5,bald patches scaly skin itching red lesions crusty hair loss,Canine Ringworm,0.82,low
+61,dog,3,aggression drooling difficulty swallowing paralysis seizures fear of water not vaccinated,Canine Rabies,0.95,critical
+62,dog,4,drooling aggression behavior change paralysis seizures bite from wild animal not vaccinated,Canine Rabies,0.93,critical
+63,dog,2,drooling difficulty swallowing aggression paralysis seizures not vaccinated bite,Canine Rabies,0.91,critical
+64,dog,3,aggression drooling confusion seizures paralysis fear of water,Canine Rabies,0.89,critical
+65,dog,5,drooling aggression paralysis seizures behavioral change not vaccinated,Canine Rabies,0.87,critical
+66,dog,4,itching scratching red skin paw licking face rubbing hot spots seasonal allergies,Allergic Dermatitis,0.90,low
+67,dog,3,itching scratching red skin ear infections paw licking hot spots seasonal,Allergic Dermatitis,0.87,low
+68,dog,5,paw licking face rubbing scratching itching skin irritation hot spots,Allergic Dermatitis,0.85,low
+69,dog,2,red skin itching scratching hot spots seasonal pollen face rubbing,Allergic Dermatitis,0.83,low
+70,dog,6,itching scratching skin irritation ear infections hot spots hair loss,Allergic Dermatitis,0.81,low
+71,dog,2,weight loss pot belly scooting visible worms in stool bloated lethargy loss of appetite,Roundworm Infection,0.92,moderate
+72,dog,1,visible worms in stool vomiting worms pot belly bloated puppy,Roundworm Infection,0.90,moderate
+73,dog,3,weight loss scooting visible worms rice grains around anus bloated lethargy,Roundworm Infection,0.88,moderate
+74,dog,4,bloated pot belly weight loss scooting visible worms lethargy puppy,Roundworm Infection,0.86,moderate
+75,dog,2,vomiting worms in vomit weight loss bloated lethargy puppy,Roundworm Infection,0.84,moderate
+76,dog,3,panting heavily excessive drooling red gums rapid heartbeat collapse hot day,Canine Heatstroke,0.94,critical
+77,dog,5,vomiting collapse excessive drooling rapid heartbeat confusion shallow breathing hot day,Canine Heatstroke,0.92,critical
+78,dog,2,panting heavily excessive drooling red gums collapse heat exercise,Canine Heatstroke,0.90,critical
+79,dog,4,vomiting collapse excessive drooling rapid heartbeat confused hot weather car ride,Canine Heatstroke,0.88,critical
+80,dog,6,panting heavily collapse excessive drooling rapid heartbeat confusion hot day,Canine Heatstroke,0.86,critical
+81,cat,2,sneezing runny nose watery eyes congested loss of appetite lethargy shelter multiple cats,Feline URI,0.93,moderate
+82,cat,1,sneezing nasal discharge eye discharge lethargy fever shelter,Feline URI,0.90,moderate
+83,cat,3,sneezing congested watery eyes loss of appetite lethargy multiple cats,Feline URI,0.88,moderate
+84,cat,4,sneezing runny nose watery eyes fever coughing,Feline URI,0.86,moderate
+85,cat,2,sneezing eye discharge nasal discharge lethargy loss of appetite multi-cat home,Feline URI,0.84,moderate
+86,cat,4,weight loss lethargy loss of appetite recurring infections gum inflammation anemia fever,FeLV,0.91,critical
+87,cat,3,weight loss lethargy recurring infections swollen lymph nodes poor coat condition anemia,FeLV,0.88,critical
+88,cat,5,weight loss recurring infections lethargy pale gums fever poor coat,FeLV,0.86,critical
+89,cat,2,weight loss loss of appetite lethargy recurring infections anemia stray cat,FeLV,0.84,critical
+90,cat,4,weight loss lethargy recurring infections fever swollen lymph nodes,FeLV,0.82,critical
+91,cat,1,vomiting bloody diarrhea lethargy fever loss of appetite dehydration not vaccinated kitten,Feline Panleukopenia,0.94,critical
+92,cat,2,vomiting diarrhea bloody stool lethargy fever dehydration not vaccinated,Feline Panleukopenia,0.91,critical
+93,cat,0.5,vomiting bloody diarrhea sudden death kitten not vaccinated hiding,Feline Panleukopenia,0.89,critical
+94,cat,3,vomiting diarrhea lethargy fever dehydration loss of appetite,Feline Panleukopenia,0.87,critical
+95,cat,1,vomiting bloody diarrhea lethargy dehydration not vaccinated shelter kitten,Feline Panleukopenia,0.86,critical
+96,cat,8,increased thirst increased urination weight loss increased appetite lethargy older cat cloudy eyes,Feline Diabetes,0.92,high
+97,cat,9,increased thirst increased urination weight loss despite eating lethargy obesity older cat,Feline Diabetes,0.89,high
+98,cat,7,weight loss increased appetite increased thirst increased urination lethargy older cat,Feline Diabetes,0.87,high
+99,cat,10,increased thirst increased urination weight loss lethargy poor coat older cat,Feline Diabetes,0.85,high
+100,cat,8,increased thirst increased urination weight loss lethargy vomiting older cat,Feline Diabetes,0.83,high
+101,cat,4,straining to urinate blood in urine crying when urinating frequent urination male cat blocked,FLUTD,0.94,critical
+102,cat,3,blood in urine straining to urinate crying when urinating licking genital area male cat,FLUTD,0.91,critical
+103,cat,5,urinating outside litter box straining blood in urine crying frequent urination,FLUTD,0.89,critical
+104,cat,2,straining to urinate blood in urine no urine production vomiting male cat,FLUTD,0.87,critical
+105,cat,6,straining to urinate frequent urination blood in urine crying male cat,FLUTD,0.85,critical
+106,cat,1,ear scratching head shaking dark discharge in ear coffee-ground ear wax ear odor red ears,Ear Mites,0.93,low
+107,cat,2,ear scratching head shaking dark ear wax ear odor scabs around ears inner ear inflammation,Ear Mites,0.90,low
+108,cat,3,head shaking ear scratching dark discharge ear odor red ears scabs,Ear Mites,0.88,low
+109,cat,1,ear odor dark discharge ear scratching head shaking scabs around ears,Ear Mites,0.86,low
+110,cat,2,head shaking ear scratching ear odor red ears inner ear inflammation,Ear Mites,0.84,low
+111,cat,10,weight loss increased appetite hyperactivity vomiting diarrhea increased thirst older cat rapid heart rate,Hyperthyroidism,0.92,high
+112,cat,11,weight loss despite eating increased appetite hyperactive matted fur vomiting diarrhea,Hyperthyroidism,0.89,high
+113,cat,12,weight loss increased appetite hyperactivity poor coat unkempt appearance vomiting,Hyperthyroidism,0.87,high
+114,cat,9,weight loss increased thirst increased urination hyperactive older cat poor coat,Hyperthyroidism,0.85,high
+115,cat,13,weight loss increased appetite hyperactive unkempt appearance vomiting diarrhea,Hyperthyroidism,0.83,high
+116,cat,2,red eyes eye discharge squinting pawing at eyes swollen eyes watery eyes third eyelid visible,Feline Conjunctivitis,0.92,low
+117,cat,3,eye discharge red eyes squinting swollen eyes crusty eyes watery eyes,Feline Conjunctivitis,0.89,low
+118,cat,1,red eyes eye discharge squinting pawing at eyes third eyelid visible,Feline Conjunctivitis,0.87,low
+119,cat,4,eye discharge watery eyes red eyes squinting crusty eyes,Feline Conjunctivitis,0.85,low
+120,cat,2,squinting eye discharge red eyes swollen eyes pawing at eyes,Feline Conjunctivitis,0.83,low
+121,cat,3,coughing retching vomiting hair long-haired cat excessive grooming constipation,Hairballs,0.91,low
+122,cat,4,coughing retching hacking vomiting hair excessive grooming loss of appetite long-haired,Hairballs,0.88,low
+123,cat,2,retching vomiting hair hair ball long-haired excessive grooming,Hairballs,0.86,low
+124,cat,5,coughing hacking retching loss of appetite constipation long-haired excessive grooming,Hairballs,0.84,low
+125,cat,3,retching vomiting hair constipation lethargy long-haired cat,Hairballs,0.82,low
+126,cat,9,increased thirst increased urination weight loss lethargy poor appetite vomiting bad breath older cat,Feline CKD,0.92,high
+127,cat,10,increased thirst increased urination weight loss lethargy vomiting bad breath older cat,Feline CKD,0.89,high
+128,cat,11,weight loss lethargy poor appetite vomiting increased thirst increased urination older cat,Feline CKD,0.87,high
+129,cat,8,increased thirst increased urination weight loss lethargy bad breath older cat,Feline CKD,0.85,high
+130,cat,12,weight loss lethargy poor appetite vomiting bad breath older cat weight loss despite eating,Feline CKD,0.83,high
+131,cat,2,circular bald patches scaly skin broken hair red patches crusty lesions itching head lesions,Feline Ringworm,0.91,low
+132,cat,1,bald patches scaly skin broken hair red lesions crusty lesions,Feline Ringworm,0.88,low
+133,cat,3,circular lesion scaly skin broken hair itching head lesions,Feline Ringworm,0.86,low
+134,cat,4,bald patches scaly skin crusty lesions ears affected itching,Feline Ringworm,0.84,low
+135,cat,1,itching scaly skin broken hair red patches circular lesion spreading,Feline Ringworm,0.82,low
+136,bird,2,fluffed feathers lethargy loss of appetite weight loss eye discharge nasal discharge green droppings,Avian Chlamydiosis,0.92,high
+137,bird,3,fluffed feathers lethargy weight loss diarrhea green droppings respiratory signs human flu symptoms,Avian Chlamydiosis,0.89,high
+138,bird,1,lethargy loss of appetite nasal discharge eye discharge green droppings respiratory,Avian Chlamydiosis,0.87,high
+139,bird,4,fluffed feathers lethargy weight loss diarrhea respiratory signs eye discharge,Avian Chlamydiosis,0.85,high
+140,bird,2,fluffed feathers loss of appetite nasal discharge green droppings lethargy,Avian Chlamydiosis,0.83,high
+141,bird,3,labored breathing open-mouth breathing sneezing nasal discharge tail bobbing lethargy wheezing moldy environment,Aspergillosis,0.91,high
+142,bird,2,open-mouth breathing labored breathing nasal discharge lethargy loss of appetite tail bobbing,Aspergillosis,0.88,high
+143,bird,4,labored breathing wheezing sneezing nasal discharge lethargy damp environment,Aspergillosis,0.86,high
+144,bird,1,respiratory distress tail bobbing lethargy loss of appetite nasal discharge sneezing,Aspergillosis,0.84,high
+145,bird,3,labored breathing open-mouth breathing wheezing nasal discharge lethargy mold exposure,Aspergillosis,0.82,high
+146,bird,1,feather loss abnormal feathers beak abnormalities beak overgrowth deformed beak immune suppressed young parrot,PBFD,0.93,critical
+147,bird,2,feather loss abnormal feathers beak deformities immune suppressed recurring infections,PBFD,0.90,critical
+148,bird,3,abnormal feathers feather loss beak overgrowth deformed beak immune suppressed,PBFD,0.87,critical
+149,bird,1,feather loss beak abnormalities abnormal feathers immune suppressed young parrot,PBFD,0.85,critical
+150,bird,2,feather loss abnormal feathers deformed beak immune suppressed young bird,PBFD,0.83,critical
+151,bird,1,enlarged thyroid difficulty swallowing crop problems labored breathing lethargy seed-only diet gurgling sounds,Avian Goiter,0.90,moderate
+152,bird,2,enlarged thyroid difficulty swallowing crop problems lethargy poor feather quality seed-only diet,Avian Goiter,0.87,moderate
+153,bird,3,crop problems difficulty swallowing labored breathing gurgling sounds seed-only diet,Avian Goiter,0.84,moderate
+154,bird,1,difficulty swallowing enlarged thyroid labored breathing lethargy seed-only diet,Avian Goiter,0.82,moderate
+155,bird,2,enlarged thyroid crop problems lethargy poor feather quality seed diet,Avian Goiter,0.80,moderate
+156,bird,2,white patches in mouth crop impaction loss of appetite regurgitation lethargy sour crop smell weight loss,Candidiasis,0.91,moderate
+157,bird,1,white patches in mouth regurgitation crop impaction loss of appetite weight loss,Candidiasis,0.88,moderate
+158,bird,3,regurgitation sour crop smell white patches in mouth lethargy weight loss,Candidiasis,0.85,moderate
+159,bird,2,loss of appetite regurgitation white patches crop impaction lethargy,Candidiasis,0.83,moderate
+160,bird,1,white patches in mouth sour crop smell regurgitation loss of appetite,Candidiasis,0.81,moderate
+161,bird,2,white spots in mouth nasal discharge eye problems poor feather quality lethargy loss of appetite seed-only diet,Vitamin A Deficiency,0.90,moderate
+162,bird,3,white spots in mouth eye problems poor feather quality squinting lethargy seed diet,Vitamin A Deficiency,0.87,moderate
+163,bird,1,nasal discharge eye problems white spots in mouth poor feather quality seed-only,Vitamin A Deficiency,0.84,moderate
+164,bird,2,eye problems white spots in mouth poor feather quality lethargy loss of appetite,Vitamin A Deficiency,0.82,moderate
+165,bird,3,white spots in mouth squinting eye discharge poor feather quality seed-only diet,Vitamin A Deficiency,0.80,moderate
+166,bird,3,feather plucking bald patches skin damage self-mutilation stressed bird boredom lonely,Feather Plucking,0.93,moderate
+167,bird,2,feather plucking self-mutilation bald patches stressed bird cage-bound attention-seeking,Feather Plucking,0.90,moderate
+168,bird,4,feather plucking bald patches skin damage boredom lonely stressed bird,Feather Plucking,0.87,moderate
+169,bird,2,bald patches self-mutilation feather plucking stressed bird lonely cage-bound,Feather Plucking,0.85,moderate
+170,bird,3,feather plucking self-mutilation skin damage boredom attention-seeking stressed bird,Feather Plucking,0.83,moderate
+171,rabbit,2,sneezing nasal discharge snuffling sounds matted front paws weepy eyes lethargy loss of appetite,Rabbit Snuffles,0.92,moderate
+172,rabbit,3,sneezing nasal discharge snuffles matted paws lethargy loss of appetite,Rabbit Snuffles,0.89,moderate
+173,rabbit,1,sneezing nasal discharge weepy eyes lethargy loss of appetite matted paws,Rabbit Snuffles,0.87,moderate
+174,rabbit,4,sneezing nasal discharge snuffling sounds wheezing lethargy loss of appetite,Rabbit Snuffles,0.85,moderate
+175,rabbit,2,snuffling sounds nasal discharge matted front paws weepy eyes lethargy,Rabbit Snuffles,0.83,moderate
+176,rabbit,3,not eating no droppings hunched posture lethargy abdominal pain small droppings grinding teeth,Gastrointestinal Stasis,0.95,critical
+177,rabbit,2,not eating no droppings bloated hunched posture lethargy refusing treats grinding teeth,Gastrointestinal Stasis,0.92,critical
+178,rabbit,4,not eating no droppings lethargy abdominal pain grinding teeth bloated,Gastrointestinal Stasis,0.89,critical
+179,rabbit,1,not eating no droppings hunched posture grinding teeth small droppings,Gastrointestinal Stasis,0.87,critical
+180,rabbit,3,not eating no droppings lethargy abdominal pain grinding teeth refusing treats,Gastrointestinal Stasis,0.85,critical
+181,rabbit,2,head tilt circling loss of balance tremors cataracts kidney failure paralysis weight loss,E. cuniculi,0.92,high
+182,rabbit,3,head tilt circling tremors weight loss cataracts white spots on eyes kidney failure,E. cuniculi,0.89,high
+183,rabbit,1,head tilt circling loss of balance paralysis tremors weight loss,E. cuniculi,0.87,high
+184,rabbit,4,head tilt circling tremors cataracts kidney failure weight loss,E. cuniculi,0.85,high
+185,rabbit,2,circling head tilt loss of balance tremors cataracts white spots on eyes,E. cuniculi,0.83,high
+186,rabbit,3,maggots soiled fur lethargy loss of appetite shock foul smell hot weather dirty hutch weak rabbit,Flystrike,0.95,critical
+187,rabbit,2,soiled fur maggots lethargy shock foul smell hot weather weak rabbit,Flystrike,0.92,critical
+188,rabbit,1,maggots soiled fur lethargy loss of appetite shock hot weather,Flystrike,0.89,critical
+189,rabbit,4,soiled fur maggots foul smell shock lethargy hot humid weather,Flystrike,0.87,critical
+190,rabbit,3,maggots soiled fur loss of appetite shock weak rabbit hot weather,Flystrike,0.85,critical
+191,rabbit,2,drooling wet chin not eating weight loss difficulty chewing dropping food teeth overgrown,Rabbit Dental Disease,0.91,moderate
+192,rabbit,3,drooling wet chin not eating weight loss difficulty chewing teeth overgrown spikes on teeth,Rabbit Dental Disease,0.88,moderate
+193,rabbit,1,drooling wet chin dropping food difficulty chewing weight loss,Rabbit Dental Disease,0.86,moderate
+194,rabbit,4,weight loss difficulty chewing dropping food teeth overgrown drooling wet chin,Rabbit Dental Disease,0.84,moderate
+195,rabbit,2,teeth overgrown spikes on teeth drooling wet chin not eating difficulty chewing,Rabbit Dental Disease,0.82,moderate
+196,rabbit,5,blood in urine aggressive behavior lethargy poor appetite weight loss female rabbit over 4 years,E. cuniculi,0.89,high
+197,rabbit,6,weight loss poor appetite lethargy lumps in abdomen blood in urine female rabbit,E. cuniculi,0.86,high
+198,rabbit,5,weight loss lethargy poor appetite blood in urine female rabbit,E. cuniculi,0.84,high
+199,rabbit,4,weight loss poor appetite lethargy blood in urine lumps in abdomen,E. cuniculi,0.82,high
+200,rabbit,5,weight loss blood in urine poor appetite lethargy older female rabbit,E. cuniculi,0.80,high
+201,hamster,0.5,wet tail diarrhea lethargy loss of appetite hunched posture matted fur death young hamster, Wet Tail,0.94,critical
+202,hamster,1,wet tail diarrhea lethargy loss of appetite matted fur hunched posture stress, Wet Tail,0.91,critical
+203,hamster,0.3,diarrhea wet tail lethargy loss of appetite hunched posture young hamster, Wet Tail,0.89,critical
+204,hamster,0.5,matted fur wet tail diarrhea hunched posture lethargy loss of appetite, Wet Tail,0.87,critical
+205,hamster,1,wet tail diarrhea lethargy hunched posture loss of appetite young hamster, Wet Tail,0.85,critical
+206,hamster,2,sneezing runny nose labored breathing wheezing lethargy loss of appetite wet fur around nose,Hamster Respiratory Infection,0.91,moderate
+207,hamster,1,sneezing labored breathing wheezing nasal discharge lethargy loss of appetite,Hamster Respiratory Infection,0.88,moderate
+208,hamster,2,runny nose sneezing labored breathing lethargy clicking sounds loss of appetite,Hamster Respiratory Infection,0.86,moderate
+209,hamster,1,wheezing sneezing labored breathing nasal discharge lethargy,Hamster Respiratory Infection,0.84,moderate
+210,hamster,2,sneezing labored breathing wheezing lethargy wet fur around nose,Hamster Respiratory Infection,0.82,moderate
+211,hamster,2,lumps weight loss lethargy difficulty moving loss of appetite older hamster,Hamster Tumors,0.91,high
+212,hamster,3,visible growth lumps weight loss lethargy loss of appetite older hamster,Hamster Tumors,0.88,high
+213,hamster,1.5,lumps weight loss difficulty moving lethargy loss of appetite,Hamster Tumors,0.86,high
+214,hamster,2.5,weight loss lumps lethargy difficulty moving visible growth older hamster,Hamster Tumors,0.84,high
+215,hamster,1,weight loss lumps difficulty moving lethargy older hamster visible growth,Hamster Tumors,0.82,high
+216,hamster,2,increased thirst increased urination weight loss lethargy cloudy eyes Chinese hamster genetics,Diabetes Mellitus,0.90,high
+217,hamster,1,increased thirst increased urination weight loss lethargy cloudy eyes genetics,Diabetes Mellitus,0.87,high
+218,hamster,2,increased urination increased thirst weight loss lethargy cloudy eyes,Diabetes Mellitus,0.85,high
+219,hamster,1.5,increased thirst increased urination lethargy weight loss cloudy eyes,Diabetes Mellitus,0.83,high
+220,hamster,2,weight loss increased thirst increased urination lethargy cloudy eyes,Diabetes Mellitus,0.81,high
+221,hamster,1,hair loss circular lesions scaly skin itching red skin crusty patches spreading,Fungal Infection,0.90,low
+222,hamster,2,hair loss scaly skin circular lesions itching red skin,Fungal Infection,0.87,low
+223,hamster,1.5,itching hair loss red skin scaly lesions crusty patches,Fungal Infection,0.85,low
+224,hamster,2,circular lesions hair loss scaly skin itching spreading,Fungal Infection,0.83,low
+225,hamster,1,red skin hair loss scaly lesions itching crusty patches,Fungal Infection,0.81,low
+226,fish,1,white spots itching flashing scraping against objects clamped fins lethargy loss of appetite,Ich White Spot,0.94,high
+227,fish,2,white spots flashing scraping clamped fins lethargy loss of appetite mortality,Ich White Spot,0.91,high
+228,fish,0.5,white spots flashing scraping against objects clamped fins sudden death,Ich White Spot,0.89,high
+229,fish,1.5,itching white spots scraping clamped fins lethargy loss of appetite,Ich White Spot,0.87,high
+230,fish,2,white spots flashing scraping against objects clamped fins loss of appetite,Ich White Spot,0.85,high
+231,fish,1,fin deterioration ragged fins red edges black edges fuzzy fins poor water quality injured fish,Fin Rot,0.92,moderate
+232,fish,2,ragged fins fin deterioration cloudy water poor water quality injured fish,Fin Rot,0.89,moderate
+233,fish,1.5,fin deterioration fuzzy fins red edges black edges poor water quality,Fin Rot,0.86,moderate
+234,fish,0.5,ragged fins fin deterioration red edges injured fish cloudy water,Fin Rot,0.84,moderate
+235,fish,2,fin deterioration fuzzy fins black edges cloudy water poor water quality,Fin Rot,0.82,moderate
+236,fish,1.5,bloated raised scales pinecone appearance swollen belly lethargy loss of appetite pale gills,Dropsy,0.93,critical
+237,fish,2,bloated raised scales pinecone appearance eyes protruding lethargy loss of appetite,Dropsy,0.90,critical
+238,fish,1,bloated pinecone appearance swollen belly lethargy pale gills loss of appetite,Dropsy,0.87,critical
+239,fish,2,raised scales bloated swollen belly pinecone appearance lethargy,Dropsy,0.85,critical
+240,fish,1.5,bloated raised scales pinecone appearance eyes protruding lethargy,Dropsy,0.83,critical
+241,fish,1,floating lopsided sinking to bottom swimming upside down cant swim properly goldfish constipation,Swim Bladder Disorder,0.92,moderate
+242,fish,2,sinking to bottom floating lopsided swimming upside down bloated constipation goldfish,Swim Bladder Disorder,0.89,moderate
+243,fish,1.5,cant swim properly floating lopsided swimming upside down goldfish betta,Swim Bladder Disorder,0.86,moderate
+244,fish,1,floating lopsided swimming upside down cant swim properly constipation betta,Swim Bladder Disorder,0.84,moderate
+245,fish,2,sinking to bottom floating lopsided cant swim properly goldfish constipation,Swim Bladder Disorder,0.82,moderate
+246,fish,1.5,visible worms thread-like parasites red inflammation scratching mucus excess ulcers near parasite,Anchor Worms,0.91,moderate
+247,fish,2,visible worms thread-like parasites red inflammation scratching mucus excess,Anchor Worms,0.88,moderate
+248,fish,1,thread-like parasites visible worms red inflammation ulcers near parasite scratching,Anchor Worms,0.86,moderate
+249,fish,2,visible worms red inflammation scratching mucus excess ulcers,Anchor Worms,0.84,moderate
+250,fish,1.5,thread-like parasites visible worms red inflammation ulcers near parasite,Anchor Worms,0.82,moderate
+251,fish,1,gasping at surface red gills purple gills lethargy no appetite burns on body new tank overstocked,Ammonia Poisoning,0.94,critical
+252,fish,2,gasping at surface red gills lethargy no appetite burns on body cloudy water,Ammonia Poisoning,0.91,critical
+253,fish,1.5,red gills purple gills gasping at surface burns on body overstocked new tank,Ammonia Poisoning,0.88,critical
+254,fish,1,gasping at surface red gills lethargy no appetite burns on body cloud, Ammonia Poisoning,0.86,critical
+255,fish,2,gasping at surface purple gills lethargy no appetite burns on body new tank,Ammonia Poisoning,0.84,critical
+256,reptile,2,soft bones bending legs rubbery jaw difficulty walking seizures twitching no UVB light lizard,MBD,0.93,critical
+257,reptile,1,soft bones rubbery jaw bending legs twitching seizures poor diet lizard,MBD,0.90,critical
+258,reptile,3,difficulty walking soft bones rubbery jaw seizures twitching no UVB exposure,MBD,0.87,critical
+259,reptile,2,bending legs soft bones rubbery jaw twitching lethargy no UVB light,MBD,0.85,critical
+260,reptile,1,soft bones rubbery jaw twitching seizures poor diet no UVB light,MBD,0.83,critical
+261,reptile,2,gasping mouth breathing wheezing mucus from mouth lethargy loss of appetite bubbles from nose open-mouth breathing,Reptile Respiratory Infection,0.92,high
+262,reptile,3,gasping mouth breathing wheezing lethargy loss of appetite bubbles from nose,Reptile Respiratory Infection,0.89,high
+263,reptile,1,respiratory distress mouth breathing mucus from nose wheezing lethargy loss of appetite,Reptile Respiratory Infection,0.87,high
+264,reptile,2,open-mouth breathing gasping wheezing cough bubbles from nose lethargy,Reptile Respiratory Infection,0.85,high
+265,reptile,3,gasping mouth breathing wheezing lethargy loss of appetite respiratory signs,Reptile Respiratory Infection,0.83,high
+266,reptile,1,tiny black dots mites on skin restlessness soaking frequently dark spots in joints anemia,Mite Infestation,0.92,moderate
+267,reptile,2,tiny black dots mites on skin restlessness soaking frequently dark spots joints,Mite Infestation,0.89,moderate
+268,reptile,1.5,mites on skin tiny black dots restlessness soaking anemia dark spots in joints,Mite Infestation,0.86,moderate
+269,reptile,2,restlessness soaking frequently tiny black dots mites on skin dark spots joints,Mite Infestation,0.84,moderate
+270,reptile,1,tiny black dots mite infestation restlessness soaking dark spots in joints snake,Mite Infestation,0.82,moderate
+271,reptile,2,blisters ulcers on scales reddish scales mushy scales snake dirty enclosure wet substrate foul smell,Scale Rot,0.92,high
+272,reptile,3,mushy scales blisters reddish scales foul smell dirty enclosure wet substrate,Scale Rot,0.89,high
+273,reptile,1,blisters on scales ulcers reddish scales dirty enclosure wet substrate,Scale Rot,0.87,high
+274,reptile,2,ulcers on scales mushy scales reddish scales foul smell wet substrate snake,Scale Rot,0.85,high
+275,reptile,1.5,blisters mushy scales reddish scales foul smell dirty enclosure,Scale Rot,0.83,high
+276,reptile,1,not defecating bloated lethargy no appetite straining improper substrate loose substrate leopard gecko,Impaction,0.91,high
+277,reptile,2,bloated not defecating lethargy no appetite straining loose substrate giant gecko,Impaction,0.88,high
+278,reptile,1.5,not defecating bloated straining no appetite lethargy loose substrate,Impaction,0.86,high
+279,reptile,1,bloated not defecating straining no appetite lethargy improper substrate,Impaction,0.84,high
+280,reptile,2,not defecating bloated lethargy no appetite straining loose calcium sand,Impaction,0.82,high
+281,dog,2,skin itching redness scratching hair loss in patches allergy season,Canine Allergies,0.75,low
+282,dog,4,lethargy coughing mild fever nasal discharge,Canine Kennel Cough,0.78,moderate
+283,dog,3,vomiting loss of appetite once mild lethargy,Canine Gastritis,0.68,low
+284,dog,1,diarrhea soft stool mild lethargy new food,Canine Gastritis,0.65,low
+285,dog,5,joint stiffness mild lameness after rest older dog,Canine Arthritis,0.80,moderate
+286,dog,6,drinking more water frequent urination older dog weight loss,Canine Diabetes,0.82,high
+287,dog,2,brown discharge ear odor head shaking scratching ear,Otitis Externa,0.83,moderate
+288,dog,3,limping front leg mild reluctance to jump,Canine Hip Dysplasia,0.72,moderate
+289,dog,4,skin scratching hot spots moist red skin,Hot Spot Dermatitis,0.81,moderate
+290,dog,1,vomiting milk curd once playful puppy,Canine Gastritis,0.60,low
+291,cat,3,litter box straining blood small amount,FLUTD,0.85,high
+292,cat,5,drinking water more frequent urination weight loss older cat,Hyperthyroidism,0.81,high
+293,cat,2,sneezing occasionally mild eye discharge,Indoor Cat Allergies,0.70,low
+294,cat,1,diarrhea soft stool once playful appetite normal,Cat Gastritis,0.62,low
+295,cat,4,skin itching scratching hair loss on belly,Cat Flea Allergy,0.79,moderate
+296,cat,2,ear scratching dark wax head shaking,Ear Mites,0.82,low
+297,cat,3,vomiting hairball once normal appetite,Cat Hairballs,0.75,low
+298,cat,1,lethargy loss of appetite fever mild shelter cat,Infectious Cat Cold,0.74,moderate
+299,cat,4,weight loss poor coat matted fur older cat,Hyperthyroidism,0.78,high
+300,cat,2,urinating small frequent amounts blood,FLUTD,0.88,critical
+301,bird,2,fluffed feathers occasional sneeze normal appetite,Respiratory Infection Mild,0.68,low
+302,bird,3,feather plucking boredom stressed bird new cage,Feather Plucking,0.72,moderate
+303,bird,1,slightly watery droppings normal behavior appetite,Stress Droppings,0.55,low
+304,bird,2,loss of appetite lethargy green droppings 3 days,Avian Infection,0.80,high
+305,bird,3,feather loss bald patches spreading,Feather Disease,0.74,moderate
+306,bird,1,white spots in mouth crop sour smell,Candidiasis,0.77,moderate
+307,bird,2,sneezing nasal discharge mildly lethargic,Respiratory Infection Mild,0.71,moderate
+308,bird,3,feather plucking self-mutilation bored stressed,Feather Plucking,0.75,moderate
+309,bird,1,eye watery slightly swollen one eye,Minor Eye Irritation,0.60,low
+310,bird,2,loss of appetite weight loss poor feather quality seed diet,Vitamin A Deficiency,0.73,moderate
+311,rabbit,2,sneezing mild nasal discharge normal appetite,Rabbit Cold,0.70,low
+312,rabbit,3,not eating hay for 12 hours bloated small droppings,Gastrointestinal Stasis,0.85,critical
+313,rabbit,1,head tilt mild circling one direction,E. cuniculi,0.72,high
+314,rabbit,4,drooling wet chin excessive drooling long teeth,Overgrown Teeth,0.78,moderate
+315,rabbit,2,hair loss itching scratching fleas,Rabbit Fleas,0.71,low
+316,rabbit,3,not eating small amount of cecotropes,Normal Cecotropes,0.45,low
+317,rabbit,1,slightly soft stool normal appetite normal behavior,GI Upset Mild,0.50,low
+318,rabbit,2,sneezing nasal discharge matted paws,Snuffles,0.76,moderate
+319,rabbit,3,diarrhea wet bottom loss of appetite stressed,GI Stasis,0.80,critical
+320,rabbit,1,bloated slightly less droppings than normal,GI Slowdown,0.55,moderate
+321,hamster,1,sneezing occasionally mild wheezing,Upper Respiratory Infection,0.68,low
+322,hamster,2,hair loss patchy skin itching,Fungal Infection,0.65,low
+323,hamster,1.5,lethargy mild reduced activity cold room,Hibernation Attempt,0.50,moderate
+324,hamster,2,wet tail diarrhea hunched posture sudden,Wet Tail,0.82,critical
+325,hamster,1.5,scratching itching hair loss,Mite Infestation,0.64,moderate
+326,hamster,1,lump small single painless lump older hamster,Skin Tumor,0.58,moderate
+327,hamster,2,increased thirst increased urination genetics,Diabetes Mellitus,0.72,high
+328,hamster,1,bloated mildly reduced appetite after new food,Dietary Indiscretion,0.45,low
+329,hamster,1.5,eye sticky discharge one eye,Eye Infection,0.60,low
+330,hamster,2,lethargy reduced activity older hamster,Age-related Decline,0.40,low
+331,fish,1,white spots few spots on fins mild flashing,Ich Early Stage,0.75,moderate
+332,fish,1.5,fin edges slightly red fuzzy appearance,Fin Rot Early,0.68,moderate
+333,fish,2,floating slightly tilted one side no other symptoms,Swim Bladder Issue,0.62,low
+334,fish,1,slightly bloated normal behavior appetite normal,Dietary Overindulgence,0.40,low
+335,fish,1.5,gasping at surface occasionally water warm,Ammonia Slight,0.55,moderate
+336,fish,2,clamped fins mild lethargy one day,Stress Response,0.50,low
+337,fish,1,less active than usual slightly pale gills,Water Quality Issue,0.52,moderate
+338,fish,1.5,swimming slightly sideways one day,Minor Swim Bladder,0.48,low
+339,fish,2,white spots spreading rapidly body flash,Ich Advanced,0.88,high
+340,fish,1,fin deterioration beginning red edges,Fin Rot Early,0.70,moderate
+341,reptile,2,not eating for 3 days normal behavior shed imminent,Pre-shed Anorexia,0.45,low
+342,reptile,3,not eating weight loss lethargy poor husbandry,Impaction Early,0.70,high
+343,reptile,1.5,stuck shed skin retained eyes,Incomplete Shed,0.55,low
+344,reptile,2,eyes cloudy slight dull appearance,Mild Dehydration,0.48,low
+345,reptile,1,sneezing occasional open mouth breathing cool temp,Respiratory Infection,0.65,moderate
+346,reptile,3,not eating 2 weeks weight loss no UVB light,MBD Early,0.72,critical
+347,reptile,2,skin slightly dull dull coloration poor appetite,Vitamin Deficiency,0.60,moderate
+348,reptile,1.5,mites visible tiny dots on skin restless, Mite Infestation,0.74,moderate
+349,reptile,2,bubbles from mouth slightly labored breathing,Respiratory Infection,0.69,high
+350,reptile,1,skin slightly discolored one patch no other signs,Minor Skin Issue,0.42,low
+351,dog,3,occasional scratching normal behavior healthy coat,Flea-free Normal,0.30,low
+352,dog,2,limping mild after long walk recover quickly,Minor Strain,0.55,low
+353,dog,4,vomiting bile once morning hungry dog,Empty Stomach Bile,0.45,low
+354,dog,1,diarrhea once loose stool energetic puppy,GI Upset,0.42,low
+355,dog,5,drinking slightly more water normal urination,Normal Variation,0.25,low
+356,dog,2,hot to touch one paw limping slight,Minor Paw Injury,0.50,low
+357,dog,3,ear scratching one side mild brown wax,Normal Ear Wax,0.35,low
+358,dog,1,sneezing occasional new environment pollen,Allergic Sneeze,0.40,low
+359,dog,4,breath slightly bad tartar teeth,Early Dental Disease,0.45,low
+360,dog,2,lethargic after vaccination yesterday,Post-vaccine Fatigue,0.40,low
+361,cat,3,meowing more than usual affectionate behavior,Normal Behavior,0.25,low
+362,cat,2,throwing up food immediately after eating hairball,Cat Hairballs,0.55,low
+363,cat,1,hiding under bed stressed new home,Stress Acclimation,0.35,low
+364,cat,4,drinking from faucet extra thirsty hot weather,Environmental Thirst,0.30,low
+365,cat,2,scratching post more than usual normal claws,Scratching Normal,0.25,low
+366,cat,1,soft stool one day normal appetite playful,GI Upset Mild,0.38,low
+367,cat,3,grooming excessively one area hair loss small,Allergic Dermatitis,0.58,low
+368,cat,5,weight stable good appetite older cat healthy,Normal Senior Cat,0.20,low
+369,cat,2,sneezing 3 times today mild eye water,Minor Cold,0.42,low
+370,cat,1,vomiting food once foam hungry stomach,Empty Stomach Vomiting,0.40,low
+371,bird,2,preening more than usual normal feather condition,Normal Preening,0.25,low
+372,bird,1,droppings slightly watery new vegetable diet,Dietary Change Droppings,0.38,low
+373,bird,3,sitting on bottom perch one day still eating,Minor Malaise,0.45,low
+374,bird,2,feather slightly dull normal appetite,Bird Molt,0.35,low
+375,bird,1,sneezing once new air freshener,Vocal Sneeze,0.30,low
+376,bird,3,wing drooping one side minor injury possible,Minor Wing Strain,0.42,low
+377,bird,2,losing feathers moderate new perch stress,Stress Feather Loss,0.40,low
+378,bird,1,drinking more water new seed mix salty,Normal Thirst Increase,0.30,low
+379,bird,2,less vocal than usual sleepy morning,Bird Sleepy,0.25,low
+380,bird,1,feather dust white powder normal budgerigar,Budgie Dust,0.30,low
+381,rabbit,2,eating hay less than usual one day,Minor GI Slowdown,0.40,low
+382,rabbit,3,cecotropes soft stuck to bottom normal appetite,Cecotrope Issue,0.35,low
+383,rabbit,1,one eye watery slight squinting,Minor Eye Irritation,0.38,low
+384,rabbit,4,one hind leg slightly weak recovering from injury,Minor Injury,0.42,low
+385,rabbit,2,diarrhea soft stool after new vegetable diet,GI Upset Veggies,0.45,low
+386,rabbit,1,scratching ear one side black specks,Ear Mites Mild,0.52,moderate
+387,rabbit,3,not eating for 8 hours still passing droppings,GI Slowdown,0.50,moderate
+388,rabbit,2,nails slightly overgrown,Overgrown Nails,0.30,low
+389,rabbit,1,one small scab on ear minor wound,Minor Wound,0.32,low
+390,rabbit,4,urinating more often litter wet spots,Urinary Tract Issue,0.48,moderate
+391,hamster,1,one small bald patch active normal appetite,Normal Bald Patch,0.25,low
+392,hamster,2,drinking slightly more normal urine output,Normal Variation,0.25,low
+393,hamster,1.5,wheel squeaking loud not running wheel,Nocturnal Activity,0.30,low
+394,hamster,2,chewing cage bars bored enrichment needed,Boredom Behavior,0.35,low
+395,hamster,1,one scab on back minor wound,Minor Wound,0.30,low
+396,hamster,1.5,sneezing slightly dusty bedding new,Allergic Sneeze,0.38,low
+397,hamster,2,eyes slightly crusty one morning mild,Minor Eye Crust,0.35,low
+398,hamster,1,hunched slightly after cold night warm up,Chilly Hamster,0.32,low
+399,hamster,2,food hoarding more than usual normal appetite,Normal Hoarding,0.25,low
+400,hamster,1,limping one leg mild after fall from height,Minor Limb Strain,0.42,low
+401,fish,1.5,slightly less active cool water temperature,Normal Cool Response,0.28,low
+402,fish,2,fin slightly clamped less active day,Minor Stress,0.35,low
+403,fish,1,one small white spot mild single spot,Ich Very Early,0.45,moderate
+404,fish,1.5,swimming normally but one fin drooping slightly,Fin Injury Mild,0.38,low
+405,fish,2,less interest in food one day normal day after,Dietary Indiscretion,0.30,low
+406,fish,1,bottom sitting one hour then normal,Normal Resting,0.25,low
+407,fish,1.5,color slightly faded normal appetite,Water Quality,0.35,moderate
+408,fish,2,floating top one hour after feeding large meal,Bloat After Feeding,0.32,low
+409,fish,1,gasping occasionally surface water well-oxygenated,Normal Surface Gasping,0.28,low
+410,fish,1.5,one red spot on body minor injury,Minor Injury,0.35,low
+411,reptile,2,not eating shed week normal behavior,Pre-shed Anorexia,0.40,low
+412,reptile,1,stuck shed toes slight retained skin,Incomplete Shed,0.38,low
+413,reptile,3,drinking less water cool temperature normal,Normal Cool Response,0.28,low
+414,reptile,2,slightly pale color after sleep normal after warm,Normal Circulation,0.30,low
+415,reptile,1,one eye slightly closed one time,Minor Eye Irritant,0.35,low
+416,reptile,3,burrowing more than usual new substrate enrich,Normal Behavior,0.25,low
+417,reptile,2,smell slightly foul from enclosure dirty cage,Dirty Enclosure,0.35,moderate
+418,reptile,1,sneezing occasional cool misting,Normal Sneeze,0.30,low
+419,reptile,2,less active than usual cool room night,Normal Night Rest,0.28,low
+420,reptile,1.5,eyes slightly cloudy after sleep vitamin A,Pre-shed Cloudy,0.35,low
+421,dog,3,scratching ear occasional head shake brown wax mild,Otitis Externa Early,0.55,moderate
+422,dog,2,skin slightly red between toes one paw,Interdigital Pyoderma,0.50,moderate
+423,dog,1,vomiting undigested food once 30 min after eating,Canine Gastritis,0.50,low
+424,dog,5,limping mild stiffness after rest stretching out,Canine Arthritis,0.58,moderate
+425,dog,2,diarrhea loose stool 2 days mild no blood,Canine Gastritis,0.52,low
+426,dog,4,hot spot forming red moist skin,Hot Spot Early,0.60,moderate
+427,dog,3,scooting anal glands mild smell,Anal Gland Issue,0.45,low
+428,dog,1,reverse sneezing occasional irritant,Reverse Sneeze,0.40,low
+429,dog,6,grey hair around muzzle older dog,Normal Aging,0.25,low
+430,dog,2,bleeding torn nail minor limp,Broken Nail,0.48,low
+431,cat,2,constipation straining small hard stool,Cat Constipation,0.52,moderate
+432,cat,3,urine marking spraying vertical surfaces intact male,Cat Spraying,0.40,low
+433,cat,4,grumpy older cat hissing when touched arthritis,Arthritis Pain,0.55,moderate
+434,cat,1,vomiting food whole worms rice grains,Worm Infestation,0.65,moderate
+435,cat,2,overgrooming belly fur missing patches,Cat Allergic Dermatitis,0.58,low
+436,cat,3,red watery eyes sneezing mild one day,Cat Herpesvirus,0.52,low
+437,cat,1,sneezing nasal discharge mild shelter cat new,Feline URI,0.60,moderate
+438,cat,5,blood in urine small amount male cat,FLUTD,0.72,critical
+439,cat,4,greasy matted coat older cat not grooming,Arthritis Grooming Issue,0.50,moderate
+440,cat,2,diarrhea loose stool 3 days mild weight stable,Cat Enteritis,0.55,moderate
+441,bird,1,fluffed feathers one hour after bath cold,Post-bath Chill,0.35,low
+442,bird,2,one feather bent broken not bleeding,Broken Feather,0.30,low
+443,bird,3,sleeping more than usual molting season,Molting Fatigue,0.32,low
+444,bird,1,beak slightly overgrown trim needed,Overgrown Beak,0.40,moderate
+445,bird,2,climbing less than usual older bird,Age-related Decline,0.35,low
+446,bird,1,eye slightly swollen one side minor,Minor Eye Swelling,0.38,low
+447,bird,3,not preening feathers dull,Depression Feather Care,0.45,moderate
+448,bird,2,wing drooping slightly one day,Minor Wing Strain,0.40,low
+449,bird,1,nasal discharge one nostril mild,Minor Nasal Infection,0.45,moderate
+450,bird,2,less vocal than usual new cage mate,Social Stress,0.35,low
+451,rabbit,2,one hind leg slightly splayed neurological issue,Neurological Issue,0.48,high
+452,rabbit,3,urinating more frequently wet litter,Urinary Tract Issue,0.52,moderate
+453,rabbit,1,diarrhea wet bottom critical immediate,GI Stasis Critical,0.72,critical
+454,rabbit,4,lumps under skin multiple older rabbit,Tumors,0.65,high
+455,rabbit,2,teeth overgrown drooling wet chin severe,Overgrown Teeth,0.68,moderate
+456,rabbit,1,skin parasites visible fur loss,Parasitic Infestation,0.62,moderate
+457,rabbit,3,hind leg paralysis elderly rabbit spinal issue,Spinal Injury,0.58,critical
+458,rabbit,2,abscess hard lump jaw,Abscess,0.55,moderate
+459,rabbit,1,E. cuniculi head tilt severe circling,E. cuniculi,0.72,high
+460,rabbit,3,GI stasis severe no droppings 24 hours,Gastrointestinal Stasis,0.78,critical
+461,hamster,1,wet tail critical diarrhea death risk,Wet Tail,0.80,critical
+462,hamster,2,abscess hard lump side body,Abscess,0.55,moderate
+463,hamster,1.5,skin lumps multiple older hamster,Tumors,0.58,high
+464,hamster,1,respiratory distress labored breathing breathing fast,Respiratory Infection Severe,0.70,critical
+465,hamster,1,diabetes symptoms severe increased thirst urination weight loss,Diabetes Mellitus,0.72,high
+466,hamster,1.5,severe fungal infection hair loss spreading body,Fungal Infection,0.60,moderate
+467,hamster,2,eye swollen protruding eye proptosis,Eye Infection Severe,0.55,critical
+468,hamster,1.5,paralyzed hind legs spinal injury,Spinal Injury,0.52,critical
+469,hamster,1,severe mite infestation skin crusting,severe Mite Infestation,0.65,high
+470,hamster,1.5,organ failure weight loss severe lethargy,Organ Failure,0.48,critical
+471,fish,1,severe fin rot complete loss of fins,Fin Rot Severe,0.78,critical
+472,fish,1.5,Ich severe white spots covering body flash death risk,Ich Severe,0.85,critical
+473,fish,2,dropsy severe pinecone scales bloated death,Dropsy,0.82,critical
+474,fish,1,hole in head disease holes ulcers head,Hexamita Hole Disease,0.65,high
+475,fish,2,columnaris white patches cotton-like mouth,Columnaris,0.70,high
+476,fish,1,flukes visible tiny worms on body gill damage,Gill Flukes,0.62,high
+477,fish,1.5,velvet gold dust on body flashing,Gold Dust Disease,0.60,high
+478,fish,1,swim bladder severe floating upside down no eating,Swim Bladder Disorder,0.65,critical
+479,fish,2,ammonia poisoning severe red gills gasping death,Ammonia Poisoning,0.80,critical
+480,fish,1,Popeye eye protruding one or both eyes cloudy,Popeye Disease,0.62,high
+481,reptile,2,MBD severe rubbery jaw cannot eat collapse,Metabolic Bone Disease,0.80,critical
+482,reptile,1,respiratory infection severe open mouth breathing discharge,Reptile Respiratory Infection,0.75,critical
+483,reptile,3,scale rot severe blisters ulcers spreading body,Scale Rot,0.72,high
+484,reptile,2,impaction severe no defecation bloated refusing food,Impaction,0.70,critical
+485,reptile,1,mite infestation severe hundreds of mites anemia, Mite Infestation,0.70,high
+486,reptile,2,eye infection severe swollen eyes closed discharge,Ocular Infection,0.65,high
+487,reptile,1,dystocia egg binding female not laying eggs,Reproductive Issue,0.62,high
+488,reptile,3,MBD early signs soft jaw slight rubbery jaw no UVB,Metabolic Bone Disease,0.62,moderate
+489,reptile,1,skin infection fungal red spots spreading,Fungal Skin Infection,0.58,moderate
+490,reptile,2,thermal burns from heat lamp red skin,Burn Injury,0.55,moderate
+491,dog,2,skin infection red bumps oozing pustules,Pyoderma,0.65,moderate
+492,dog,3,chronic ear infection recurring shaking head,Chronic Otitis,0.62,moderate
+493,dog,1,puppy diarrhea bloody sudden death parvo risk,Canine Parvovirus,0.80,critical
+494,dog,4,seizures neurological signs tremors distemper suspect,Canine Distemper,0.75,critical
+495,dog,3,lyme disease chronic lameness kidney issues,Canine Lyme Disease,0.68,moderate

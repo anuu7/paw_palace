@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Paw',
+    'PetHealthAI',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,8 @@ MEDIA_URL='/media/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Pet Health AI settings
+LOGIN_URL = 'log'
+LOGIN_REDIRECT_URL = 'userhome'
+LOGOUT_REDIRECT_URL = 'log'
