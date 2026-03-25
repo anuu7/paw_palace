@@ -56,71 +56,78 @@ $(document).ready(function(){
 
     <!--    message-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/paw_main.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-        <div class="container text-light">
-            <div class="w-100 d-flex justify-content-between">
-                <div>
-                    <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:pawpalace@gmail.com">pawpalace@gmail.com</a>
-                    <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:+91 7736881574">+91 7736881574</a>
-                </div>
-                <div>
-                    <a class="text-light" href="#" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="#" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="#" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                    <a class="text-light" href="#" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                </div>
-            </div>
+    <nav class="navbar navbar-expand-lg paw-nav">
+    <div class="container">
+        <a class="navbar-brand paw-nav-brand" href="/user">Paw<span class="paw-teal">Palace</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="pawNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link active" href="/user">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/shopping">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/userabout">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/userlogout">Logout</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
     <!-- Close Top Nav -->
 
 
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h1 align-self-center" href="user">
-                PawPalace
-            </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-    <li class="nav-item">
-        <a class="nav-link" href="user">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="userabout">About</a>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Shop <span class="fa"></span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="shopping">Products</a>
-            <a class="dropdown-item" href="#">Services</a>
+    <nav class="navbar navbar-expand-lg paw-nav">
+    <div class="container">
+        <a class="navbar-brand paw-nav-brand" href="/user">Paw<span class="paw-teal">Palace</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="pawNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link active" href="/user">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/shopping">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/userabout">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/userlogout">Logout</a>
+                </li>
+            </ul>
         </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="gallery">Gallery</a>
-    </li>
-</ul>
-                </div>
-            </div>
-
-        </div>
-    </nav>
+    </div>
+</nav>
     <!-- Close Header -->
 
     <div class="row" id="products">
@@ -151,21 +158,16 @@ $(document).ready(function(){
 
 
     {% if messages %}
-<div class="alert alert-info alert-dismissible">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    {% for message in messages %}
-    <p {% if message.tags %} class="{{ message.tags }}" {% endif %}><b>{{ message }}</b></p>
-    {% endfor %}
-</div>
+<div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
 {% endif %}
 
     <!-- Start Brands -->
-    <section class="bg-light py-5">
+    <section class="py-5" style="background: rgba(255,255,255,0.03);">
         <div class="container my-4">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Our Brands</h1>
-                    <p>
+                    <h1 class="h1" style="color:#fff;">Our Brands</h1>
+                    <p style="color:rgba(255,255,255,0.7);">
                         Explore a world of premium pet products and accessories curated with love and care.
                         From nutritious treats to cozy beds, our collection is designed to enhance
                         the well-being of your furry friends. Discover top-quality brands that prioritize
@@ -192,16 +194,16 @@ $(document).ready(function(){
                                     <div class="carousel-item active">
                                         <div class="row">
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'zayshop/img/Pedigreelogo.png' %}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'zayshop/img/pedigree.png' %}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'zayshop/img/Royalcanin.png' %}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'zayshop/img/royalcanin.png' %}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
                                                 <a href="#"><img class="img-fluid brand-img" src="{% static 'zayshop/img/justdogs.png' %}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'zayshop/img/kong.png' %}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'zayshop/img/kong.PNG' %}" alt="Brand Logo"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -353,6 +355,53 @@ $(document).ready(function(){
         </div>
     </footer>
     <!-- End Footer -->
+
+  <script>
+        // Toast notification system
+function showPawToast(message, type) {
+    var container = document.getElementById('pawToastContainer');
+    if (!container) return;
+    var toast = document.createElement('div');
+    var iconMap = {
+        'success': 'check-circle',
+        'error': 'exclamation-circle',
+        'warning': 'exclamation-triangle',
+        'info': 'info-circle'
+    };
+    var colorMap = {
+        'success': '#20c997',
+        'error': '#ef4444',
+        'warning': '#f59e0b',
+        'info': '#60a5fa'
+    };
+    var bgMap = {
+        'success': 'rgba(32,201,151,0.15)',
+        'error': 'rgba(239,68,68,0.15)',
+        'warning': 'rgba(245,158,11,0.15)',
+        'info': 'rgba(96,165,250,0.15)'
+    };
+    var t = type || 'success';
+    toast.innerHTML = '<i class="fas fa-' + (iconMap[t] || iconMap.info) + '" style="color:' + (colorMap[t] || colorMap.success) + ';margin-right:10px;font-size:18px;"></i><span style="flex:1;">' + message + '</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;margin-left:10px;">&times;</button>';
+    toast.style.cssText = 'display:flex;align-items:center;padding:14px 18px;border-radius:12px;font-family:Poppins,sans-serif;font-size:0.9rem;font-weight:500;animation:slideInRight 0.4s ease;box-shadow:0 10px 40px rgba(0,0,0,0.4);background:' + (bgMap[t] || bgMap.success) + ';border:1px solid ' + (colorMap[t] || colorMap.success) + '40;color:#fff;backdrop-filter:blur(10px);';
+    container.appendChild(toast);
+    setTimeout(function() {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.5s ease';
+        setTimeout(function() { if (toast.parentElement) toast.remove(); }, 500);
+    }, 4000);
+}
+
+        // Auto-display Django messages as toasts
+{% if messages %}
+{% for message in messages %}
+var type = 'success';
+{% if message.tags == 'error' %}type = 'error';{% endif %}
+{% if message.tags == 'warning' %}type = 'warning';{% endif %}
+{% if message.tags == 'info' %}type = 'info';{% endif %}
+showPawToast('{{ message }}', type);
+{% endfor %}
+{% endif %}
+  </script>
 
 </body>
 

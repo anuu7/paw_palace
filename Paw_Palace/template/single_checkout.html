@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Checkout - Paw Palace</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'petsitting/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'petsitting/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'petsitting/css/style.css' %}">
+    <link rel="stylesheet" href="/static/css/paw_main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols-Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #20c997;
+            --primary-dark: #1aab82;
+            --dark: #051f30;
+            --darker: #0a1628;
+        }
+
+        body {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 50%, #0d1f3c 100%) !important;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 { color: #fff; }
+        p, li, span { color: rgba(255,255,255,0.85); }
+        .paw-teal { color: var(--primary); }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes successPulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(32, 201, 151, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(32, 201, 151, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(32, 201, 151, 0); }
+        }
+        @keyframes checkmark {
+            0% { stroke-dashoffset: 100; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes paymentLoading {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+        .animate-fadeInLeft { animation: fadeInLeft 0.8s ease forwards; }
+        .animate-fadeInRight { animation: fadeInRight 0.8s ease forwards; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-bounceIn { animation: bounceIn 0.6s ease forwards; }
+
+        .top-bar {
+            background: linear-gradient(90deg, #051f30 0%, #0a1628 100%);
+            color: #fff;
+            padding: 10px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        .top-bar a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; }
+        .top-bar a:hover { color: var(--primary); }
+
+        .paw-nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 15px 0;
+        }
+        .paw-nav .nav-link {
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            padding: 10px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .paw-nav .nav-link:hover, .paw-nav .nav-link.active { color: var(--primary); background: rgba(32, 201, 151, 0.1); }
+        .paw-nav .nav-link.paw-gold { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #fff; }
+        .paw-nav .nav-link.paw-gold:hover { background: linear-gradient(135deg, #d97706 0%, #b45309 100%); }
+        .paw-nav-brand { font-size: 28px; font-weight: 700; font-family: 'Poppins', sans-serif; color: #fff; }
+
+        /* Main layout */
+        .checkout-section { padding: 20px 0 60px; }
+
+        /* Cards */
+        .checkout-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .checkout-card:hover {
+            border-color: rgba(32,201,151,0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+        }
+        .card-title-custom {
+            font-size: 1.1rem; font-weight: 700; color: #fff;
+            margin-bottom: 15px; padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        /* Product preview */
+        .product-preview {
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .product-preview:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(32,201,151,0.2);
+        }
+        .product-thumb {
+            width: 80px; height: 80px; object-fit: cover;
+            border-radius: 12px; border: 2px solid rgba(255,255,255,0.1);
+            transition: transform 0.4s ease;
+        }
+        .product-preview:hover .product-thumb { transform: scale(1.05); }
+        .product-name { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 5px; }
+        .product-shop { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+        .product-price { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+
+        /* Form elements */
+        .form-control-custom {
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #fff;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        .form-control-custom:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.15);
+            outline: none;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .form-control-custom::placeholder { color: rgba(255,255,255,0.4); }
+        .form-control-custom:disabled, .form-control-custom[readonly] {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            cursor: not-allowed;
+        }
+        .form-label-custom { color: rgba(255,255,255,0.8); font-weight: 500; margin-bottom: 8px; font-size: 0.95rem; }
+        .form-select-custom {
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #fff;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        .form-select-custom:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.15);
+            outline: none;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .form-select-custom option { background: #0a1628; color: #fff; }
+        textarea.form-control-custom { resize: none; }
+
+        /* Input group with icon */
+        .input-icon-wrapper {
+            position: relative;
+        }
+        .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 16px;
+            z-index: 2;
+        }
+        .input-icon-wrapper .form-control-custom { padding-left: 45px; }
+        .input-icon-wrapper.textarea .input-icon {
+            top: 20px;
+            transform: none;
+        }
+
+        /* Order Summary */
+        .order-summary-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s ease;
+        }
+        .order-summary-card:hover {
+            border-color: rgba(32,201,151,0.4);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+        }
+        .summary-title {
+            font-size: 1.3rem; font-weight: 700; color: #fff;
+            margin-bottom: 20px; padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .summary-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0; color: rgba(255,255,255,0.7);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease; font-size: 0.95rem;
+        }
+        .summary-row:hover { color: #fff; transform: translateX(5px); }
+        .summary-row.total {
+            border-bottom: none; border-top: 2px solid rgba(32,201,151,0.3);
+            margin-top: 10px; padding-top: 20px;
+        }
+        .summary-row.total .summary-label { color: #fff; font-weight: 600; font-size: 1.1rem; }
+        .summary-row.total .summary-value { color: var(--primary); font-size: 1.6rem; font-weight: 700; }
+
+        /* Trust badges */
+        .trust-badge {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px; border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 10px; transition: all 0.3s ease;
+        }
+        .trust-badge:hover { background: rgba(255,255,255,0.06); border-color: rgba(32,201,151,0.2); transform: translateX(5px); }
+        .trust-badge i { color: var(--primary); font-size: 18px; width: 24px; text-align: center; }
+        .trust-badge span { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+
+        /* Payment methods */
+        .payment-method {
+            background: rgba(255,255,255,0.03);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+        .payment-method:hover {
+            border-color: rgba(32,201,151,0.3);
+            background: rgba(255,255,255,0.05);
+        }
+        .payment-method.selected {
+            border-color: var(--primary);
+            background: rgba(32, 201, 151, 0.08);
+        }
+        .payment-method input[type="radio"] { display: none; }
+        .payment-radio {
+            width: 22px; height: 22px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .payment-method.selected .payment-radio {
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+        .payment-method.selected .payment-radio::after {
+            content: ''; width: 8px; height: 8px;
+            border-radius: 50%; background: #fff;
+        }
+        .payment-icon { font-size: 24px; color: rgba(255,255,255,0.6); }
+        .payment-label { color: rgba(255,255,255,0.8); font-weight: 500; }
+        .payment-desc { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #6f42c1 0%, #5a3799 100%);
+            border: none; border-radius: 12px;
+            padding: 14px 28px; font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 8px 25px rgba(111, 66, 193, 0.3);
+            transition: all 0.3s ease; color: #fff;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(111, 66, 193, 0.4);
+            background: linear-gradient(135deg, #5a3799 0%, #4a2c82 100%);
+            color: #fff;
+        }
+        .btn-teal {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border: none; border-radius: 12px;
+            padding: 14px 28px; font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 8px 25px rgba(32, 201, 151, 0.3);
+            transition: all 0.3s ease; color: #fff;
+        }
+        .btn-teal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(32, 201, 151, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #159d70 100%);
+            color: #fff;
+        }
+        .btn-payment {
+            background: linear-gradient(135deg, #F37254 0%, #F47942 100%);
+            border: none; border-radius: 12px;
+            padding: 16px 32px; font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 8px 25px rgba(243, 114, 84, 0.3);
+            transition: all 0.3s ease; color: #fff; width: 100%;
+            font-size: 1.1rem;
+        }
+        .btn-payment:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(243, 114, 84, 0.5);
+        }
+        .btn-outline-light {
+            background: transparent; border: 2px solid rgba(255,255,255,0.5);
+            color: #fff; border-radius: 12px; padding: 14px 28px;
+            font-weight: 600; transition: all 0.3s ease;
+            text-decoration: none; display: inline-flex; align-items: center;
+        }
+        .btn-outline-light:hover {
+            background: var(--primary); border-color: var(--primary);
+            color: #fff; transform: translateY(-3px);
+        }
+        .btn-outline-light.rounded-circle { border-radius: 50% !important; padding: 0; }
+
+        /* Payment Modal */
+        .payment-modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 0.3s ease;
+        }
+        .payment-modal-overlay.show { display: flex; }
+        .payment-modal {
+            background: linear-gradient(135deg, rgba(10,22,40,0.98) 0%, rgba(13,31,60,0.98) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            animation: bounceIn 0.5s ease;
+        }
+        .payment-modal-icon {
+            width: 100px; height: 100px;
+            background: rgba(32, 201, 151, 0.1);
+            border: 3px solid rgba(32, 201, 151, 0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s ease;
+        }
+        .payment-modal-icon i { font-size: 40px; color: var(--primary); }
+        .payment-modal-icon.processing i { animation: spin 2s linear infinite; }
+        .payment-modal-icon.success { animation: successPulse 1s ease; }
+        .payment-modal-icon.error { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); }
+        .payment-modal-icon.error i { color: #ef4444; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Loading dots */
+        .loading-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+        .loading-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: var(--primary);
+            animation: paymentLoading 1.4s ease-in-out infinite;
+        }
+        .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        /* Card input simulation */
+        .card-input-group {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        .card-input-group.highlight { border-color: var(--primary); background: rgba(32, 201, 151, 0.05); }
+        .card-number-display {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            color: var(--primary);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 15px;
+        }
+        .card-row { display: flex; gap: 15px; }
+        .card-row > div { flex: 1; }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 100%);
+            color: #fff; padding: 60px 0 30px;
+        }
+        .footer h2, .footer h3 { color: #fff; font-family: 'Poppins', sans-serif; }
+        .footer a { color: rgba(255, 255, 255, 0.7); transition: all 0.3s ease; text-decoration: none; }
+        .footer a:hover { color: var(--primary); transform: translateX(3px); }
+        .footer p, .footer li { color: rgba(255,255,255,0.7); }
+        .footer-social { transition: all 0.3s ease; }
+        .footer-social:hover { transform: scale(1.1) translateY(-3px); background: var(--primary) !important; border-color: var(--primary) !important; color: #fff !important; box-shadow: 0 5px 20px rgba(32, 201, 151, 0.4); }
+        .alert { background: rgba(32, 201, 151, 0.15); border: 1px solid rgba(32, 201, 151, 0.3); border-radius: 12px; color: #fff; }
+        .btn-close { filter: invert(1); }
+
+        /* Success order */
+        .success-section { padding: 60px 0; text-align: center; }
+        .success-icon-wrapper {
+            width: 150px; height: 150px;
+            background: rgba(32, 201, 151, 0.1);
+            border: 3px solid rgba(32, 201, 151, 0.3);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 30px;
+            animation: bounceIn 0.8s ease, successPulse 2s ease-in-out infinite 0.8s;
+        }
+        .success-icon-wrapper i { font-size: 60px; color: var(--primary); }
+        .order-id-display {
+            background: rgba(255,255,255,0.05);
+            border: 1px dashed rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 15px 30px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        .order-id-display span { color: var(--primary); font-weight: 700; font-size: 1.2rem; font-family: 'Courier New', monospace; }
+
+        @media (max-width: 768px) {
+            .checkout-hero-title { font-size: 2rem; }
+            .checkout-steps { gap: 8px; }
+            .step-connector { width: 25px; }
+            .product-thumb { width: 70px; height: 70px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <a href="tel:+917736881574"><i class="fas fa-phone me-2"></i> +91 7736881574</a>
+                    <a href="mailto:pawpalace@email.com" class="ms-4"><i class="fas fa-envelope me-2"></i> pawpalace@email.com</a>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="#"><i class="fab fa-facebook-f mx-2"></i></a>
+                    <a href="#"><i class="fab fa-twitter mx-2"></i></a>
+                    <a href="#"><i class="fab fa-instagram mx-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg paw-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand paw-nav-brand" href="/user">Paw<span class="paw-teal">Palace</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pawNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/user">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopping">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/userabout">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/userlogout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
+    {% endif %}
+
+    <!-- Page Header -->
+    <div style="background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06);">
+        <div class="container py-3">
+            <div class="d-flex align-items-center gap-3">
+                <a href="/cart" class="btn btn-outline-light" style="padding: 8px 16px; font-size: 0.85rem;">
+                    <i class="fas fa-arrow-left me-1"></i>
+                </a>
+                <div>
+                    <h2 class="mb-0" style="font-size: 1.4rem;">Checkout</h2>
+                    <p class="mb-0" style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">Complete your order securely</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Form -->
+    <section class="checkout-section">
+        <div class="container">
+            <form action="/confirm-single-order" method="POST" id="checkoutForm">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <input type="hidden" name="total" value="{{ total }}">
+
+                <div class="row g-3" style="align-items: flex-start;">
+                    <!-- Left Column -->
+                    <div class="col-lg-8">
+                        <!-- Product + Delivery combined -->
+                        <div class="checkout-card mb-0 animate-fadeInLeft">
+                            <h3 class="card-title-custom"><i class="fas fa-box-open paw-teal"></i>Order Details</h3>
+                            <div class="product-preview mb-3">
+                                <img src="{{ product.image.url }}" alt="{{ product.prodname }}" class="product-thumb">
+                                <div style="flex: 1;">
+                                    <h4 class="product-name">{{ product.prodname }}</h4>
+                                    <p class="product-shop"><i class="fas fa-store me-1"></i> {{ product.shop.shopname }}</p>
+                                    <h3 class="product-price mb-0">₹{{ product.price }}</h3>
+                                </div>
+                            </div>
+
+                            <h3 class="card-title-custom" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 10px;"><i class="fas fa-truck paw-teal"></i>Delivery Address</h3>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label-custom"><i class="fas fa-map-marker-alt me-2"></i>Street Address *</label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-home input-icon"></i>
+                                        <input type="text" name="street" id="streetAddress" class="form-control form-control-custom" placeholder="123 Main Street, Apt 4B" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label-custom"><i class="fas fa-city me-2"></i>City *</label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-building input-icon"></i>
+                                        <input type="text" name="city" id="cityInput" class="form-control form-control-custom" placeholder="Mumbai" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label-custom"><i class="fas fa-hashtag me-2"></i>Pincode *</label>
+                                    <div class="input-icon-wrapper">
+                                        <i class="fas fa-mail-bulk input-icon"></i>
+                                        <input type="text" name="pincode" id="pincodeInput" class="form-control form-control-custom" placeholder="400001" maxlength="6" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label-custom"><i class="fas fa-map me-2"></i>State *</label>
+                                    <select name="state" id="stateSelect" class="form-select form-select-custom" required>
+                                        <option value="">Select</option>
+                                        <option>Maharashtra</option>
+                                        <option>Delhi</option>
+                                        <option>Karnataka</option>
+                                        <option>Tamil Nadu</option>
+                                        <option>Gujarat</option>
+                                        <option>Kerala</option>
+                                        <option>Punjab</option>
+                                        <option>Rajasthan</option>
+                                        <option>Uttar Pradesh</option>
+                                        <option>West Bengal</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-custom"><i class="fas fa-clock me-2"></i>Delivery Time</label>
+                                    <select name="delivery_time" class="form-select form-select-custom">
+                                        <option value="standard">Standard (5-7 Days)</option>
+                                        <option value="express">Express (2-3 Days) +₹50</option>
+                                        <option value="priority">Priority (Next Day) +₹100</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-custom"><i class="fas fa-sticky-note me-2"></i>Notes (Optional)</label>
+                                    <input type="text" name="notes" class="form-control form-control-custom" placeholder="Delivery instructions...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="checkout-card mt-3 animate-fadeInLeft" style="animation-delay: 0.15s;">
+                            <h3 class="card-title-custom"><i class="fas fa-credit-card paw-teal"></i>Payment Method</h3>
+
+                            <!-- Dummy Payment Option -->
+                            <label class="payment-method selected" id="dummyPayMethod">
+                                <input type="radio" name="payment_method" value="dummy" id="dummyPayment" checked>
+                                <div class="payment-radio"></div>
+                                <i class="fas fa-paw payment-icon"></i>
+                                <div>
+                                    <div class="payment-label">Dummy / Test Payment</div>
+                                    <div class="payment-desc">Simulated payment for testing (instant confirmation)</div>
+                                </div>
+                            </label>
+
+                            <!-- Cash on Delivery -->
+                            <label class="payment-method" id="codMethod">
+                                <input type="radio" name="payment_method" value="cod">
+                                <div class="payment-radio"></div>
+                                <i class="fas fa-money-bill-wave payment-icon"></i>
+                                <div>
+                                    <div class="payment-label">Cash on Delivery</div>
+                                    <div class="payment-desc">Pay when you receive your order</div>
+                                </div>
+                            </label>
+
+                            <!-- UPI -->
+                            <label class="payment-method" id="upiMethod">
+                                <input type="radio" name="payment_method" value="upi">
+                                <div class="payment-radio"></div>
+                                <i class="fas fa-mobile-alt payment-icon"></i>
+                                <div>
+                                    <div class="payment-label">UPI Payment</div>
+                                    <div class="payment-desc">Pay using any UPI app (Google Pay, PhonePe, Paytm)</div>
+                                </div>
+                            </label>
+
+                            <!-- Card Payment -->
+                            <label class="payment-method" id="cardMethod">
+                                <input type="radio" name="payment_method" value="card">
+                                <div class="payment-radio"></div>
+                                <i class="fab fa-cc-visa payment-icon" style="font-size:28px;"></i>
+                                <div>
+                                    <div class="payment-label">Credit / Debit Card</div>
+                                    <div class="payment-desc">Visa, Mastercard, RuPay, American Express</div>
+                                </div>
+                            </label>
+
+                            <!-- Card Input (shown when card is selected) -->
+                            <div class="card-input-group" id="cardInputs" style="display: none;">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-lock me-2" style="color: var(--primary);"></i>
+                                    <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">Test card numbers: 4111111111111111, 5555555555554444</span>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label-custom">Card Number</label>
+                                    <input type="text" class="form-control form-control-custom" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNumber(this)">
+                                </div>
+                                <div class="card-row mb-3">
+                                    <div>
+                                        <label class="form-label-custom">Expiry</label>
+                                        <input type="text" class="form-control form-control-custom" id="cardExpiry" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
+                                    </div>
+                                    <div>
+                                        <label class="form-label-custom">CVV</label>
+                                        <input type="text" class="form-control form-control-custom" id="cardCvv" placeholder="123" maxlength="3">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="form-label-custom">Cardholder Name</label>
+                                    <input type="text" class="form-control form-control-custom" id="cardName" placeholder="John Doe">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Summary -->
+                    <div class="col-lg-4">
+                        <div class="order-summary-card animate-fadeInRight">
+                            <h4 class="summary-title"><i class="fas fa-file-invoice-dollar me-2 paw-teal"></i>Order Summary</h4>
+
+                            <div class="summary-row">
+                                <span class="summary-label"><i class="fas fa-box me-2" style="color: var(--primary);"></i>Product</span>
+                                <span>{{ product.prodname }}</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label"><i class="fas fa-coins me-2" style="color: var(--primary);"></i>Unit Price</span>
+                                <span>₹{{ product.price }}</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label"><i class="fas fa-truck me-2" style="color: var(--primary);"></i>Shipping</span>
+                                <span style="color: #22c55e;">Free</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label"><i class="fas fa-percent me-2" style="color: var(--primary);"></i>GST (18%)</span>
+                                <span>Included</span>
+                            </div>
+
+                            <div class="summary-row total">
+                                <span class="summary-label"><i class="fas fa-coins me-2"></i>Total</span>
+                                <span class="summary-value">₹{{ total }}</span>
+                            </div>
+
+                            <!-- Trust Badges -->
+                            <div class="mt-4">
+                                <div class="trust-badge">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>100% Secure Payment</span>
+                                </div>
+                                <div class="trust-badge">
+                                    <i class="fas fa-undo"></i>
+                                    <span>Easy 7-Day Returns</span>
+                                </div>
+                                <div class="trust-badge">
+                                    <i class="fas fa-headset"></i>
+                                    <span>24/7 Customer Support</span>
+                                </div>
+                                <div class="trust-badge">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>Verified Product Quality</span>
+                                </div>
+                            </div>
+
+                            <!-- Payment Buttons -->
+                            <div class="mt-4">
+                                <button type="button" id="payNowBtn" class="btn btn-payment" onclick="processDummyPayment()">
+                                    <i class="fas fa-lock me-2"></i>Pay ₹{{ total }} Now
+                                </button>
+                                <button type="button" class="btn btn-outline-light w-100 mt-3" onclick="processDummyPayment()">
+                                    <i class="fas fa-money-bill-wave me-2"></i>Pay on Delivery
+                                </button>
+                            </div>
+
+                            <!-- Security logos -->
+                            <div class="mt-4 text-center">
+                                <p style="font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 10px;">Accepted Payments</p>
+                                <div class="d-flex justify-content-center gap-3">
+                                    <i class="fab fa-cc-visa fa-2x" style="color: rgba(255,255,255,0.3);"></i>
+                                    <i class="fab fa-cc-mastercard fa-2x" style="color: rgba(255,255,255,0.3);"></i>
+                                    <i class="fab fa-cc-amex fa-2x" style="color: rgba(255,255,255,0.3);"></i>
+                                    <i class="fab fa-cc-paypal fa-2x" style="color: rgba(255,255,255,0.3);"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 d-flex gap-3">
+                            <a href="/all-products" class="btn btn-outline-light flex-grow-1">
+                                <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                            </a>
+                            <a href="/cart" class="btn btn-outline-light flex-grow-1">
+                                <i class="fas fa-shopping-cart me-2"></i>Back to Cart
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Features Strip -->
+    <section style="padding: 40px 0; background: rgba(255,255,255,0.03);">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-shipping-fast fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h5 style="color: #fff;">Fast Delivery</h5>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0;">Get your order delivered within 5-7 business days</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-exchange-alt fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h5 style="color: #fff;">Easy Returns</h5>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0;">Not satisfied? Return within 7 days, no questions asked</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-award fa-2x mb-3" style="color: var(--primary);"></i>
+                    <h5 style="color: #fff;">Quality Assured</h5>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0;">All products are verified and quality checked</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h2 class="mb-4">Paw<span class="paw-teal">Palace</span></h2>
+                    <p class="mb-4">I don't see a price tag.<br>I don't see a status symbol.<br>I don't see a pet.<br>
+                    <span class="paw-teal">I see a being.</span><br><span class="paw-teal">I see a friend.</span><br>
+                    <span class="paw-teal">I see a soul.</span></p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/user"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Home</a></li>
+                        <li class="mb-2"><a href="/shopping"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Shop</a></li>
+                        <li class="mb-2"><a href="/gallery"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Gallery</a></li>
+                        <li class="mb-2"><a href="/userabout"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>About</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-3 paw-teal"></i>203 Fake St. Mountain View</li>
+                        <li class="mb-3"><i class="fas fa-phone me-3 paw-teal"></i>+91 7736881574</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-3 paw-teal"></i>pawpalace@email.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="opacity: 0.2;">
+            <div class="text-center">
+                <p class="mb-0" style="color: rgba(255,255,255,0.6);">&copy; 2024 Paw Palace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Processing Modal -->
+    <div class="payment-modal-overlay" id="paymentModal">
+        <div class="payment-modal">
+            <div class="payment-modal-icon processing" id="modalIcon">
+                <i class="fas fa-paw" id="modalIconI"></i>
+            </div>
+            <h3 id="modalTitle" style="color: #fff; margin-bottom: 10px;">Processing Payment</h3>
+            <p id="modalDesc" style="color: rgba(255,255,255,0.6); font-size: 0.95rem;">Please wait while we process your payment securely...</p>
+            <div class="loading-dots" id="loadingDots">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+            <div id="modalExtra" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="payment-modal-overlay" id="successModal">
+        <div class="payment-modal" style="max-width: 500px;">
+            <div class="payment-modal-icon success">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Payment Successful!</h3>
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem;">Your order has been placed successfully.</p>
+            <div class="order-id-display">
+                <span id="orderIdDisplay">PP{{ product.id }}ORD{{ total }}</span>
+            </div>
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem;">You'll receive a confirmation email shortly.</p>
+            <div class="d-flex flex-column gap-3 mt-3">
+                <a href="/userorders" class="btn btn-teal">
+                    <i class="fas fa-box me-2"></i>View My Orders
+                </a>
+                <a href="/shopping" class="btn btn-outline-light">
+                    <i class="fas fa-shopping-bag me-2"></i>Continue Shopping
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="payment-modal-overlay" id="errorModal">
+        <div class="payment-modal">
+            <div class="payment-modal-icon error">
+                <i class="fas fa-times"></i>
+            </div>
+            <h3 style="color: #fff; margin-bottom: 10px;">Payment Failed</h3>
+            <p id="errorDesc" style="color: rgba(255,255,255,0.6); font-size: 0.95rem;">Something went wrong. Please try again.</p>
+            <div class="d-flex flex-column gap-3 mt-3">
+                <button class="btn btn-teal" onclick="closeErrorModal()">
+                    <i class="fas fa-redo me-2"></i>Try Again
+                </button>
+                <button class="btn btn-outline-light" onclick="closeErrorModal()">
+                    <i class="fas fa-arrow-left me-2"></i>Go Back
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'petsitting/js/main.js' %}"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(function(method) {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+                var selected = this.querySelector('input[type="radio"]');
+                if (selected) selected.checked = true;
+
+                // Show/hide card inputs
+                var cardInputs = document.getElementById('cardInputs');
+                if (this.id === 'cardMethod') {
+                    cardInputs.style.display = 'block';
+                    cardInputs.classList.add('highlight');
+                } else {
+                    cardInputs.style.display = 'none';
+                    cardInputs.classList.remove('highlight');
+                }
+            });
+        });
+
+        // Card number formatting
+        function formatCardNumber(input) {
+            var value = input.value.replace(/\D/g, '').substring(0, 16);
+            var formatted = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+            input.value = formatted;
+        }
+
+        // Expiry formatting
+        function formatExpiry(input) {
+            var value = input.value.replace(/\D/g, '').substring(0, 4);
+            if (value.length >= 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2);
+            }
+            input.value = value;
+        }
+
+        // Main payment processor
+        function processDummyPayment() {
+            // Validate form
+            var street = document.getElementById('streetAddress').value;
+            var city = document.getElementById('cityInput').value;
+            var pincode = document.getElementById('pincodeInput').value;
+            var state = document.getElementById('stateSelect').value;
+
+            if (!street || !city || !pincode || !state) {
+                alert('Please fill in all required delivery address fields.');
+                return;
+            }
+
+            if (pincode.length !== 6) {
+                alert('Please enter a valid 6-digit pincode.');
+                return;
+            }
+
+            // Check payment method
+            var selectedMethod = document.querySelector('input[name="payment_method"]:checked').value;
+
+            // If card method, validate card fields
+            if (selectedMethod === 'card') {
+                var cardNum = document.getElementById('cardNumber').value;
+                var cardExpiry = document.getElementById('cardExpiry').value;
+                var cardCvv = document.getElementById('cardCvv').value;
+                var cardName = document.getElementById('cardName').value;
+
+                if (!cardNum || !cardExpiry || !cardCvv || !cardName) {
+                    alert('Please fill in all card details.');
+                    return;
+                }
+            }
+
+            // Build delivery address
+            var deliveryAddress = street + ', ' + city + ', ' + state + ' - ' + pincode;
+
+            // Show appropriate payment modal
+            if (selectedMethod === 'dummy') {
+                processDummyPay(deliveryAddress);
+            } else if (selectedMethod === 'cod') {
+                processCOD(deliveryAddress);
+            } else if (selectedMethod === 'upi') {
+                processUPI(deliveryAddress);
+            } else if (selectedMethod === 'card') {
+                processCardPay(deliveryAddress);
+            }
+        }
+
+        // Dummy Payment (simulated instant success)
+        function processDummyPay(deliveryAddress) {
+            var modal = document.getElementById('paymentModal');
+            var title = document.getElementById('modalTitle');
+            var desc = document.getElementById('modalDesc');
+            var icon = document.getElementById('modalIcon');
+            var iconI = document.getElementById('modalIconI');
+            var dots = document.getElementById('loadingDots');
+
+            modal.classList.add('show');
+            title.textContent = 'Processing Payment';
+            desc.textContent = 'Simulating test payment gateway...';
+            icon.className = 'payment-modal-icon processing';
+            iconI.className = 'fas fa-paw';
+            dots.style.display = 'flex';
+
+            setTimeout(function() {
+                desc.textContent = 'Validating test transaction...';
+            }, 1000);
+
+            setTimeout(function() {
+                desc.textContent = 'Almost done...';
+            }, 2000);
+
+            setTimeout(function() {
+                modal.classList.remove('show');
+                submitOrderForm('DUMMY_' + Date.now(), deliveryAddress);
+            }, 3000);
+        }
+
+        // COD Processing
+        function processCOD(deliveryAddress) {
+            var modal = document.getElementById('paymentModal');
+            var title = document.getElementById('modalTitle');
+            var desc = document.getElementById('modalDesc');
+            var icon = document.getElementById('modalIcon');
+            var iconI = document.getElementById('modalIconI');
+            var dots = document.getElementById('loadingDots');
+
+            modal.classList.add('show');
+            title.textContent = 'Confirming COD Order';
+            desc.textContent = 'Verifying your delivery address...';
+            icon.className = 'payment-modal-icon processing';
+            iconI.className = 'fas fa-money-bill-wave';
+            dots.style.display = 'flex';
+
+            setTimeout(function() {
+                desc.textContent = 'Order confirmed! Preparing for delivery...';
+            }, 1200);
+
+            setTimeout(function() {
+                modal.classList.remove('show');
+                submitOrderForm('COD_' + Date.now(), deliveryAddress);
+            }, 2500);
+        }
+
+        // UPI Processing
+        function processUPI(deliveryAddress) {
+            var modal = document.getElementById('paymentModal');
+            var title = document.getElementById('modalTitle');
+            var desc = document.getElementById('modalDesc');
+            var icon = document.getElementById('modalIcon');
+            var iconI = document.getElementById('modalIconI');
+            var dots = document.getElementById('loadingDots');
+
+            modal.classList.add('show');
+            title.textContent = 'UPI Payment';
+            desc.textContent = 'Opening UPI app selector...';
+            icon.className = 'payment-modal-icon processing';
+            iconI.className = 'fas fa-mobile-alt';
+            dots.style.display = 'flex';
+
+            setTimeout(function() {
+                desc.textContent = 'Waiting for UPI confirmation...';
+            }, 1000);
+
+            setTimeout(function() {
+                desc.textContent = 'Payment approved on test UPI!';
+            }, 2500);
+
+            setTimeout(function() {
+                modal.classList.remove('show');
+                submitOrderForm('UPI_' + Date.now(), deliveryAddress);
+            }, 3500);
+        }
+
+        // Card Payment Processing
+        function processCardPay(deliveryAddress) {
+            var modal = document.getElementById('paymentModal');
+            var title = document.getElementById('modalTitle');
+            var desc = document.getElementById('modalDesc');
+            var icon = document.getElementById('modalIcon');
+            var iconI = document.getElementById('modalIconI');
+            var dots = document.getElementById('loadingDots');
+
+            var cardNum = document.getElementById('cardNumber').value.replace(/\s/g, '');
+
+            // Test card validation
+            if (cardNum !== '4111111111111111' && cardNum !== '5555555555554444' && cardNum.length !== 16) {
+                var errorModal = document.getElementById('errorModal');
+                document.getElementById('errorDesc').textContent = 'Invalid test card number. Use 4111111111111111 or 5555555555554444 for testing.';
+                errorModal.classList.add('show');
+                return;
+            }
+
+            modal.classList.add('show');
+            title.textContent = 'Processing Card Payment';
+            desc.textContent = 'Connecting to payment gateway...';
+            icon.className = 'payment-modal-icon processing';
+            iconI.className = 'fas fa-credit-card';
+            dots.style.display = 'flex';
+
+            setTimeout(function() {
+                desc.textContent = 'Validating card details...';
+            }, 1000);
+
+            setTimeout(function() {
+                desc.textContent = 'Authorizing transaction...';
+            }, 2000);
+
+            setTimeout(function() {
+                desc.textContent = 'Payment approved!';
+            }, 3000);
+
+            setTimeout(function() {
+                modal.classList.remove('show');
+                submitOrderForm('CARD_' + Date.now(), deliveryAddress);
+            }, 4000);
+        }
+
+        // Submit the actual form
+        function submitOrderForm(paymentId, deliveryAddress) {
+            var form = document.getElementById('checkoutForm');
+
+            // Add hidden fields for payment details
+            var paymentInput = document.createElement('input');
+            paymentInput.type = 'hidden';
+            paymentInput.name = 'payment_id';
+            paymentInput.value = paymentId;
+            form.appendChild(paymentInput);
+
+            var addressInput = document.createElement('input');
+            addressInput.type = 'hidden';
+            addressInput.name = 'delivery_address';
+            addressInput.value = deliveryAddress;
+            form.appendChild(addressInput);
+
+            // Show success modal first, then submit
+            var successModal = document.getElementById('successModal');
+            successModal.classList.add('show');
+
+            // Submit after showing success
+            setTimeout(function() {
+                form.submit();
+            }, 500);
+        }
+
+        // Close error modal
+        function closeErrorModal() {
+            document.getElementById('errorModal').classList.remove('show');
+        }
+
+        // Initialize on load
+        $(document).ready(function() {
+            // Auto-display Django messages as toasts
+{% if messages %}
+{% for message in messages %}
+showPawToast('{{ message }}', '{% if message.tags == "error" %}error{% elif message.tags == "warning" %}warning{% elif message.tags == "info" %}info{% else %}success{% endif %}');
+{% endfor %}
+{% endif %}
+
+            // Intersection observer for animations
+            var observerOptions = { threshold: 0.15 };
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        $(entry.target).addClass('visible');
+                    }
+                });
+            }, observerOptions);
+
+            $('.feature-card, .checkout-card, .order-summary-card').each(function() {
+                observer.observe(this);
+            });
+        });
+
+        // Toast notification system
+function showPawToast(message, type) {
+    var container = document.getElementById('pawToastContainer');
+    if (!container) return;
+    var toast = document.createElement('div');
+    var iconMap = {
+        'success': 'check-circle',
+        'error': 'exclamation-circle',
+        'warning': 'exclamation-triangle',
+        'info': 'info-circle'
+    };
+    var colorMap = {
+        'success': '#20c997',
+        'error': '#ef4444',
+        'warning': '#f59e0b',
+        'info': '#60a5fa'
+    };
+    var bgMap = {
+        'success': 'rgba(32,201,151,0.15)',
+        'error': 'rgba(239,68,68,0.15)',
+        'warning': 'rgba(245,158,11,0.15)',
+        'info': 'rgba(96,165,250,0.15)'
+    };
+    var t = type || 'success';
+    toast.innerHTML = '<i class="fas fa-' + (iconMap[t] || iconMap.info) + '" style="color:' + (colorMap[t] || colorMap.success) + ';margin-right:10px;font-size:18px;"></i><span style="flex:1;">' + message + '</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;margin-left:10px;">&times;</button>';
+    toast.style.cssText = 'display:flex;align-items:center;padding:14px 18px;border-radius:12px;font-family:Poppins,sans-serif;font-size:0.9rem;font-weight:500;animation:slideInRight 0.4s ease;box-shadow:0 10px 40px rgba(0,0,0,0.4);background:' + (bgMap[t] || bgMap.success) + ';border:1px solid ' + (colorMap[t] || colorMap.success) + '40;color:#fff;backdrop-filter:blur(10px);';
+    container.appendChild(toast);
+    setTimeout(function() {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.5s ease';
+        setTimeout(function() { if (toast.parentElement) toast.remove(); }, 500);
+    }, 4000);
+}
+    </script>
+</body>
+</html>

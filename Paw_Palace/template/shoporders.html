@@ -1,199 +1,519 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <title>Paw Palace</title>
+<html lang="en">
+{% load custom_filters %}
+<head>
+    {% load static %}
+    <title>Shop Orders - Paw Palace</title>
     <meta charset="utf-8">
-	  {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="{% static 'petspial/css/style-starter.css' %}">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{% static 'petsitting/css/animate.css' %}">
-
-    <link rel="stylesheet" href="{% static 'petsitting/css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'petsitting/css/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" href="{% static 'petsitting/css/magnific-popup.css' %}">
-
-
-    <link rel="stylesheet" href="{% static 'petsitting/css/bootstrap-datepicker.css' %}">
-    <link rel="stylesheet" href="{% static 'petsitting/css/jquery.timepicker.css' %}">
-
-    <link rel="stylesheet" href="{% static 'petsitting/css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'petsitting/css/style.css' %}">
-  </head>
+    <link rel="stylesheet" href="/static/css/paw_main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        :root { --primary: #20c997; --primary-dark: #1aab82; --dark: #051f30; --darker: #0a1628; }
+        body { background: linear-gradient(135deg, #051f30 0%, #0a1628 50%, #0d1f3c 100%) !important; min-height: 100vh; font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { color: #fff; }
+        p, li, span { color: rgba(255,255,255,0.85); }
+        .paw-teal { color: var(--primary); }
+        .top-bar { background: linear-gradient(90deg, #051f30 0%, #0a1628 100%); color: #fff; padding: 10px 0; font-family: 'Poppins', sans-serif; font-size: 14px; }
+        .top-bar a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; }
+        .top-bar a:hover { color: var(--primary); }
+        .topbar-social { transition: all 0.3s ease; }
+        .topbar-social:hover { transform: scale(1.2); color: var(--primary); }
+        .paw-nav { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 15px 0; }
+        .paw-nav .nav-link { color: rgba(255,255,255,0.8); font-weight: 500; font-family: 'Poppins', sans-serif; padding: 10px 18px; border-radius: 10px; transition: all 0.3s ease; }
+        .paw-nav .nav-link:hover, .paw-nav .nav-link.active { color: var(--primary); background: rgba(32, 201, 151, 0.1); }
+        .paw-nav .nav-link.paw-gold:not(.active) { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #fff; }
+        .paw-nav .nav-link.paw-gold:not(.active):hover { background: linear-gradient(135deg, #d97706 0%, #b45309 100%); }
+        .paw-nav-brand { font-size: 28px; font-weight: 700; font-family: 'Poppins', sans-serif; color: #fff; }
+        .section-title { font-family: 'Poppins', sans-serif; font-weight: 700; color: #fff; }
+        .section-subtitle { color: var(--primary); font-family: 'Poppins', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; font-weight: 600; }
+        .premium-section { padding: 60px 0; background: rgba(255,255,255,0.02); }
+        .alt-bg { background: rgba(255,255,255,0.04); }
+        .btn-primary { background: linear-gradient(135deg, #6f42c1 0%, #5a3799 100%); border: none; border-radius: 12px; padding: 12px 24px; font-weight: 600; font-family: 'Poppins', sans-serif; box-shadow: 0 8px 25px rgba(111, 66, 193, 0.3); transition: all 0.3s ease; color: #fff; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(111, 66, 193, 0.4); color: #fff; }
+        .btn-teal { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border: none; border-radius: 12px; padding: 12px 24px; font-weight: 600; font-family: 'Poppins', sans-serif; box-shadow: 0 8px 25px rgba(32, 201, 151, 0.3); transition: all 0.3s ease; color: #fff; }
+        .btn-teal:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(32, 201, 151, 0.4); color: #fff; }
+        .btn-outline-light { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: #fff; border-radius: 12px; padding: 12px 24px; font-weight: 600; transition: all 0.3s ease; }
+        .btn-outline-light:hover { background: var(--primary); border-color: var(--primary); color: #fff; transform: translateY(-3px); }
+        .btn-danger { background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); border: none; border-radius: 12px; padding: 10px 20px; font-weight: 600; font-family: 'Poppins', sans-serif; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); transition: all 0.3s ease; color: #fff; }
+        .btn-danger:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4); color: #fff; }
+        .btn-success { background: linear-gradient(135deg, #28a745 0%, #218838 100%); border: none; border-radius: 12px; padding: 10px 20px; font-weight: 600; font-family: 'Poppins', sans-serif; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); transition: all 0.3s ease; color: #fff; }
+        .btn-success:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4); color: #fff; }
+        .table-custom { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+        .table-custom th { background: rgba(32, 201, 151, 0.15); color: var(--primary); font-weight: 600; padding: 14px 16px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; border: none; }
+        .table-custom th:first-child { border-radius: 12px 0 0 12px; }
+        .table-custom th:last-child { border-radius: 0 12px 12px 0; }
+        .table-custom td { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.85); padding: 14px 16px; border: none; vertical-align: middle; }
+        .table-custom tr td:first-child { border-radius: 12px 0 0 12px; }
+        .table-custom tr td:last-child { border-radius: 0 12px 12px 0; }
+        .table-custom tbody tr { transition: all 0.3s ease; overflow: visible; }
+        .table-custom tbody tr:hover td { background: rgba(32, 201, 151, 0.08); }
+        .form-control-custom { background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 12px 16px; color: #fff; transition: all 0.3s ease; font-family: 'Poppins', sans-serif; }
+        .form-control-custom:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.15); outline: none; background: rgba(255,255,255,0.1); color: #fff; }
+        .form-control-custom::placeholder { color: rgba(255,255,255,0.4); }
+        .form-label-custom { color: rgba(255,255,255,0.8); font-weight: 500; margin-bottom: 8px; }
+        .footer { background: linear-gradient(135deg, #051f30 0%, #0a1628 100%); color: #fff; padding: 60px 0 30px; }
+        .footer h2, .footer h3 { color: #fff; font-family: 'Poppins', sans-serif; }
+        .footer a { color: rgba(255, 255, 255, 0.7); transition: all 0.3s ease; text-decoration: none; }
+        .footer a:hover { color: var(--primary); transform: translateX(3px); }
+        .footer p, .footer li { color: rgba(255,255,255,0.7); }
+        .footer-social { transition: all 0.3s ease; }
+        .footer-social:hover { transform: scale(1.1) translateY(-3px); background: var(--primary) !important; border-color: var(--primary) !important; color: #fff !important; box-shadow: 0 5px 20px rgba(32, 201, 151, 0.4); }
+        @media (max-width: 768px) { .section-title { font-size: 1.8rem; } }
+
+        /* Custom Status Dropdown */
+        .custom-status-dropdown { position: relative; display: inline-block; overflow: visible; }
+        .dropdown-status-btn {
+            display: flex; align-items: center; padding: 6px 14px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.15); font-family: 'Poppins', sans-serif;
+            min-width: 130px; justify-content: center; color: #fff;
+        }
+        .dropdown-status-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        /* Status button colors */
+        .status-btn-pending { background: rgba(245,158,11,0.25); color: #f59e0b; border-color: rgba(245,158,11,0.5); }
+        .status-btn-confirmed { background: rgba(32,201,151,0.25); color: #20c997; border-color: rgba(32,201,151,0.5); }
+        .status-btn-dispatched { background: rgba(59,130,246,0.25); color: #60a5fa; border-color: rgba(59,130,246,0.5); }
+        .status-btn-shipped { background: rgba(168,85,247,0.25); color: #c084fc; border-color: rgba(168,85,247,0.5); }
+        .status-btn-out-for-delivery { background: rgba(245,158,11,0.25); color: #f59e0b; border-color: rgba(245,158,11,0.5); }
+        .status-btn-delivered { background: rgba(34,197,94,0.25); color: #4ade80; border-color: rgba(34,197,94,0.5); }
+        .status-btn-cancelled { background: rgba(239,68,68,0.25); color: #f87171; border-color: rgba(239,68,68,0.5); }
+        .status-btn-completed { background: rgba(34,197,94,0.25); color: #4ade80; border-color: rgba(34,197,94,0.5); }
+        /* Dropdown Menu */
+        .status-dropdown-menu {
+            display: none; position: absolute; min-width: 175px; z-index: 99999;
+            background: #020e1a; border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px; overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+            top: calc(100% + 4px); left: 0;
+        }
+        .status-dropdown-menu.show { display: block; }
+        .status-option {
+            display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+            cursor: pointer; transition: all 0.15s ease; font-size: 0.85rem; font-weight: 600;
+            color: #e0e0e0;
+        }
+        .status-option:hover { background: rgba(32,201,151,0.25); color: #ffffff; }
+        .status-option.disabled { color: rgba(255,255,255,0.3); cursor: not-allowed; pointer-events: none; }
+        .status-option.cancel-option:hover { background: rgba(239,68,68,0.25); }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .dot-pending { background: #f59e0b; }
+        .dot-confirmed { background: #20c997; }
+        .dot-dispatched { background: #60a5fa; }
+        .dot-shipped { background: #c084fc; }
+        .dot-out-for-delivery { background: #f59e0b; }
+        .dot-delivered { background: #4ade80; }
+        .dot-cancelled { background: #f87171; }
+        .dot-completed { background: #4ade80; }
+        .status-divider { height: 1px; background: rgba(255,255,255,0.12); margin: 4px 0; }
+        /* Toast Container */
+        #statusToastContainer { position: fixed; top: 20px; right: 20px; z-index: 99999; display: flex; flex-direction: column; gap: 10px; max-width: 380px; }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+    </style>
+</head>
   <body>
+    <!-- Toast Container -->
+    <div id="statusToastContainer"></div>
 
-    <div class="wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 d-flex align-items-center">
-						<p class="mb-0 phone pl-md-2">
-							<a href="tel:+91 7736881574" class="mr-2"><span class="fa fa-phone mr-1"></span> +91 7736881574</a>
-							<a href="mailto:pawpalace@gmail.com"><span class="fa fa-paper-plane mr-1"></span> pawpalace@mail.com</a>
-						</p>
-					</div>
-					<div class="col-md-6 d-flex justify-content-md-end">
-						<div class="social-media">
-			    		<p class="mb-0 d-flex">
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-			    		</p>
-		        </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	    	<a class="navbar-brand" href="../shop"><span class="flaticon-pawprint-1 mr-2"></span>Paw Palace</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="fa fa-bars"></span> Menu
-	      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="../shop">Home </a>
-              </li>
-                <li class="nav-item">
-                <a class="nav-link" href="../shopabout">About</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Add <span class="fa"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="../addproducts">Products</a>
-                  <a class="dropdown-item" href="../addservices">Services</a>
-                  <a class="dropdown-item" href="../addnotificatiion" >Notifications</a>
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <a href="tel:+917736881574"><i class="fas fa-phone me-2"></i> +91 7736881574</a>
+                    <a href="mailto:pawpalace@email.com" class="ms-4"><i class="fas fa-envelope me-2"></i> pawpalace@email.com</a>
                 </div>
-              </li>
-                <li class="nav-item">
-                <a class="nav-link" href="../shopgallery">Gallery</a>
-              </li>
-            </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-    <section class="hero-wrap hero-wrap-2" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-end">
-          <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="../shop">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Shop<i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-0 bread">Orders</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-
-<table border="0" class="table table-info table-striped">
-    <tr>
-        <th>Customer Name</th>
-        <th>Product Name</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Total Price</th>
-        <th>Date</th>
-    </tr>
-    {% for i in bookings %}
-    <tr>
-        <td>{{i.user_details.name}}</td>
-        <td>{{i.item_details.prodname}}</td>
-        <td>{{i.item_details.price}}</td>
-        <td>{{i.quantity}}</td>
-        <td>{{i.total_price}}</td>
-        <td>{{i.date}}</td>
-    </tr>
-    {% endfor %}
-</table>
-
-
-    <footer class="footer">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">PawPalace</h2>
-                <p>When I look into a bird's eyes<br>
-
-■ I don't see a price tag.<br>
-
-■ I don't see a status symbol<br>
-
-■ I don't see a pet.<br>
-
-♡ I see a being.<br>
-
-♡ I see a friend.<br>
-
-♡ I see a soul.</p>
-                <ul class="ftco-footer-social p-0">
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">Quick Links</h2>
-                <ul class="list-unstyled">
-                    <li><a href="../shop" class="py-2 d-block">Home</a></li>
-                    <li><a href="../shopabout" class="py-2 d-block">About</a></li>
-                    <li><a href="../addproducts" class="py-2 d-block">Product</a></li>
-                    <li><a href="../addservices" class="py-2 d-block">Services</a></li>
-                    <li><a href="../addnotification" class="py-2 d-block">Notifications</a></li>
-                    <li><a href="../shopgallery" class="py-2 d-block">Gallery</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">Have a Questions?</h2>
-                <div class="block-23 mb-3">
-                    <ul>
-                        <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                        <li><a href="tel:+91 7736881574"><span class="icon fa fa-phone"></span><span class="text">+91 7736881574</span></a></li>
-                        <li><a href="mailto:pawpalace@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">pawpalace@gmail.com</span></a></li>
-                    </ul>
+                <div class="col-md-6 text-end">
+                    <a href="#" class="topbar-social"><i class="fab fa-facebook-f mx-2"></i></a>
+                    <a href="#" class="topbar-social"><i class="fab fa-twitter mx-2"></i></a>
+                    <a href="#" class="topbar-social"><i class="fab fa-instagram mx-2"></i></a>
                 </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-12 text-center">
-
             </div>
         </div>
     </div>
-</footer>
 
+    <nav class="navbar navbar-expand-lg paw-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand paw-nav-brand" href="/shop">Paw<span class="paw-teal">Palace</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pawNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/shop">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopproducts">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopservices">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/shopallorders">Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopgallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopabout">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shoplogout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <section class="premium-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Shop</span>
+                <h2 class="section-title mt-2">Orders Dashboard</h2>
+                <p style="color: rgba(255,255,255,0.7);" class="mt-3">View and manage all product orders in one place</p>
+            </div>
+            <!-- Filter Bar -->
+            <form method="GET" class="mb-4">
+                <div class="d-flex gap-3 flex-wrap align-items-end">
+                    <div style="min-width:160px;">
+                        <label class="form-label-custom"><i class="fas fa-filter me-2" style="color:var(--primary);"></i>Status</label>
+                        <select name="status" class="form-control form-control-custom">
+                            <option value="">All Status</option>
+                            {% for s in statuses %}
+                            <option value="{{ s }}" {% if status_filter == s %}selected{% endif %} style="text-transform:capitalize;">{{ s }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label-custom">&nbsp;</label>
+                        <button type="submit" class="btn btn-teal"><i class="fas fa-filter me-2"></i>Filter</button>
+                        <a href="/shopallorders" class="btn btn-outline-light ms-2"><i class="fas fa-times me-2"></i>Clear</a>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table class="table table-custom">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in bookings %}
+                        <tr>
+                            <td>{{i.user_details.name}}</td>
+                            <td>{{i.item_details.prodname}}</td>
+                            <td>{{i.item_details.price}}</td>
+                            <td>{{i.quantity}}</td>
+                            <td>{{i.total_price}}</td>
+                            <td>{{i.date}}</td>
+                            <td>
+                            <div class="custom-status-dropdown" data-id="{{ i.pk }}" data-type="product" data-current="{{ i.status }}">
+                                <button type="button" class="dropdown-status-btn status-btn-{{ i.status|status_css_class }}" data-dropdown-btn>
+                                    <span class="dropdown-status-label">{{ i.status|status_label }}</span>
+                                    <i class="fas fa-chevron-down" style="font-size:10px;margin-left:6px;"></i>
+                                </button>
+                                <div class="status-dropdown-menu" data-dropdown-menu>
+                                    <div class="status-option" data-status="pending">
+                                        <span class="status-dot dot-pending"></span>Pending
+                                    </div>
+                                    <div class="status-option" data-status="confirmed">
+                                        <span class="status-dot dot-confirmed"></span>Confirmed
+                                    </div>
+                                    <div class="status-option" data-status="dispatched">
+                                        <span class="status-dot dot-dispatched"></span>Dispatched
+                                    </div>
+                                    <div class="status-option" data-status="shipped">
+                                        <span class="status-dot dot-shipped"></span>Shipped
+                                    </div>
+                                    <div class="status-option" data-status="out_for_delivery">
+                                        <span class="status-dot dot-out-for-delivery"></span>Out for Delivery
+                                    </div>
+                                    <div class="status-option" data-status="delivered">
+                                        <span class="status-dot dot-delivered"></span>Delivered
+                                    </div>
+                                    <div class="status-divider"></div>
+                                    <div class="status-option cancel-option" data-status="cancelled">
+                                        <span class="status-dot dot-cancelled"></span>Cancelled
+                                    </div>
+                                </div>
+                            </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% if bookings.has_other_pages %}
+            <div class="d-flex justify-content-center mt-4 gap-2 flex-wrap">
+                {% if bookings.has_previous %}
+                <a href="?page={{ bookings.previous_page_number }}{% if status_filter %}&status={{ status_filter }}{% endif %}" class="btn btn-outline-light btn-sm"><i class="fas fa-chevron-left me-1"></i>Prev</a>
+                {% endif %}
+                <span class="btn btn-sm" style="background:rgba(32,201,151,0.15);color:var(--primary);border:none;pointer-events:none;">Page {{ bookings.number }} of {{ bookings.paginator.num_pages }}</span>
+                {% if bookings.has_next %}
+                <a href="?page={{ bookings.next_page_number }}{% if status_filter %}&status={{ status_filter }}{% endif %}" class="btn btn-outline-light btn-sm">Next<i class="fas fa-chevron-right ms-1"></i></a>
+                {% endif %}
+            </div>
+            {% endif %}
 
+            <!-- Service Bookings Section -->
+            <div class="mt-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 style="color:#fff;margin:0;"><i class="fas fa-concierge-bell me-2" style="color:var(--primary);"></i>Service Bookings</h4>
+                </div>
+                <form method="GET" class="mb-3">
+                    <input type="hidden" name="status" value="{{ status_filter }}">
+                    <button type="submit" class="btn btn-sm btn-outline-light"><i class="fas fa-filter me-1"></i>Filter</button>
+                    <a href="/shopallorders" class="btn btn-sm btn-outline-light"><i class="fas fa-times me-1"></i>Clear</a>
+                </form>
+                <table border="0" class="table table-custom">
+                    <tr>
+                        <th>Customer</th>
+                        <th>Service</th>
+                        <th>Pet Name</th>
+                        <th>Pet Type</th>
+                        <th>Date</th>
+                        <th>Slot</th>
+                        <th>Status</th>
+                    </tr>
+                    {% for s in service_bookings %}
+                    <tr>
+                        <td>{{ s.user.name }}</td>
+                        <td>{{ s.service.servicename }}</td>
+                        <td>{{ s.pet_name }}</td>
+                        <td>{{ s.pet_type }}</td>
+                        <td>{{ s.booking_date }}</td>
+                        <td>{{ s.booking_slot }}</td>
+                        <td>
+                            <div class="custom-status-dropdown" data-id="{{ s.pk }}" data-type="service" data-current="{{ s.status }}">
+                                <button type="button" class="dropdown-status-btn status-btn-{{ s.status|status_css_class }}" data-dropdown-btn>
+                                    <span class="dropdown-status-label">{{ s.status|status_label }}</span>
+                                    <i class="fas fa-chevron-down" style="font-size:10px;margin-left:6px;"></i>
+                                </button>
+                                <div class="status-dropdown-menu" data-dropdown-menu>
+                                    <div class="status-option" data-status="pending">
+                                        <span class="status-dot dot-pending"></span>Pending
+                                    </div>
+                                    <div class="status-option" data-status="confirmed">
+                                        <span class="status-dot dot-confirmed"></span>Confirmed
+                                    </div>
+                                    <div class="status-option" data-status="completed">
+                                        <span class="status-dot dot-completed"></span>Completed
+                                    </div>
+                                    <div class="status-divider"></div>
+                                    <div class="status-option cancel-option" data-status="cancelled">
+                                        <span class="status-dot dot-cancelled"></span>Cancelled
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="7" class="text-center" style="color:rgba(255,255,255,0.4);padding:20px;">No service bookings yet.</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </section>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h2 class="mb-4">Paw<span class="paw-teal">Palace</span></h2>
+                    <p class="mb-4">I don't see a price tag.<br>I don't see a status symbol.<br>I don't see a pet.<br>
+                    <span class="paw-teal">I see a being.</span><br><span class="paw-teal">I see a friend.</span><br>
+                    <span class="paw-teal">I see a soul.</span></p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/shop"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Home</a></li>
+                        <li class="mb-2"><a href="/shopproducts"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Products</a></li>
+                        <li class="mb-2"><a href="/shopservices"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Services</a></li>
+                        <li class="mb-2"><a href="/shopallorders"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Orders</a></li>
+                        <li class="mb-2"><a href="/shopgallery"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Gallery</a></li>
+                        <li class="mb-2"><a href="/shopabout"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-3 paw-teal"></i>203 Fake St. Mountain View</li>
+                        <li class="mb-3"><i class="fas fa-phone me-3 paw-teal"></i>+91 7736881574</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-3 paw-teal"></i>pawpalace@email.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="opacity: 0.2;">
+            <div class="text-center">
+                <p class="mb-0" style="color: rgba(255,255,255,0.6);">&copy; 2024 Paw Palace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
   <script src="{% static 'petsitting/js/jquery.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery-migrate-3.0.1.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/popper.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.easing.1.3.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.waypoints.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.stellar.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.animateNumber.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/bootstrap-datepicker.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.timepicker.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/owl.carousel.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.magnific-popup.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/scrollax.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/main.js' %}"></script>
+  <script src="{% static 'petsitting/js/bootstrap.bundle.min.js' %}"></script>
+  <script>
+  $(document).ready(function() {
+      var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+              }
+          });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.feature-card, .stat-card, .testimonial-card').forEach(function(el) {
+          observer.observe(el);
+      });
+  });
+  </script>
 
+    <!-- Status Update AJAX -->
+    <script>
+    var csrfToken = '{{ csrf_token }}';
+
+    // Status step definitions
+    var productStatuses = ['pending', 'confirmed', 'dispatched', 'shipped', 'out_for_delivery', 'delivered'];
+    var serviceStatuses = ['pending', 'confirmed', 'completed'];
+
+    // Status labels
+    var statusLabels = {
+        'pending': 'Pending',
+        'confirmed': 'Confirmed',
+        'dispatched': 'Dispatched',
+        'shipped': 'Shipped',
+        'out_for_delivery': 'Out for Delivery',
+        'delivered': 'Delivered',
+        'cancelled': 'Cancelled',
+        'completed': 'Completed'
+    };
+
+    // Initialize all dropdowns on page load
+    document.querySelectorAll('.custom-status-dropdown').forEach(function(dropdown) {
+        updateDropdownOptions(dropdown);
+    });
+
+    // Toggle dropdown
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('[data-dropdown-btn]');
+        if (btn) {
+            var dropdown = btn.closest('.custom-status-dropdown');
+            var menu = dropdown.querySelector('.status-dropdown-menu');
+
+            // Close all others
+            document.querySelectorAll('.status-dropdown-menu').forEach(function(m) {
+                if (m !== menu) m.classList.remove('show');
+            });
+
+            // Toggle current
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+            } else {
+                menu.classList.add('show');
+                updateDropdownOptions(dropdown);
+            }
+            return;
+        }
+
+        var option = e.target.closest('.status-option:not(.disabled)');
+        if (option && option.dataset.status) {
+            var dropdown = option.closest('.custom-status-dropdown');
+            var newStatus = option.dataset.status;
+            var id = dropdown.dataset.id;
+            var type = dropdown.dataset.type;
+
+            // Send AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/update-order-status/' + id + '/', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.setRequestHeader('X-CSRFToken', csrfToken);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        try {
+                            var data = JSON.parse(xhr.responseText);
+                            if (data.success) {
+                                // Update button
+                                var btnEl = dropdown.querySelector('.dropdown-status-btn');
+                                var labelEl = dropdown.querySelector('.dropdown-status-label');
+                                btnEl.className = 'dropdown-status-btn status-btn-' + newStatus.replace('_', '-');
+                                labelEl.textContent = statusLabels[newStatus] || newStatus;
+                                dropdown.dataset.current = newStatus;
+                                dropdown.querySelector('.status-dropdown-menu').classList.remove('show');
+                                updateDropdownOptions(dropdown);
+                                showStatusToast('Status updated to ' + (statusLabels[newStatus] || newStatus), 'success');
+                            } else {
+                                showStatusToast('Failed to update status!', 'error');
+                            }
+                        } catch(e) {
+                            showStatusToast('Failed to update status!', 'error');
+                        }
+                    } else {
+                        showStatusToast('Failed to update status!', 'error');
+                    }
+                }
+            };
+            xhr.send('status=' + encodeURIComponent(newStatus));
+            return;
+        }
+
+        // Close dropdowns when clicking outside
+        if (!e.target.closest('.custom-status-dropdown')) {
+            document.querySelectorAll('.status-dropdown-menu').forEach(function(m) {
+                m.classList.remove('show');
+            });
+        }
+    });
+
+    // Update which options are clickable
+    function updateDropdownOptions(dropdown) {
+        var currentStatus = dropdown.dataset.current;
+        var type = dropdown.dataset.type;
+        var statuses = type === 'product' ? productStatuses : serviceStatuses;
+        var options = dropdown.querySelectorAll('.status-option:not(.cancel-option)');
+
+        options.forEach(function(opt) {
+            var s = opt.dataset.status;
+            var idx = statuses.indexOf(s);
+            var currentIdx = statuses.indexOf(currentStatus);
+
+            if (currentStatus === 'cancelled') {
+                opt.classList.add('disabled');
+            } else if (s === currentStatus) {
+                opt.classList.add('disabled');
+            } else if (idx > currentIdx) {
+                opt.classList.remove('disabled');
+            } else {
+                opt.classList.add('disabled');
+            }
+        });
+    }
+
+    // Show toast
+    function showStatusToast(message, type) {
+        type = type || 'success';
+        var colors = {
+            'success': { bg: 'rgba(32,201,151,0.25)', border: '#20c997', icon: 'check-circle', iconColor: '#4ade80' },
+            'error': { bg: 'rgba(239,68,68,0.25)', border: '#ef4444', icon: 'exclamation-circle', iconColor: '#f87171' }
+        };
+        var c = colors[type] || colors.success;
+        var container = document.getElementById('statusToastContainer');
+        var toast = document.createElement('div');
+        toast.innerHTML = '<i class="fas fa-' + c.icon + '" style="color:' + c.iconColor + ';margin-right:10px;font-size:18px;"></i><span style="flex:1;color:#fff;">' + message + '</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;margin-left:10px;">&times;</button>';
+        toast.style.cssText = 'display:flex;align-items:center;padding:14px 18px;border-radius:12px;font-family:Poppins,sans-serif;font-size:0.9rem;font-weight:500;animation:slideInRight 0.4s ease;box-shadow:0 10px 40px rgba(0,0,0,0.5);background:' + c.bg + ';border:1px solid ' + c.border + ';color:#fff;';
+        container.appendChild(toast);
+        setTimeout(function() {
+            toast.style.opacity = '0';
+            toast.style.transition = 'opacity 0.5s ease';
+            setTimeout(function() { if (toast.parentElement) toast.remove(); }, 500);
+        }, 3500);
+    }
+    </script>
 
   </body>
 </html>

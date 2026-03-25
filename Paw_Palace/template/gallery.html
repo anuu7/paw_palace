@@ -1,258 +1,386 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <title>Paw Palace-Gallery</title>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Gallery - Paw Palace</title>
     <meta charset="utf-8">
-	  {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="{% static 'petspial/css/style-starter.css' %}">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{% static 'petsitting/css/animate.css' %}">
-
-    <link rel="stylesheet" href="{% static 'petsitting/css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'petsitting/css/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" href="{% static 'petsitting/css/magnific-popup.css' %}">
-
-
-    <link rel="stylesheet" href="{% static 'petsitting/css/bootstrap-datepicker.css' %}">
-    <link rel="stylesheet" href="{% static 'petsitting/css/jquery.timepicker.css' %}">
-
-    <link rel="stylesheet" href="{% static 'petsitting/css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'petsitting/css/style.css' %}">
+    <link rel="stylesheet" href="/static/css/paw_main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        :root { --primary: #20c997; --primary-dark: #1aab82; --dark: #051f30; --darker: #0a1628; }
+        body { background: linear-gradient(135deg, #051f30 0%, #0a1628 50%, #0d1f3c 100%) !important; min-height: 100vh; font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { color: #fff; }
+        p, li, span { color: rgba(255,255,255,0.85); }
+        .paw-teal { color: var(--primary); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+        .top-bar { background: linear-gradient(90deg, #051f30 0%, #0a1628 100%); color: #fff; padding: 10px 0; font-family: 'Poppins', sans-serif; font-size: 14px; }
+        .top-bar a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; }
+        .top-bar a:hover { color: var(--primary); }
+        .paw-nav { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 15px 0; }
+        .paw-nav .nav-link { color: rgba(255,255,255,0.8); font-weight: 500; font-family: 'Poppins', sans-serif; padding: 10px 18px; border-radius: 10px; transition: all 0.3s ease; }
+        .paw-nav .nav-link:hover, .paw-nav .nav-link.active { color: var(--primary); background: rgba(32, 201, 151, 0.1); }
+        .paw-nav .nav-link.paw-gold:not(.active) {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+        }
+        .paw-nav .nav-link.paw-gold:not(.active):hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+        }
+        .paw-nav-brand { font-size: 28px; font-weight: 700; font-family: 'Poppins', sans-serif; color: #fff; }
+        .hero-wrap { background-size: cover; background-position: center; min-height: 40vh; position: relative; display: flex; align-items: center; }
+        .hero-wrap::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(5,31,48,0.9) 0%, rgba(10,22,40,0.85) 100%); }
+        .section-title { font-family: 'Poppins', sans-serif; font-weight: 700; color: #fff; }
+        .section-subtitle { color: var(--primary); font-family: 'Poppins', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; font-weight: 600; }
+        .premium-section { padding: 80px 0; background: rgba(255,255,255,0.02); }
+        .gallery-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden; transition: all 0.4s ease; height: 100%; opacity: 0; transform: translateY(30px); }
+        .gallery-card.visible { opacity: 1; transform: translateY(0); }
+        .gallery-card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(32,201,151,0.5); box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
+        .gallery-image { width: 100%; height: 250px; object-fit: cover; transition: transform 0.4s ease; }
+        .gallery-card:hover .gallery-image { transform: scale(1.1); }
+        .gallery-image-wrapper { position: relative; overflow: hidden; }
+        .gallery-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: all 0.3s ease; }
+        .gallery-card:hover .gallery-overlay { opacity: 1; }
+        .gallery-body { padding: 20px; }
+        .gallery-category { font-size: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .gallery-breed { font-size: 18px; font-weight: 600; color: #fff; margin: 0; }
+        /* Image Viewer Modal */
+        #imageViewer { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 99999; align-items: center; justify-content: center; }
+        #imageViewer.active { display: flex; }
+        #imageViewer img { max-width: 90%; max-height: 90vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+        #imageViewer .close-btn { position: absolute; top: 20px; right: 30px; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); color: #fff; font-size: 28px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        #imageViewer .close-btn:hover { background: rgba(239,68,68,0.3); border-color: #ef4444; }
+        #imageViewer .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); color: #fff; font-size: 24px; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        #imageViewer .nav-btn:hover { background: rgba(32,201,151,0.3); border-color: #20c997; }
+        #imageViewer .close-btn:hover { background: rgba(239,68,68,0.3); border-color: #ef4444; }
+        #imageViewer .nav-btn.prev { left: 20px; }
+        #imageViewer .nav-btn.next { right: 20px; }
+        #imageViewer .photo-info { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #fff; text-align: center; background: rgba(0,0,0,0.5); padding: 10px 20px; border-radius: 10px; }
+        .btn-teal { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border: none; border-radius: 12px; padding: 14px 28px; font-weight: 600; font-family: 'Poppins', sans-serif; box-shadow: 0 8px 25px rgba(32, 201, 151, 0.3); transition: all 0.3s ease; color: #fff; }
+        .btn-teal:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(32, 201, 151, 0.4); background: linear-gradient(135deg, var(--primary-dark) 0%, #159d70 100%); color: #fff; }
+        .btn-outline-light { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: #fff; border-radius: 12px; padding: 14px 28px; font-weight: 600; transition: all 0.3s ease; }
+        .btn-outline-light:hover { background: var(--primary); border-color: var(--primary); color: #fff; transform: translateY(-3px); }
+        .add-photo-section { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; margin-top: 40px; }
+        .form-control-custom { background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 12px 16px; color: #fff; transition: all 0.3s ease; }
+        .form-control-custom:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.2); outline: none; background: rgba(255,255,255,0.1); color: #fff; }
+        .form-control-custom::placeholder { color: rgba(255,255,255,0.5); }
+        .form-label-custom { color: rgba(255,255,255,0.8); font-weight: 500; margin-bottom: 8px; }
+        .footer { background: linear-gradient(135deg, #051f30 0%, #0a1628 100%); color: #fff; padding: 60px 0 30px; }
+        .footer h2, .footer h3 { color: #fff; font-family: 'Poppins', sans-serif; }
+        .footer a { color: rgba(255, 255, 255, 0.7); transition: all 0.3s ease; }
+        .footer a:hover { color: var(--primary); transform: translateX(3px); }
+        .footer p, .footer li { color: rgba(255,255,255,0.7); }
+        .btn-outline-light.rounded-circle { border-radius: 50% !important; padding: 0; }
+        .footer-social { transition: all 0.3s ease; }
+        .footer-social:hover { transform: scale(1.1) translateY(-3px); background: var(--primary) !important; border-color: var(--primary) !important; color: #fff !important; box-shadow: 0 5px 20px rgba(32, 201, 151, 0.4); }
+        .btn-close { filter: invert(1); }
+        .alert { background: rgba(32, 201, 151, 0.15); border: 1px solid rgba(32, 201, 151, 0.3); border-radius: 12px; color: #fff; }
+    </style>
+</head>
+<body>
+    {% if messages %}
+    <div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
+    {% endif %}
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#addphotos").click(function(){
-    $("#photofield").show();
-  });
-});
-</script>
-
-<!--    message-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-      <style>
-    a {
-      text-decoration: none;
-    }
-
-    a:visited {
-      color: #purple;
-    }
-
-    a:hover {
-      text-decoration: none;
-      color: #blue;
-    }
-  </style>
-  </head>
-  <body>
-
-    <div class="wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 d-flex align-items-center">
-						<p class="mb-0 phone pl-md-2">
-							<a href="tel:+91 7736881574" class="mr-2"><span class="fa fa-phone mr-1"></span> +91 7736881574</a>
-							<a href="mailto:pawpalace@gmail.com"><span class="fa fa-paper-plane mr-1"></span> pawpalace@mail.com</a>
-						</p>
-					</div>
-					<div class="col-md-6 d-flex justify-content-md-end">
-						<div class="social-media">
-			    		<p class="mb-0 d-flex">
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-			    		</p>
-		        </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	    	<a class="navbar-brand" href="user"><span class="flaticon-pawprint-1 mr-2"></span>Paw Palace</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="fa fa-bars"></span> Menu
-	      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="user">Home </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="userabout">About</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Shop <span class="fa"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="shopping" >Products</a>
-                  <a class="dropdown-item" href="services" >Services</a>
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <a href="tel:+917736881574"><i class="fas fa-phone me-2"></i> +91 7736881574</a>
+                    <a href="mailto:pawpalace@email.com" class="ms-4"><i class="fas fa-envelope me-2"></i> pawpalace@email.com</a>
                 </div>
-              </li>
-              <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Gallery<span class="fa"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" id="addphotos" href="#" >Add Photos</a>
+                <div class="col-md-6 text-end">
+                    <a href="#"><i class="fab fa-facebook-f mx-2"></i></a>
+                    <a href="#"><i class="fab fa-twitter mx-2"></i></a>
+                    <a href="#"><i class="fab fa-instagram mx-2"></i></a>
                 </div>
-              </li>
-            </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('static/petsitting/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-end">
-          <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="user">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Gallery <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-0 bread">Paw Palace</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="container mt-5" id="photofield" style="display:none;">
-    <h2>Add Photos</h2>
-    <form action="addphotos" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="cty" class="form-label">Category</label><br>
-            <input type="text" class="form-control" id="cty" name="g1" required>
-        </div>
-        <div class="mb-3">
-            <label for="brd" class="form-label">Breed</label><br>
-            <input type="text" class="form-control" id="brd" name="g2" required>
-        </div>
-        <div class="mb-3">
-            <label for="pht" class="form-label">Photos</label><br>
-            <input type="file" class="form-control" id="pht" name="image" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
-{% if messages %}
-<div class="alert alert-info alert-dismissible">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    {% for message in messages %}
-    <p {% if message.tags %} class="{{ message.tags }}" {% endif %}><b>{{ message }}</b></p>
-    {% endfor %}
-</div>
-{% endif %}
-    <section class="ftco-section">
-			<div class="container">
-				<div class="row">
-                    {% for i in data %}
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url({{i.image.url}});">
-            	<a href="{{i.image.url}}" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>{{i.category}}</span>
-	              	<h2><a href="work-single.html">{{i.breed}}</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-                    {% endfor %}
-        </div>
-			</div>
-		</section>
-
-    <footer class="footer">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">PawPalace</h2>
-                <p>When I look into a bird's eyes<br>
-
-■ I don't see a price tag.<br>
-
-■ I don't see a status symbol<br>
-
-■ I don't see a pet.<br>
-
-♡ I see a being.<br>
-
-♡ I see a friend.<br>
-
-♡ I see a soul.</p>
-                <ul class="ftco-footer-social p-0">
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">Quick Links</h2>
-                <ul class="list-unstyled">
-                    <li><a href="user" class="py-2 d-block">Home</a></li>
-                    <li><a href="userabout" class="py-2 d-block">About</a></li>
-                    <li><a href="shopping" class="py-2 d-block">Products</a></li>
-                    <li><a href="#" class="py-2 d-block">Services</a></li>
-                    <li><a href="gallery" class="py-2 d-block">Gallery</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">Have a Questions?</h2>
-                <div class="block-23 mb-3">
-                    <ul>
-                        <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                        <li><a href="tel:+91 7736881574"><span class="icon fa fa-phone"></span><span class="text">+91 7736881574</span></a></li>
-                        <li><a href="mailto:pawpalace@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">pawpalace@gmail.com</span></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-12 text-center">
-
             </div>
         </div>
     </div>
-</footer>
 
-    
-  
+    <nav class="navbar navbar-expand-lg paw-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand paw-nav-brand" href="/user">Paw<span class="paw-teal">Palace</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pawNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/user">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopping">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/userabout">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/userlogout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <section class="hero-wrap" style="background-image: url('/static/petsitting/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 animate-fadeInUp">
+                    <span class="section-subtitle">Pet Gallery</span>
+                    <h1 class="section-title mt-3" style="font-size: 3rem;">Beautiful <span class="paw-teal">Pet Moments</span></h1>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 600px;">Share and view adorable pet photos from our community</p>
+                    <button id="addPhotosBtn" class="btn btn-teal mt-3"><i class="fas fa-camera me-2"></i>Add Photos</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="premium-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle animate-fadeInUp">Our Community</span>
+                <h2 class="section-title animate-fadeInUp">Pet Gallery</h2>
+                <p class="animate-fadeInUp" style="color: rgba(255,255,255,0.7);">Beautiful moments shared by pet lovers</p>
+            </div>
 
-  <script src="{% static 'petsitting/js/jquery.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/jquery-migrate-3.0.1.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/popper.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/bootstrap.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/jquery.easing.1.3.js'%}"></script>
-  <script src="{% static 'petsitting/js/jquery.waypoints.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/jquery.stellar.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/jquery.animateNumber.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/bootstrap-datepicker.js'%}"></script>
-  <script src="{% static 'petsitting/js/jquery.timepicker.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/owl.carousel.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/jquery.magnific-popup.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/scrollax.min.js'%}"></script>
-  <script src="{% static 'petsitting/js/main.js'%}"></script>
+            <div id="addPhotoForm" class="add-photo-section" style="display: none;">
+                <h4 class="mb-4"><i class="fas fa-camera me-2 paw-teal"></i>Add Your Pet Photo</h4>
+                <form action="/addphotos" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <label class="form-label-custom"><i class="fas fa-paw me-2"></i>Category</label>
+                            <input type="text" name="g1" class="form-control form-control-custom" placeholder="e.g., Dog, Cat, Bird" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label-custom"><i class="fas fa-tag me-2"></i>Breed</label>
+                            <input type="text" name="g2" class="form-control form-control-custom" placeholder="e.g., Golden Retriever" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label-custom"><i class="fas fa-image me-2"></i>Photo</label>
+                            <input type="file" name="image" class="form-control form-control-custom" required>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-teal"><i class="fas fa-upload me-2"></i>Upload Photo</button>
+                        <button type="button" id="cancelAddPhoto" class="btn btn-outline-light ms-3"><i class="fas fa-times me-2"></i>Cancel</button>
+                    </div>
+                </form>
+            </div>
 
+            <div class="row g-4 mt-4">
+                {% for photo in data %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-card" data-delay="{{ forloop.counter0|add:'0' }}00"
+                         data-src="{{ photo.image.url }}" data-breed="{{ photo.breed }}" data-category="{{ photo.category }}" data-index="{{ forloop.counter0 }}"
+                         style="cursor:pointer;">
+                        <div class="gallery-image-wrapper">
+                            <img src="{{ photo.image.url }}" alt="{{ photo.breed }}" class="gallery-image">
+                            <div class="gallery-overlay">
+                                <button class="btn btn-teal view-btn" data-index="{{ forloop.counter0 }}"><i class="fas fa-expand me-2"></i>View</button>
+                            </div>
+                        </div>
+                        <div class="gallery-body">
+                            <p class="gallery-category">{{ photo.category }}</p>
+                            <h4 class="gallery-breed">{{ photo.breed }}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12 text-center py-5">
+                    <i class="fas fa-images fa-4x mb-4" style="color: rgba(255,255,255,0.3);"></i>
+                    <p style="color: rgba(255,255,255,0.7);">No photos in gallery yet. Be the first to add!</p>
+                    <button id="addFirstPhoto" class="btn btn-teal mt-3"><i class="fas fa-camera me-2"></i>Add First Photo</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 
-    
-  </body>
+    <!-- Image Viewer Modal -->
+    <div id="imageViewer">
+        <button class="close-btn" onclick="closeViewer()">&times;</button>
+        <button class="nav-btn prev" onclick="event.stopPropagation();prevPhoto()"><i class="fas fa-chevron-left"></i></button>
+        <img id="viewerImage" src="" alt="Pet Photo" onclick="event.stopPropagation()">
+        <button class="nav-btn next" onclick="event.stopPropagation();nextPhoto()"><i class="fas fa-chevron-right"></i></button>
+        <div class="photo-info" style="display:flex;flex-direction:column;align-items:center;gap:5px;" onclick="event.stopPropagation()">
+            <span id="photoBreed" style="font-weight:600;font-size:1.1rem;"></span>
+            <span id="photoCategory" style="font-size:0.85rem;color:var(--primary);text-transform:uppercase;letter-spacing:2px;"></span>
+        </div>
+        <p style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:0.85rem;margin:0;cursor:default;" onclick="event.stopPropagation()">Click outside or press ESC to close &bull; Use &larr; &rarr; to navigate</p>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h2 class="mb-4">Paw<span class="paw-teal">Palace</span></h2>
+                    <p class="mb-4">I don't see a price tag.<br>
+                    I don't see a status symbol.<br>
+                    I don't see a pet.<br>
+                    <span class="paw-teal">I see a being.</span><br>
+                    <span class="paw-teal">I see a friend.</span><br>
+                    <span class="paw-teal">I see a soul.</span></p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/user"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Home</a></li>
+                        <li class="mb-2"><a href="/shopping"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Shop</a></li>
+                        <li class="mb-2"><a href="/gallery"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Gallery</a></li>
+                        <li class="mb-2"><a href="/health/ai-diagnosis"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Pet Doctor</a></li>
+                        <li class="mb-2"><a href="/userabout"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-3 paw-teal"></i>203 Fake St. Mountain View</li>
+                        <li class="mb-3"><i class="fas fa-phone me-3 paw-teal"></i>+91 7736881574</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-3 paw-teal"></i>pawpalace@email.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="opacity: 0.2;">
+            <div class="text-center">
+                <p class="mb-0" style="color: rgba(255,255,255,0.6);">&copy; 2024 Paw Palace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'petsitting/js/main.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            // Toggle add photo form
+            $("#addPhotosBtn, #addFirstPhoto").click(function() {
+                $("#addPhotoForm").show();
+                $('html, body').animate({ scrollTop: $("#addPhotoForm").offset().top - 100 }, 500);
+            });
+            $("#cancelAddPhoto").click(function() {
+                $("#addPhotoForm").hide();
+            });
+
+            // Intersection Observer for animations
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var delay = $(entry.target).data('delay') || 0;
+                        setTimeout(function() {
+                            $(entry.target).addClass('visible');
+                        }, delay);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            $('.gallery-card').each(function() {
+                observer.observe(this);
+            });
+
+            // View button click - open image viewer
+            $(document).on('click', '.view-btn', function() {
+                var index = $(this).data('index');
+                openViewer(index);
+            });
+        });
+
+        /* Django template tags - processed server-side, safe to comment out from JS parser
+        {% if messages %}
+        {% for message in messages %}
+        showPawToast('{{ message }}', '{% if message.tags == "error" %}error{% elif message.tags == "warning" %}warning{% elif message.tags == "info" %}info{% else %}success{% endif %}');
+        {% endfor %}
+        {% endif %}
+        */
+
+        // Toast notification system
+        function showPawToast(message, type) {
+            var toast = document.createElement('div');
+            var iconMap = {
+                'success': 'check-circle',
+                'error': 'exclamation-circle',
+                'warning': 'exclamation-triangle',
+                'info': 'info-circle'
+            };
+            var colorMap = {
+                'success': '#20c997',
+                'error': '#ef4444',
+                'warning': '#f59e0b',
+                'info': '#60a5fa'
+            };
+            var bgMap = {
+                'success': 'rgba(32,201,151,0.15)',
+                'error': 'rgba(239,68,68,0.15)',
+                'warning': 'rgba(245,158,11,0.15)',
+                'info': 'rgba(96,165,250,0.15)'
+            };
+            var t = type || 'success';
+            toast.innerHTML = '<i class="fas fa-' + (iconMap[t] || iconMap.info) + '" style="color:' + (colorMap[t] || colorMap.success) + ';margin-right:10px;font-size:18px;"></i><span style="flex:1;">' + message + '</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;margin-left:10px;">&times;</button>';
+            toast.style.cssText = 'display:flex;align-items:center;padding:14px 18px;border-radius:12px;font-family:Poppins,sans-serif;font-size:0.9rem;font-weight:500;animation:slideInRight 0.4s ease;box-shadow:0 10px 40px rgba(0,0,0,0.4);background:' + (bgMap[t] || bgMap.success) + ';border:1px solid ' + (colorMap[t] || colorMap.success) + '40;color:#fff;backdrop-filter:blur(10px);position:fixed;top:20px;right:20px;z-index:99999;min-width:300px;';
+            document.body.appendChild(toast);
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.5s ease';
+                setTimeout(function() { if (toast.parentElement) toast.remove(); }, 500);
+            }, 4000);
+        }
+
+                // Image viewer - uses data-* attributes on gallery cards
+        var currentPhotoIndex = 0;
+
+        function openViewer(index) {
+            var card = document.querySelector('.gallery-card[data-index="' + index + '"]');
+            if (!card) return;
+            document.getElementById('viewerImage').src = card.getAttribute('data-src');
+            document.getElementById('photoBreed').textContent = card.getAttribute('data-breed');
+            document.getElementById('photoCategory').textContent = card.getAttribute('data-category') || '';
+            document.getElementById('imageViewer').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            currentPhotoIndex = index;
+        }
+
+        function closeViewer() {
+            document.getElementById('imageViewer').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function prevPhoto() {
+            var allCards = document.querySelectorAll('.gallery-card[data-index]');
+            var idx = currentPhotoIndex - 1;
+            if (idx < 0) idx = allCards.length - 1;
+            openViewer(idx);
+        }
+
+        function nextPhoto() {
+            var allCards = document.querySelectorAll('.gallery-card[data-index]');
+            var idx = currentPhotoIndex + 1;
+            if (idx >= allCards.length) idx = 0;
+            openViewer(idx);
+        }
+
+        // Close viewer on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeViewer();
+            if (e.key === 'ArrowLeft') prevPhoto();
+            if (e.key === 'ArrowRight') nextPhoto();
+        });
+
+        // Click outside image to close
+        var imageViewer = document.getElementById('imageViewer');
+        if (imageViewer) {
+            imageViewer.addEventListener('click', function(e) {
+                if (e.target === this) closeViewer();
+            });
+        }
+    </script>
+</body>
 </html>

@@ -26,7 +26,22 @@ class DiagnosisRecord(models.Model):
         Petuser,
         on_delete=models.CASCADE,
         related_name='diagnosis_records',
+        null=True,
+        blank=True,
         help_text="The user who requested this diagnosis"
+    )
+    shop = models.ForeignKey(
+        'Paw.Petshop',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='diagnosis_records',
+        help_text="The shop that requested this diagnosis"
+    )
+    account_type = models.CharField(
+        max_length=20,
+        default='user',
+        help_text="'user' for pet owners, 'shop' for shop owners"
     )
     pet_name = models.CharField(
         max_length=100,

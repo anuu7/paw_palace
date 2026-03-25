@@ -28,6 +28,7 @@
 
 <!--    message-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/paw_main.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
       <style>
@@ -36,15 +37,16 @@
     }
 
     a:visited {
-      color: #purple;
+      color: #800080;
     }
 
     a:hover {
       text-decoration: none;
-      color: #blue;
+      color: #0000FF;
     }
   </style>
-  </head>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
   <body>
 
     <div class="wrap">
@@ -53,7 +55,7 @@
 					<div class="col-md-6 d-flex align-items-center">
 						<p class="mb-0 phone pl-md-2">
 							<a href="tel:+91 7736881574" class="mr-2"><span class="fa fa-phone mr-1"></span> +91 7736881574</a>
-							<a href="mailto:pawpalace@gmail.com"><span class="fa fa-paper-plane mr-1"></span> pawpalace@mail.com</a>
+							<a href="mailto:pawpalace@gmail.com"><span class="fa fa-paper-plane mr-1"></span> pawpalace@email.com</a>
 						</p>
 					</div>
 					<div class="col-md-6 d-flex justify-content-md-end">
@@ -69,36 +71,36 @@
 				</div>
 			</div>
 		</div>
-		<nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	    	<a class="navbar-brand" href="user"><span class="flaticon-pawprint-1 mr-2"></span>Paw Palace</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="fa fa-bars"></span> Menu
-	      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="user">Home </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="userabout">About</a>
-              </li>
-              <li class="nav-item dropdown astive">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Shop <span class="fa"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="shopping" >Products</a>
-                  <a class="dropdown-item" href="services" >Services</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="gallery">Gallery</a>
-              </li>
+		<nav class="navbar navbar-expand-lg paw-nav">
+    <div class="container">
+        <a class="navbar-brand paw-nav-brand" href="/user">Paw<span class="paw-teal">Palace</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="pawNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link active" href="/user">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/shopping">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/userabout">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link paw-nav-link" href="/userlogout">Logout</a>
+                </li>
             </ul>
-	      </div>
-	    </div>
-	  </nav>
+        </div>
+    </div>
+</nav>
     <!-- END nav -->
     <section class="hero-wrap hero-wrap-2" style="background-image: url(static/petsitting/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
@@ -186,12 +188,7 @@
     </section>
 
     {% if messages %}
-<div class="alert alert-info alert-dismissible">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    {% for message in messages %}
-    <p {% if message.tags %} class="{{ message.tags }}" {% endif %}><b>{{ message }}</b></p>
-    {% endfor %}
-</div>
+<div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
 {% endif %}
 
 
@@ -272,6 +269,52 @@
   <script src="{% static 'petsitting/js/scrollax.min.js' %}"></script>
   <script src="{% static 'petsitting/js/main.js' %}"></script>
 
+  <script>
+        // Toast notification system
+function showPawToast(message, type) {
+    var container = document.getElementById('pawToastContainer');
+    if (!container) return;
+    var toast = document.createElement('div');
+    var iconMap = {
+        'success': 'check-circle',
+        'error': 'exclamation-circle',
+        'warning': 'exclamation-triangle',
+        'info': 'info-circle'
+    };
+    var colorMap = {
+        'success': '#20c997',
+        'error': '#ef4444',
+        'warning': '#f59e0b',
+        'info': '#60a5fa'
+    };
+    var bgMap = {
+        'success': 'rgba(32,201,151,0.15)',
+        'error': 'rgba(239,68,68,0.15)',
+        'warning': 'rgba(245,158,11,0.15)',
+        'info': 'rgba(96,165,250,0.15)'
+    };
+    var t = type || 'success';
+    toast.innerHTML = '<i class="fas fa-' + (iconMap[t] || iconMap.info) + '" style="color:' + (colorMap[t] || colorMap.success) + ';margin-right:10px;font-size:18px;"></i><span style="flex:1;">' + message + '</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;margin-left:10px;">&times;</button>';
+    toast.style.cssText = 'display:flex;align-items:center;padding:14px 18px;border-radius:12px;font-family:Poppins,sans-serif;font-size:0.9rem;font-weight:500;animation:slideInRight 0.4s ease;box-shadow:0 10px 40px rgba(0,0,0,0.4);background:' + (bgMap[t] || bgMap.success) + ';border:1px solid ' + (colorMap[t] || colorMap.success) + '40;color:#fff;backdrop-filter:blur(10px);';
+    container.appendChild(toast);
+    setTimeout(function() {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.5s ease';
+        setTimeout(function() { if (toast.parentElement) toast.remove(); }, 500);
+    }, 4000);
+}
+
+        // Auto-display Django messages as toasts
+{% if messages %}
+{% for message in messages %}
+var type = 'success';
+{% if message.tags == 'error' %}type = 'error';{% endif %}
+{% if message.tags == 'warning' %}type = 'warning';{% endif %}
+{% if message.tags == 'info' %}type = 'info';{% endif %}
+showPawToast('{{ message }}', type);
+{% endfor %}
+{% endif %}
+  </script>
 
   </body>
 </html>

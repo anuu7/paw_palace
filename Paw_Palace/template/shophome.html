@@ -1,724 +1,924 @@
-<!doctype html>
-<html lang="zxx">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Paw Palace-Shop</title>
-  {% load static %}
-  <link href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="{% static 'petspial/css/style-starter.css' %}">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script>
-$(document).ready(function(){
-  $("#menu1").click(function(){
-    $(".menu").fadeToggle("slow");
-  });
-});
-</script>
-<style>
-          * {
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-}
+    {% load static %}
+    <title>Dashboard - Paw Palace</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'petsitting/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'petsitting/css/style.css' %}">
+    <link rel="stylesheet" href="/static/css/paw_main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols-Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #20c997;
+            --primary-dark: #1aab82;
+            --dark: #051f30;
+            --darker: #0a1628;
+        }
 
+        body {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 50%, #0d1f3c 100%) !important;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
 
-#w3lDemoBar.w3l-demo-bar {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  padding: 40px 5px;
-  padding-top:70px;
-  margin-bottom: 70px;
-  background: #0D1326;
-  border-top-left-radius: 9px;
-  border-bottom-left-radius: 9px;
-}
+        h1, h2, h3, h4, h5, h6 { color: #fff; }
+        p, li, span { color: rgba(255,255,255,0.85); }
+        .paw-teal { color: var(--primary); }
 
-#w3lDemoBar.w3l-demo-bar a {
-  display: block;
-  color: #e6ebff;
-  text-decoration: none;
-  line-height: 24px;
-  opacity: .6;
-  margin-bottom: 20px;
-  text-align: center;
-}
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
 
-#w3lDemoBar.w3l-demo-bar span.w3l-icon {
-  display: block;
-}
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+        .animate-fadeInLeft { animation: fadeInLeft 0.8s ease forwards; }
+        .animate-fadeInRight { animation: fadeInRight 0.8s ease forwards; }
+        .animate-pulse { animation: pulse 2s infinite; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
 
-#w3lDemoBar.w3l-demo-bar a:hover {
-  opacity: 1;
-}
+        .top-bar {
+            background: linear-gradient(90deg, #051f30 0%, #0a1628 100%);
+            color: #fff;
+            padding: 10px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        .top-bar a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; }
+        .top-bar a:hover { color: var(--primary); }
 
-#w3lDemoBar.w3l-demo-bar .w3l-icon svg {
-  color: #e6ebff;
-}
-#w3lDemoBar.w3l-demo-bar .responsive-icons {
-  margin-top: 30px;
-  border-top: 1px solid #41414d;
-  padding-top: 40px;
-}
-#w3lDemoBar.w3l-demo-bar .demo-btns {
-  border-top: 1px solid #41414d;
-  padding-top: 30px;
-}
-#w3lDemoBar.w3l-demo-bar .responsive-icons a span.fa {
-  font-size: 26px;
-}
-#w3lDemoBar.w3l-demo-bar .no-margin-bottom{
-  margin-bottom:0;
-}
-.toggle-right-sidebar span {
-  background: #0D1326;
-  width: 50px;
-  height: 50px;
-  transform: translate(-5%, 140%);
-  line-height: 50px;
-  text-align: center;
-  color: #e6ebff;
-  border-radius: 50px;
-  font-size: 26px;
-  cursor: pointer;
-  opacity: .5;
-}
-.pull-right {
-  float: right;
-  position: fixed;
-  right: 0px;
-  top: 70px;
-  width: 90px;
-  z-index: 99999;
-  text-align: center;
-}
-/* ============================================================
-RIGHT SIDEBAR SECTION
-============================================================ */
+        .paw-nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            box-shadow: none;
+            padding: 15px 0;
+        }
+        .paw-nav .nav-link {
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            padding: 10px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .paw-nav .nav-link:hover, .paw-nav .nav-link.active {
+            color: var(--primary);
+            background: rgba(32, 201, 151, 0.1);
+        }
+        .paw-nav .nav-link.paw-gold:not(.active) {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+        }
+        .paw-nav .nav-link.paw-gold:not(.active):hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+        }
+        .paw-nav-brand { font-size: 28px; font-weight: 700; font-family: 'Poppins', sans-serif; color: #fff; }
 
-#right-sidebar {
-  width: 90px;
-  position: fixed;
-  height: 100%;
-  z-index: 1000;
-  right: 0px;
-  top: 70px;
-  margin-top: 60px;
-  -webkit-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
-  -o-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
-  overflow-y: auto;
-}
+        .hero-wrap {
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .hero-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(5,31,48,0.9) 0%, rgba(10,22,40,0.85) 100%);
+        }
 
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero-title span { color: var(--primary); }
 
-/* ============================================================
-RIGHT SIDEBAR TOGGLE SECTION
-============================================================ */
+        .section-title { font-family: 'Poppins', sans-serif; font-weight: 700; color: #fff; }
+        .section-subtitle {
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            font-weight: 600;
+        }
 
-.hide-right-bar-notifications {
-  margin-right: -300px !important;
-  -webkit-transition: all .3s ease-in-out;
-  -moz-transition: all .3s ease-in-out;
-  -o-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
-}
+        .btn-primary {
+            background: linear-gradient(135deg, #6f42c1 0%, #5a3799 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 14px 28px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 8px 25px rgba(111, 66, 193, 0.3);
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(111, 66, 193, 0.4);
+            background: linear-gradient(135deg, #5a3799 0%, #4a2c82 100%);
+            color: #fff;
+        }
+        .btn-teal {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 14px 28px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 8px 25px rgba(32, 201, 151, 0.3);
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        .btn-teal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(32, 201, 151, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #159d70 100%);
+            color: #fff;
+        }
 
-      </style>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        .floating-paw {
+            position: absolute;
+            color: rgba(32, 201, 151, 0.15);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .paw-1 { top: 10%; left: -30px; font-size: 40px; animation: float 4s ease-in-out infinite; }
+        .paw-2 { top: 30%; right: -40px; font-size: 30px; animation: float 5s ease-in-out infinite 0.5s; }
+        .paw-3 { bottom: 20%; left: -20px; font-size: 25px; animation: float 4.5s ease-in-out infinite 1s; }
+        .paw-4 { bottom: 10%; right: -25px; font-size: 35px; animation: float 5.5s ease-in-out infinite 1.5s; }
 
-#main-container {
-    width: 100%;
-    background: linear-gradient(#051f30, #000000);
-}
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
 
-.menu {
-    display:none;
-    position:fixed;
-    height: 100%;
-    transition: .3s;
-    background: #ffffff12;
-    padding: 90px 20px 20px 0;
-    width: 85px;
-    box-shadow: 8px 0px 9px 0px #00000014;
-    transform: translate(0%, -119%);
-    backdrop-filter: blur(3px);
-    min-height: 100vh;
-    z-index:3;
+        .premium-section { padding: 80px 0; background: rgba(255,255,255,0.02); }
 
-}
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(32,201,151,0.2), transparent);
+            transition: 0.5s;
+        }
+        .img-wrapper:hover::before { left: 100%; }
+        .img-fluid { border-radius: 16px; transition: transform 0.4s ease; }
+        .img-wrapper:hover .img-fluid { transform: scale(1.05); }
 
-.menu:hover {
-    width: 260px;
-}
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .feature-card.visible { opacity: 1; transform: translateY(0); }
+        .feature-card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(32,201,151,0.5); box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(32, 201, 151, 0.15);
+            border: 2px solid rgba(32, 201, 151, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.4s ease;
+        }
+        .feature-card:hover .feature-icon { transform: rotate(360deg) scale(1.1); background: rgba(32, 201, 151, 0.25); }
+        .feature-icon i { font-size: 32px; color: var(--primary); }
+        .feature-card h4 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+        .feature-card p { font-size: 14px; color: rgba(255,255,255,0.7); margin: 0; }
 
-.menu:hover li span:nth-child(2) {
-    display: block;
-}
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+        .testimonial-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-color: rgba(32,201,151,0.3); }
 
-.menu-content li {
-    list-style: none;
-    border-radius: 0px 50px 50px 0;
-    transition: .3s;
-    margin-bottom: 20px;
-    padding-left: -50px;
-}
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        .stat-card:hover { transform: translateY(-8px); border-color: rgba(32,201,151,0.4); }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: var(--primary); font-family: 'Montserrat', sans-serif; }
+        .stat-label { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
 
-.menu-content li:hover {
-    background: #0c0c0c;
-}
+        .quote-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(32, 201, 151, 0.15);
+            border: 1px solid rgba(32, 201, 151, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+        .testimonial-card:hover .quote-icon { transform: rotate(360deg) scale(1.1); }
+        .quote-icon i { font-size: 24px; color: var(--primary); }
 
-.menu-content li span:nth-child(2) {
-    display: none;
-}
+        .footer {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 100%);
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        .footer h2, .footer h3 { color: #fff; font-family: 'Poppins', sans-serif; }
+        .footer a { color: rgba(255, 255, 255, 0.7); transition: all 0.3s ease; }
+        .footer a:hover { color: var(--primary); transform: translateX(3px); }
+        .footer p, .footer li { color: rgba(255,255,255,0.7); }
+        .footer-social { transition: all 0.3s ease; }
+        .footer-social:hover { transform: scale(1.1) translateY(-3px); background: var(--primary) !important; border-color: var(--primary) !important; color: #fff !important; box-shadow: 0 5px 20px rgba(32, 201, 151, 0.4); }
 
-a {
-    text-decoration: none;
-    color: rgb(213, 213, 213);
-    display: flex;
-    align-items: center;
-    font-family: 'calibri';
-}
+        .alert { background: rgba(32, 201, 151, 0.15); border: 1px solid rgba(32, 201, 151, 0.3); border-radius: 12px; color: #fff; }
+        .btn-close { filter: invert(1); }
 
-.material-symbols-outlined {
-    font-size: 25px;
-    margin-right: 10px;
-    background: #0c0c0c;
-    border-radius: 50%;
-    padding: 10px;
-}
-  .custom-navbar{
-  z-index:200;
-  }
+        .sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .sidebar-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            border: none;
+            box-shadow: 0 8px 25px rgba(32, 201, 151, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+        }
+        .sidebar-btn:hover { transform: scale(1.1); box-shadow: 0 12px 35px rgba(32, 201, 151, 0.45); }
+        .sidebar-btn .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: #fff;
+            border-radius: 50%;
+            min-width: 22px;
+            height: 22px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5px;
+            font-weight: 700;
+            line-height: 1;
+        }
 
+        .notification-panel {
+            position: fixed;
+            top: 80px;
+            left: 90px;
+            width: 360px;
+            max-height: 480px;
+            background: rgba(5, 31, 48, 0.97);
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            display: none;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            overflow-y: auto;
+        }
+        .notification-panel::-webkit-scrollbar { width: 4px; }
+        .notification-panel::-webkit-scrollbar-track { background: transparent; }
+        .notification-panel::-webkit-scrollbar-thumb { background: rgba(32,201,151,0.3); border-radius: 2px; }
+        .notification-item {
+            padding: 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        .notification-item:last-child { margin-bottom: 0; }
+        .notification-item:hover { background: rgba(32,201,201,0.08); border-color: rgba(32,201,151,0.2); transform: translateX(4px); }
 
-  #menu1{
-  transform: translate(-70%, 0%);
-  }
-[aria-hidden="true"] {
-  color: green; /* Add your desired color */
-  /* Add other styles as needed */
-}
-</style>
-<style>
-    footer {
-        background-color: #f8f9fa;
-    }
+        .review-form {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        .review-form textarea {
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.15);
+            padding: 15px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+        .review-form textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.1);
+            outline: none;
+        }
+        .review-form textarea::placeholder { color: rgba(255,255,255,0.4); }
 
-    .footer-logo a {
-        font-size: 24px;
-        font-weight: bold;
-        color: #333;
-        text-decoration: none;
-    }
+        .banner-slider {
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+        }
+        .banner-content {
+            background: transparent;
+            backdrop-filter: none;
+            border: none;
+            padding: 40px;
+            color: #fff;
+        }
+        .banner-content h3 { font-size: 2.5rem; font-weight: 700; margin-bottom: 15px; }
+        .banner-content p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 25px; }
 
-    .footer-logo a .sublog {
-        font-weight: normal;
-    }
+        .slide-bg-1 {
+            min-height: 85vh;
+            background: linear-gradient(135deg, rgba(5,31,48,0.85) 0%, rgba(10,22,40,0.8) 100%), url('{% static "petsitting/images/bg_1.jpg" %}');
+            background-size: cover;
+            background-position: center;
+        }
 
-    .footer-top-29 {
-        padding: 30px 0;
-    }
+        .owl-dots { margin-top: 20px; text-align: center; }
+        .owl-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+        .owl-dot.active { background: var(--primary); transform: scale(1.2); }
 
-    .footer-top-29 p {
-        color: #666;
-    }
+        .btn-outline-light {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.5);
+            color: #fff;
+            border-radius: 12px;
+            padding: 14px 28px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-light:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .btn-outline-light.rounded-circle {
+            border-radius: 50% !important;
+            padding: 0;
+        }
 
-    .main-social-footer-29 a {
-        font-size: 18px;
-        color: #333;
-        margin-right: 15px;
-    }
-
-    .main-social-footer-29 a:hover {
-        color: #007bff;
-    }
-
-    .footer-heading {
-        font-size: 20px;
-        color: #333;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    .list-unstyled li a {
-        color: #666;
-        display: block;
-        padding: 8px 0;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    .list-unstyled li a:hover {
-        color: #007bff;
-    }
-
-    .block-23 {
-        margin-top: 30px;
-    }
-
-    .block-23 li {
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-    }
-
-    .block-23 li .icon {
-        margin-right: 10px;
-        color: #333;
-    }
-
-    .block-23 li .text {
-        color: #666;
-    }
-</style>
-  <style>
-    .main-cont-wthree-fea {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
-
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .banner-content { padding: 30px; }
+            .banner-content h3 { font-size: 1.8rem; }
+        }
+    </style>
+    </style>
 </head>
-
 <body>
-
-  <header id="site-header" class="fixed-top">
-    <section class="w3l-header-4">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
-          <ul id="menu1" class="navbar-nav"><li ><a href="#"><span  class="material-symbols-outlined">Menu</span></a></li></ul>
-          <h1> <a class="navbar-brand" href="shop">
-              Paw<span class="sublog">Palace</span>
-            </a></h1>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="fa icon-expand fa-bars"></span>
-            <span class="fa icon-close fa-times"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="shopabout">About</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Add <span class="fa fa-angle-down"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="addproducts">Products</a>
-                  <a class="dropdown-item" href="addservices">Services</a>
-                  <a class="dropdown-item" href="addnotification" >Notifications</a>
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <a href="tel:+917736881574"><i class="fas fa-phone me-2"></i> +91 7736881574</a>
+                    <a href="mailto:pawpalace@email.com" class="ms-4"><i class="fas fa-envelope me-2"></i> pawpalace@email.com</a>
                 </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="shopgallery">Gallery</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav search-right mt-lg-0 mt-2">
-              <li class="nav-item mx-xl-4"><a href="tel:+(91)7736881574"
-                  class="btn btn-primary btn-white d-none d-lg-block btn-style mr-2 phone-btn"><span class="fa fa-phone mr-xl-3"
-                    aria-hidden="true"></span> +91 7736881574</a></li>
-            </ul>
-
-            <!-- //toggle switch for light and dark theme -->
-            <!-- search popup -->
-            <div id="search" class="pop-overlay">
-              <div class="popup">
-                <form action="#" method="GET" class="d-sm-flex">
-                  <input type="search" placeholder="Search.." name="search" required="required" autofocus>
-                  <button type="submit"><span class="fa fa-search"></span></button>
-                  <a class="close" href="#">&times;</a>
-                </form>
-              </div>
-            </div>
-            <!-- /search popup -->
-          </div>
-          <!-- toggle switch for light and dark theme -->
-          <div class="mobile-position">
-            <nav class="navigation">
-              <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                  <input type="checkbox" id="checkbox">
-                  <div class="mode-container">
-                    <i class="gg-sun"></i>
-                    <i class="gg-moon"></i>
-                  </div>
-                </label>
-              </div>
-            </nav>
-          </div>
-        </nav>
-      </div>
-    </section>
-  </header>
-  <!--//header-->
-
-  <!-- main-slider -->
-  <section class="w3l-main-slider banner-slider" id="home">
-    <div class="owl-one owl-carousel owl-theme">
-      <div class="item">
-        <div class="slider-info banner-view banner-top1">
-          <div class="container">
-
-            <div class="banner-info">
-              <h3>Whiskers and Wonders</h3>
-              <div class="banner-info-top">
-                <p>" Unleashing the Joyful Journey of Pet Companionship." </p>
-                <a href="shopabout" class="btn btn-style btn-outline-light mt-sm-5 mt-4">Read More </a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="slider-info banner-view banner-top2">
-          <div class="container">
-            <div class="banner-info">
-              <h3>Caring is More Daring.</h3>
-              <div class="banner-info-top">
-                <p>"Companionship, care, and a wagging tail – where pets leave pawprints on our hearts." </p>
-                <a href="shopabout" class="btn btn-style btn-outline-light mt-sm-5 mt-4">Read More </a>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="slider-info banner-view banner-top3">
-          <div class="container">
-            <div class="banner-info">
-              <h3>Grooming & Pet Supplies.</h3>
-              <div class="banner-info-top">
-                <p>"Tailored Care, Happy Pets: Elevate the Grooming Experience with Our Premium Pet Supplies." </p>
-                <a href="shopabout" class="btn btn-style btn-outline-light mt-sm-5 mt-4">Read More </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- /main-slider -->
-  <div class="menu">
-            <ul class="menu-content">
-                <li><a href="editshopprofile"><span class="material-symbols-outlined">person</span><span>{{shop.username}}</span></a></li>
-                <li><a href="shopproducts"><span class="material-symbols-outlined">shop</span><span>Shop</span></a></li>
-                {% for i in product %}
-                <li><a href="shoporders/{{i.pk}}"><span class="material-symbols-outlined">orders</span><span>Orders</span></a></li>
-                {% endfor %}
-                <li><a href="shopservices"><span class="material-symbols-outlined">build</span><span>Services</span></a></li>
-                <li><a href="shoplogout"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
-            </ul>
-            </div>
-
-  <!--/about-section-->
-  <section class="w3l-index3" id="about">
-    <div class="midd-w3 py-5">
-      <div class="container py-lg-5 py-md-3">
-        <div class="row">
-          <div class="col-lg-6 mb-lg-0 mb-md-5 mb-4 align-self pr-lg-5">
-            <div class="title-content text-left">
-              <h6 class="title-subhny mb-2"><span>Is Your Pet is Healthy?</span></h6>
-              <h3 class="title-w3l">Here is your Instruction..</h3>
-            </div>
-            <p class="mt-md-4 mt-3">At Paw Palace, we believe that a healthy pet is a happy pet,
-              and we're here to guide you every step of the way.
-              Recognizing signs of your pet's well-being is crucial,
-              and we've crafted personalized instructions to help you ensure your pet's health.</p>
-            <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="shopabout"> Read More</a>
-          </div>
-          <div class="col-lg-6 mt-lg-0 mt-4">
-            <div class="position-relative">
-              <img src="{% static 'petspial/images/b3.jpg' %}" alt="" class="radius-image img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-6 mt-5 pt-lg-4">
-            <div class="position-relative">
-              <img src="{% static 'petspial/images/ParrotPlaying.jpg' %}" alt="" class="radius-image img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-6 mt-5 align-self pl-lg-5 pt-lg-4">
-            <div class="title-content text-left">
-              <h6 class="title-subhny mb-2"><span>How Was Your Business?</span></h6>
-              <h3 class="title-w3l">Make Profit with Paw Palace.</h3>
-            </div>
-
-            <p class="mt-md-4 mt-3">"Paw Palace employs a comprehensive strategy to drive
-                profitability and customer satisfaction. The business stands out by offering
-                a diverse range of pet products and exclusive services, attracting a broad
-                customer base. Loyalty is fostered through membership programs, while a strong
-                online presence and digital marketing enhance accessibility."</p>
-            <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="shopabout"> Read More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--//about-section-->
-  <!--/w3l-index2-->
-  <section class="w3l-index2" id="about1">
-    <div class="midd-w3 py-5">
-      <div class="container py-lg-5 py-md-4 py-2">
-        <div class="row">
-          <div class="col-lg-6 left-wthree-img">
-            <div class="position-relative">
-              <img src="{% static 'petspial/images/b11.jpg' %}" alt="" class="radius-image img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-6 mt-lg-0 mt-5 pl-lg-5 align-self">
-            <div class="title-content text-left">
-              <h6 class="title-subhny mb-2"><span>Why Choose Us?</span></h6>
-              <h3 class="title-w3l">Why PawPalace?</h3>
-            </div>
-            <p class="mt-4">At Paw Palace, we take pride in being more than just a pet supply store.
-              We understand that your pets are not just animals; they are cherished members of your family.
-              Here's why you should choose Paw Palace for all your pet needs:
-            </p>
-            <ul class="w3l-right-book mt-4">
-              <li><span class="fa fa-check" aria-hidden="true"></span>Premium Quality Products</li>
-              <li><span class="fa fa-check" aria-hidden="true"></span>Expert Guidance</li>
-              <li><span class="fa fa-check" aria-hidden="true"></span>Health and Wellness Focus</li>
-              <li><span class="fa fa-check" aria-hidden="true"></span>User-Friendly Platform</li>
-              <li><span class="fa fa-check" aria-hidden="true"></span>Community and Support</li>
-            </ul>
-            <a href="shopabout" class="btn btn-style btn-primary mt-4">Read More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--//w3l-index2-->
-
-  <!-- testimonials section -->
-  <section class="w3l-clients w3l-test py-5" id="testimonials">
-    <div class="container py-lg-5 py-md-4 pt-2 pb-5">
-        <div class="row w3test-grids p-md-5 pb-0">
-            <div class="col-lg-4 testimonials-con-left-info">
-                <div class="title-content text-left p-xl-3">
-                    <h6 class="title-subhny mb-2"><span>Reviews</span></h6>
-                    <h3 class="title-w3l two">Testimonials</h3>
-                    <p class="test-p mt-3">"PawPalace has been an absolute delight for me and
-                        my furry friend! The platform offers a seamless experience, from connecting
-                        with fellow pet lovers to discovering exciting pet-related activities. The community
-                        at PawPalace is warm and welcoming, making it a perfect place for pet enthusiasts like
-                        myself!"</p>
+                <div class="col-md-6 text-end">
+                    <a href="#" class="topbar-social"><i class="fab fa-facebook-f mx-2"></i></a>
+                    <a href="#" class="topbar-social"><i class="fab fa-twitter mx-2"></i></a>
+                    <a href="#" class="topbar-social"><i class="fab fa-instagram mx-2"></i></a>
                 </div>
             </div>
-            <div class="col-lg-8 testimonials-con-right mt-lg-0 mt-5 p-xl-3">
-                <div class="row">
-                    {% for review in feedback %}
-                    <div class="col-md-6">
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-<!--                                    <blockquote>-->
-                                        <q>{{ review.review }}</q>
-<!--                                    </blockquote>-->
-                                </div>
-                                <div class="bottom-info mt-4">
-                                    <div class="people-info align-self">
-                                        <h3>{{ review.user.username }}</h3>
-                                    </div>
-                                </div>
-                            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg paw-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand paw-nav-brand" href="/shop">Paw<span class="paw-teal">Palace</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pawNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/shop">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopproducts">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopservices">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopgallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopabout">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shoplogout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Notification Sidebar -->
+    <div class="sidebar">
+        <button class="sidebar-btn" title="Notifications" id="notBtn">
+            <i class="fas fa-bell fa-lg"></i>
+            {% if unread_count > 0 %}
+            <span class="badge" id="notifBadge">{{ unread_count }}</span>
+            {% else %}
+            <span class="badge" id="notifBadgeHidden" style="display:none;">0</span>
+            {% endif %}
+        </button>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div class="notification-panel" id="notifPanel">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 style="color:#fff;margin:0;"><i class="fas fa-bell me-2" style="color:var(--primary);"></i>Notifications</h5>
+            {% if unread_count > 0 %}
+            <button class="btn btn-sm" id="markAllSeen" style="background:rgba(32,201,151,0.2);color:var(--primary);border:none;font-size:0.75rem;padding:4px 10px;border-radius:20px;">
+                <i class="fas fa-check-double me-1"></i>Mark All Read
+            </button>
+            {% endif %}
+        </div>
+        {% for n in notifications %}
+        <div class="notification-item">
+            <div style="display:flex;align-items:flex-start;gap:10px;">
+                <div style="width:36px;height:36px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <i class="fas fa-bell" style="color:#fff;font-size:14px;"></i>
+                </div>
+                <div style="flex:1;min-width:0;">
+                    <p style="color:rgba(255,255,255,0.9);font-size:0.85rem;margin:0 0 4px;line-height:1.4;">{{ n.message }}</p>
+                    <small style="color:var(--primary);font-size:0.75rem;">{{ n.date|date:"M d, Y" }}</small>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div style="text-align:center;padding:30px 0;color:rgba(255,255,255,0.4);">
+            <i class="fas fa-bell-slash fa-2x mb-2" style="display:block;"></i>
+            <p style="margin:0;font-size:0.85rem;">No notifications</p>
+        </div>
+        {% endfor %}
+    </div>
+
+  <!-- Banner Slider -->
+  <section class="banner-slider" id="home">
+    <div id="pawBannerSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#pawBannerSlider" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#pawBannerSlider" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#pawBannerSlider" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row align-items-center g-0 slide-bg-1">
+                    <div class="col-lg-6 ps-lg-5">
+                        <div class="banner-content animate-fadeInLeft">
+                            <span class="section-subtitle">Welcome, Shop Owner!</span>
+                            <h3 style="font-size: 3rem; font-weight: 700; margin: 15px 0;">Whiskers & <span class="paw-teal">Wonders</span></h3>
+                            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.8); margin-bottom: 25px;">"Unleashing the Joyful Journey of Pet Companionship."</p>
+                            <a href="/shopabout" class="btn btn-teal me-3"><i class="fas fa-paw me-2"></i>Explore More</a>
+                            <a href="/health/ai-diagnosis" class="btn btn-primary"><i class="fas fa-stethoscope me-2"></i>Pet Doctor</a>
                         </div>
                     </div>
-                    {% endfor %}
+                    <div class="col-lg-6">
+                        <div class="img-wrapper animate-fadeInRight" style="padding: 40px;">
+                            <img src="{% static 'petspial/images/whiskers.jpg' %}" alt="" class="img-fluid rounded-4 shadow-lg w-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row align-items-center g-0 slide-bg-1">
+                    <div class="col-lg-6 ps-lg-5">
+                        <div class="banner-content animate-fadeInLeft">
+                            <span class="section-subtitle">Care & Love</span>
+                            <h3 style="font-size: 3rem; font-weight: 700; margin: 15px 0;">Caring is More <span class="paw-teal">Daring</span></h3>
+                            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.8); margin-bottom: 25px;">"Companionship, care, and a wagging tail – where pets leave pawprints on our hearts."</p>
+                            <a href="/shopproducts" class="btn btn-teal me-3"><i class="fas fa-shopping-bag me-2"></i>View Products</a>
+                            <a href="/shopservices" class="btn btn-primary"><i class="fas fa-concierge-bell me-2"></i>Our Services</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="img-wrapper animate-fadeInRight" style="padding: 40px;">
+                            <img src="{% static 'petspial/images/caring.avif' %}" alt="" class="img-fluid rounded-4 shadow-lg w-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row align-items-center g-0 slide-bg-1">
+                    <div class="col-lg-6 ps-lg-5">
+                        <div class="banner-content animate-fadeInLeft">
+                            <span class="section-subtitle">Premium Supplies</span>
+                            <h3 style="font-size: 3rem; font-weight: 700; margin: 15px 0;">Grooming & <span class="paw-teal">Pet Supplies</span></h3>
+                            <p style="font-size: 1.2rem; color: rgba(255,255,255,0.8); margin-bottom: 25px;">"Tailored Care, Happy Pets: Elevate the Grooming Experience with Our Premium Pet Supplies."</p>
+                            <a href="/shopgallery" class="btn btn-teal me-3"><i class="fas fa-images me-2"></i>Gallery</a>
+                            <a href="/health/ai-diagnosis" class="btn btn-primary"><i class="fas fa-stethoscope me-2"></i>Pet Doctor</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="img-wrapper animate-fadeInRight" style="padding: 40px;">
+                            <img src="{% static 'petspial/images/groom.jpg' %}" alt="" class="img-fluid rounded-4 shadow-lg w-100">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="row stats-con pt-md-5 mt-5">
-            <!-- Your existing statistics section remains unchanged -->
-        </div>
     </div>
-</section>
-  <!-- //testimonials section -->
+  </section>
 
-  <footer class="w3l-footer-29-main">
-    <div class="footer-29-w3l py-5">
-        <div class="container py-lg-4">
-            <div class="row footer-top-29 justify-content-center">
-                <div class="col-lg-4 col-md-6  footer-list-29 footer-1 pr-lg-5">
-                    <div class="footer-logo mb-3">
-                        <a class="footer-brand-logo" href="#">Paw<span class="sublog">Palace</span></a>
-                    </div>
-                    <p>When I look into a bird's eyes<br>
-                        ■ I don't see a price tag.<br>
+  <!-- About Section -->
+  <section class="premium-section" id="about">
+    <div class="container py-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="section-subtitle animate-fadeInUp">Is Your Pet Healthy?</span>
+          <h2 class="section-title animate-fadeInUp mt-2 mb-4">Here is Your Guide...</h2>
+          <p class="animate-fadeInUp" style="color:rgba(255,255,255,0.8); line-height:1.8;">At Paw Palace, we believe that a healthy pet is a happy pet, and we're here to guide you every step of the way. Recognizing signs of your pet's well-being is crucial, and we've crafted personalized instructions to help you ensure your pet's health.</p>
+          <a class="btn btn-teal mt-4 animate-fadeInUp" href="/shopabout"><i class="fas fa-arrow-right me-2"></i>Read More</a>
+        </div>
+        <div class="col-lg-6">
+          <div class="img-wrapper animate-fadeInRight">
+            <img src="{% static 'petsitting/images/about.jpg' %}" alt="Pet Care" class="img-fluid w-100">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-■ I don't see a status symbol<br>
+  <!-- Features Section -->
+  <section class="premium-section alt-bg" id="features">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <span class="section-subtitle animate-fadeInUp">What We Offer</span>
+        <h2 class="section-title animate-fadeInUp mt-2">Built for <span class="paw-teal">Shop Owners</span></h2>
+        <p class="animate-fadeInUp" style="color:rgba(255,255,255,0.7); max-width:600px; margin:0 auto;">Everything you need to manage your pet shop, reach customers, and grow your business — all in one platform.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shopping-bag"></i></div>
+            <h4>Product Management</h4>
+            <p>Easily list, update, and manage your pet products with images, prices, and descriptions.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-concierge-bell"></i></div>
+            <h4>Services</h4>
+            <p>Offer grooming, vet visits, boarding, and more. Customers can book directly.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+            <h4>Track Orders</h4>
+            <p>Monitor incoming orders, manage deliveries, and keep customers updated in real-time.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-images"></i></div>
+            <h4>Gallery</h4>
+            <p>Showcase your shop, pets, and services with a beautiful photo gallery.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-star"></i></div>
+            <h4>Reviews</h4>
+            <p>Build trust with customer reviews and ratings displayed on your profile.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+            <h4>Pet Doctor AI</h4>
+            <p>AI-powered health diagnosis to help customers check their pet's health instantly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-■ I don't see a pet.<br>
+  <!-- Why Choose Us -->
+  <section class="premium-section" id="why">
+    <div class="container py-5">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="img-wrapper animate-fadeInLeft">
+            <img src="{% static 'petsitting/images/bg_2.jpg' %}" alt="Why PawPalace" class="img-fluid w-100">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <span class="section-subtitle animate-fadeInUp">Why Choose Us?</span>
+          <h2 class="section-title animate-fadeInUp mt-2 mb-4">Why <span class="paw-teal">PawPalace?</span></h2>
+          <p class="mb-4 animate-fadeInUp" style="color:rgba(255,255,255,0.8);">At Paw Palace, we take pride in being more than just a pet supply store. We understand that your pets are not just animals — they are cherished members of your family.</p>
+          <div class="animate-fadeInUp">
+            <div class="d-flex align-items-start mb-3">
+              <div class="me-3" style="width:30px;height:30px;background:rgba(32,201,151,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-check" style="color:var(--primary);font-size:12px;"></i></div>
+              <div><strong style="color:#fff;">Premium Quality Products</strong><p class="mb-0" style="font-size:0.9rem;">Curated selection of the best pet products from trusted suppliers.</p></div>
+            </div>
+            <div class="d-flex align-items-start mb-3">
+              <div class="me-3" style="width:30px;height:30px;background:rgba(32,201,151,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-check" style="color:var(--primary);font-size:12px;"></i></div>
+              <div><strong style="color:#fff;">Expert Guidance</strong><p class="mb-0" style="font-size:0.9rem;">AI-powered Pet Doctor for instant health insights.</p></div>
+            </div>
+            <div class="d-flex align-items-start mb-3">
+              <div class="me-3" style="width:30px;height:30px;background:rgba(32,201,151,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-check" style="color:var(--primary);font-size:12px;"></i></div>
+              <div><strong style="color:#fff;">Health & Wellness Focus</strong><p class="mb-0" style="font-size:0.9rem;">Every product and service prioritizes your pet's wellbeing.</p></div>
+            </div>
+            <div class="d-flex align-items-start mb-3">
+              <div class="me-3" style="width:30px;height:30px;background:rgba(32,201,151,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-check" style="color:var(--primary);font-size:12px;"></i></div>
+              <div><strong style="color:#fff;">User-Friendly Platform</strong><p class="mb-0" style="font-size:0.9rem;">Seamless experience for both pet owners and shop owners.</p></div>
+            </div>
+            <div class="d-flex align-items-start">
+              <div class="me-3" style="width:30px;height:30px;background:rgba(32,201,151,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;"><i class="fas fa-check" style="color:var(--primary);font-size:12px;"></i></div>
+              <div><strong style="color:#fff;">Community & Support</strong><p class="mb-0" style="font-size:0.9rem;">Join thousands of pet lovers and shop owners in our growing community.</p></div>
+            </div>
+          </div>
+          <a class="btn btn-primary mt-4 animate-fadeInUp" href="/shopabout"><i class="fas fa-arrow-right me-2"></i>Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-♡ I see a being.<br>
+  <!-- Testimonials -->
+  <section class="premium-section alt-bg" id="testimonials">
+    <div class="container py-5">
+      <div class="text-center mb-5">
+        <span class="section-subtitle animate-fadeInUp">Reviews</span>
+        <h2 class="section-title animate-fadeInUp mt-2">What <span class="paw-teal">Customers Say</span></h2>
+      </div>
+      <div class="row g-4">
+        {% for review in feedback %}
+        <div class="col-md-6">
+          <div class="testimonial-card">
+            <div class="d-flex align-items-center mb-3">
+              <div style="width:50px;height:50px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:15px;flex-shrink:0;">
+                <i class="fas fa-user" style="color:#fff;font-size:18px;"></i>
+              </div>
+              <div>
+                <div class="reviewer-name">{{ review.user.username }}</div>
+                <div class="reviewer-stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p style="color:rgba(255,255,255,0.8);font-style:italic;line-height:1.7;margin:0;">"{{ review.review }}"</p>
+          </div>
+        </div>
+        {% endfor %}
+        {% if not feedback %}
+        <div class="col-12 text-center">
+          <p style="color:rgba(255,255,255,0.5);">No reviews yet. Be the first to review!</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
 
-♡ I see a friend.<br>
-
-♡ I see a soul.</p>
-                    <div class="main-social-footer-29 mt-4">
-                        <a href="#" class="facebook"><span class="fa fa-facebook"></span></a>
-                        <a href="#" class="twitter"><span class="fa fa-twitter"></span></a>
-                        <a href="#" class="instagram"><span class="fa fa-instagram"></span></a>
-                        <a href="#" class="linkedin"><span class="fa fa-linkedin"></span></a>
+  <!-- Stats Section -->
+    <section class="premium-section">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="section-subtitle animate-fadeInUp">Our Impact</span>
+                <h2 class="section-title animate-fadeInUp mt-2">Numbers That <span class="paw-teal">Matter</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">{{ customer_count|default:0 }}+</div>
+                        <p class="stat-label">Registered Customers</p>
                     </div>
                 </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">{{ shop_count|default:0 }}+</div>
+                        <p class="stat-label">Partner Shops</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">{{ product_count|default:0 }}+</div>
+                        <p class="stat-label">Your Products</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-number">{{ feedback|length|default:0 }}+</div>
+                        <p class="stat-label">Positive Reviews</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                    <h2 class="footer-heading" style="color:green">Quick Links</h2>
+    <!-- CTA Section -->
+  <section class="premium-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-subtitle animate-fadeInUp">Get Started Today</span>
+        <h2 class="section-title animate-fadeInUp mt-2 mb-3">Ready to <span class="paw-teal">Grow Your Shop?</span></h2>
+        <p class="animate-fadeInUp" style="color:rgba(255,255,255,0.7); max-width:600px; margin:0 auto 30px;">List your products, offer services, and reach thousands of pet lovers across the platform.</p>
+        <div class="animate-fadeInUp">
+          <a href="/shopproducts" class="btn btn-teal me-3"><i class="fas fa-plus-circle me-2"></i>Add Products</a>
+          <a href="/shopservices" class="btn btn-primary"><i class="fas fa-plus-circle me-2"></i>Add Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h2 class="mb-4">Paw<span class="paw-teal">Palace</span></h2>
+                    <p class="mb-4">I don't see a price tag.<br>I don't see a status symbol.<br>I don't see a pet.<br>
+                    <span class="paw-teal">I see a being.</span><br><span class="paw-teal">I see a friend.</span><br>
+                    <span class="paw-teal">I see a soul.</span></p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Quick Links</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Home</a></li>
-                        <li><a href="shopabout" class="py-2 d-block">About</a></li>
-                        <li><a href="addproducts" class="addproducts">Products</a></li>
-                        <li><a href="addservices" class=addservices>Services</a></li>
-                        <li><a href="gallery" class="py-2 d-block loged">Gallery</a></li>
+                        <li class="mb-2"><a href="/shop"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Home</a></li>
+                        <li class="mb-2"><a href="/shopproducts"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Products</a></li>
+                        <li class="mb-2"><a href="/shopservices"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Services</a></li>
+                        <li class="mb-2"><a href="/shopgallery"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Gallery</a></li>
+                        <li class="mb-2"><a href="/health/ai-diagnosis"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Pet Doctor</a></li>
+                        <li class="mb-2"><a href="/shopabout"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>About Us</a></li>
                     </ul>
                 </div>
-
-                <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                    <h2 class="footer-heading" style="color:green">Have a Questions?</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                            <li><a href="tel:+91 7736881574"><span class="icon fa fa-phone"></span><span class="text">+91 7736881574</span></a></li>
-                            <li><a href="mailto:pawpalace@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">pawpalace@gmail.com</span></a></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-3 paw-teal"></i>203 Fake St. Mountain View</li>
+                        <li class="mb-3"><i class="fas fa-phone me-3 paw-teal"></i>+91 7736881574</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-3 paw-teal"></i>pawpalace@email.com</li>
+                    </ul>
                 </div>
             </div>
+            <hr class="my-4" style="opacity: 0.2;">
+            <div class="text-center">
+                <p class="mb-0" style="color: rgba(255,255,255,0.6);">&copy; 2024 Paw Palace. All rights reserved.</p>
+            </div>
         </div>
-    </div>
-      <!-- move top -->
-    <button onclick="topFunction()" id="movetop" title="Go to top">
-        &#10548;
-    </button>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'petsitting/js/jquery.min.js' %}"></script>
+    <script src="{% static 'petsitting/js/main.js' %}"></script>
+
     <script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function () {
-            scrollFunction()
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("movetop").style.display = "block";
-            } else {
-                document.getElementById("movetop").style.display = "none";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-    </script>
-    <!-- /move top -->
-</footer>
-
-  <!-- Template JavaScript -->
-  <script src="{% static 'petspial/js/theme-change.js' %}"></script>
-  <!-- owlcarousel -->
-  <!-- owl carousel -->
-  <script src="{% static 'petspial/js/owl.carousel.js' %}"></script>
-  <!-- script for banner slider-->
-  <script>
     $(document).ready(function () {
-      $('.owl-one').owlCarousel({
-        loop: true,
-        margin: 0,
-        nav: false,
-        responsiveClass: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplaySpeed: 1000,
-        autoplayHoverPause: false,
-        responsive: {
-          0: {
-            items: 1
-          },
-          480: {
-            items: 1
-          },
-          667: {
-            items: 1
-          },
-          1000: {
-            items: 1
-          }
-        }
-      })
-    })
-  </script>
-  <!-- //script -->
+        // Scroll animations
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
 
-  <!-- stats number counter-->
-  <script src="{% static 'petspial/js/jquery.waypoints.min.js' %}"></script>
-  <!-- //stats number counter -->
-  <!-- video popup -->
-  <script src="{% static 'petspial/js/jquery.magnific-popup.min.js' %}"></script>
-  <script>
-    $(document).ready(function () {
-      $('.popup-with-zoom-anim').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in'
-      });
-
-      $('.popup-with-move-anim').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-slide-bottom'
-      });
+        document.querySelectorAll('.feature-card, .testimonial-card, .about-card, .stat-card, .gallery-card').forEach(function(el) {
+            observer.observe(el);
+        });
     });
-  </script>
-  <!-- //video popup -->
+    </script>
 
-  <script src="{% static 'petspial/js/bootstrap.min.js' %}"></script>
+    <!-- Notification Sidebar JS -->
+    <script>
+    $(document).ready(function() {
+        // Toggle notification panel
+        $('#notBtn').on('click', function() {
+            $('#notifPanel').fadeToggle('fast');
+            event.stopPropagation();
+        });
 
+        // Close panel when clicking outside
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('#notifPanel').length && !$(e.target).closest('#notBtn').length) {
+                $('#notifPanel').fadeOut('fast');
+            }
+        });
+
+        // Mark all as seen
+        $('#markAllSeen').on('click', function() {
+            var btn = $(this);
+            btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>...');
+            $.ajax({
+                url: '/markallseen/',
+                type: 'GET',
+                success: function(res) {
+                    $('#notifBadge').fadeOut();
+                    btn.fadeOut();
+                    $('#notifPanel').fadeOut('fast', function() {
+                        $(this).remove();
+                    });
+                    // Refresh to update server-rendered badge
+                    location.reload();
+                },
+                error: function() {
+                    btn.prop('disabled', false).html('<i class="fas fa-check-double me-1"></i>Mark All Read');
+                }
+            });
+        });
+    });
+    </script>
 
 </body>
-
 </html>

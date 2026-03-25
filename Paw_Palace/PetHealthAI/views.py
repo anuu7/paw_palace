@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
-from Paw.models import Petuser
+from Paw.models import Petuser, Petshop
 from .forms import DiagnosisForm, DiagnosisFeedbackForm
 from .models import DiagnosisRecord, DiagnosisFeedback
 from .engine import diagnose
@@ -9,18 +9,28 @@ from .engine import diagnose
 
 def _get_user(request):
     """
-    Extract and validate the logged-in Petuser from the session.
-    Returns (user, None) on success, or (None, redirect_response) on failure.
-    Uses the same session key ('id') as Paw's login system.
+    Extract and validate the logged-in user from the session.
+    Supports both Petuser ('id') and Petshop ('id1') sessions.
+    Returns (account, account_type, None) on success, or (None, None, redirect_response) on failure.
     """
+    # Check Petuser session
     username = request.session.get('id')
-    if not username:
-        return None, redirect('log')
-    try:
-        return Petuser.objects.get(username=username), None
-    except Petuser.DoesNotExist:
-        messages.error(request, "Session expired. Please log in again.")
-        return None, redirect('log')
+    if username:
+        try:
+            return Petuser.objects.get(username=username), 'user', None
+        except Petuser.DoesNotExist:
+            messages.error(request, "Session expired. Please log in again.")
+            return None, None, redirect('log')
+    # Check Petshop session
+    shop_username = request.session.get('id1')
+    if shop_username:
+        try:
+            return Petshop.objects.get(username=shop_username), 'shop', None
+        except Petshop.DoesNotExist:
+            messages.error(request, "Session expired. Please log in again.")
+            return None, None, redirect('log')
+    # No session
+    return None, None, redirect('log')
 
 
 # ------------------------------------------------------------------
@@ -30,9 +40,9 @@ def _get_user(request):
 def ai_diagnosis(request):
     """
     Main view: displays the diagnosis input form.
-    Only accessible to logged-in users (Petuser).
+    Accessible to both Petuser and Petshop (shop owners).
     """
-    user, error = _get_user(request)
+    account, account_type, error = _get_user(request)
     if error:
         return error
 
@@ -48,19 +58,25 @@ def ai_diagnosis(request):
                 symptoms_text=form.cleaned_data['symptoms_description'],
             )
 
-            record = DiagnosisRecord.objects.create(
-                user=user,
-                pet_name=form.cleaned_data['pet_name'],
-                pet_age=form.cleaned_data['pet_age'],
-                animal_type=form.cleaned_data['animal_type'],
-                symptoms_description=form.cleaned_data['symptoms_description'],
-                symptoms_matched=result['matched_symptoms'],
-                predicted_illness=result['primary_diagnosis']['illness'],
-                confidence_score=result['primary_diagnosis']['confidence'],
-                severity=result['primary_diagnosis']['severity'],
-                recommended_actions=result['primary_diagnosis']['recommended_actions'],
-                differential_diagnoses=result['differential_diagnoses'],
-            )
+            record_kwargs = {
+                'pet_name': form.cleaned_data['pet_name'],
+                'pet_age': form.cleaned_data['pet_age'],
+                'animal_type': form.cleaned_data['animal_type'],
+                'symptoms_description': form.cleaned_data['symptoms_description'],
+                'symptoms_matched': result['matched_symptoms'],
+                'predicted_illness': result['primary_diagnosis']['illness'],
+                'confidence_score': result['primary_diagnosis']['confidence'],
+                'severity': result['primary_diagnosis']['severity'],
+                'recommended_actions': result['primary_diagnosis']['recommended_actions'],
+                'differential_diagnoses': result['differential_diagnoses'],
+                'account_type': account_type,
+            }
+            if account_type == 'user':
+                record_kwargs['user'] = account
+            else:
+                record_kwargs['shop'] = account
+
+            record = DiagnosisRecord.objects.create(**record_kwargs)
 
             request.session['last_diagnosis_id'] = record.id
 
@@ -81,7 +97,8 @@ def ai_diagnosis(request):
 
     return render(request, 'ai_diagnosis/ai_diagnosis.html', {
         'form': form,
-        'user': user,
+        'account': account,
+        'account_type': account_type,
     })
 
 
@@ -94,11 +111,14 @@ def ai_diagnosis_result(request, record_id):
     Displays the diagnosis result with detailed findings,
     recommended actions, and differential diagnoses.
     """
-    user, error = _get_user(request)
+    account, account_type, error = _get_user(request)
     if error:
         return error
 
-    record = get_object_or_404(DiagnosisRecord, pk=record_id, user=user)
+    if account_type == 'user':
+        record = get_object_or_404(DiagnosisRecord, pk=record_id, user=account)
+    else:
+        record = get_object_or_404(DiagnosisRecord, pk=record_id, shop=account)
 
     confidence_pct = round(record.confidence_score * 100)
 
@@ -122,7 +142,8 @@ def ai_diagnosis_result(request, record_id):
 
     context = {
         'record': record,
-        'user': user,
+        'account': account,
+        'account_type': account_type,
         'confidence_pct': confidence_pct,
         'confidence_color': confidence_color,
         'confidence_label': confidence_label,
@@ -141,17 +162,21 @@ def ai_diagnosis_result(request, record_id):
 
 def ai_diagnosis_history(request):
     """
-    Shows the logged-in user's past diagnosis records.
+    Shows the logged-in user's or shop's past diagnosis records.
     """
-    user, error = _get_user(request)
+    account, account_type, error = _get_user(request)
     if error:
         return error
 
-    records = DiagnosisRecord.objects.filter(user=user).order_by('-created_at')[:50]
+    if account_type == 'user':
+        records = DiagnosisRecord.objects.filter(user=account).order_by('-created_at')[:50]
+    else:
+        records = DiagnosisRecord.objects.filter(shop=account).order_by('-created_at')[:50]
 
     return render(request, 'ai_diagnosis/ai_diagnosis_history.html', {
         'records': records,
-        'user': user,
+        'account': account,
+        'account_type': account_type,
         'total_records': records.count(),
     })
 
@@ -164,11 +189,14 @@ def ai_diagnosis_feedback(request, record_id):
     """
     Allows users to submit feedback on a diagnosis for continuous learning.
     """
-    user, error = _get_user(request)
+    account, account_type, error = _get_user(request)
     if error:
         return error
 
-    record = get_object_or_404(DiagnosisRecord, pk=record_id, user=user)
+    if account_type == 'user':
+        record = get_object_or_404(DiagnosisRecord, pk=record_id, user=account)
+    else:
+        record = get_object_or_404(DiagnosisRecord, pk=record_id, shop=account)
     existing_feedback = DiagnosisFeedback.objects.filter(diagnosis=record).first()
 
     if request.method == 'POST':
@@ -198,7 +226,8 @@ def ai_diagnosis_feedback(request, record_id):
         'form': form,
         'record': record,
         'existing_feedback': existing_feedback,
-        'user': user,
+        'account': account,
+        'account_type': account_type,
     })
 
 
@@ -210,7 +239,7 @@ def ai_health_tips(request):
     """
     General pet health tips organized by animal type.
     """
-    user, error = _get_user(request)
+    account, account_type, error = _get_user(request)
     if error:
         return error
 
@@ -233,5 +262,6 @@ def ai_health_tips(request):
     return render(request, 'ai_diagnosis/ai_health_tips.html', {
         'animal_types': animal_types,
         'tips_by_animal': tips_by_animal,
-        'user': user,
+        'account': account,
+        'account_type': account_type,
     })

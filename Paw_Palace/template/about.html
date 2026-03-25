@@ -1,288 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Paw Palace</title>
+<head>
+    {% load static %}
+    <title>About - Paw Palace</title>
     <meta charset="utf-8">
-	  {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{% static 'petsitting/css/animate.css' %}">
-    
     <link rel="stylesheet" href="{% static 'petsitting/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'petsitting/css/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'petsitting/css/magnific-popup.css' %}">
-
-
-    <link rel="stylesheet" href="{% static 'petsitting/css/bootstrap-datepicker.css' %}">
-    <link rel="stylesheet" href="{% static 'petsitting/css/jquery.timepicker.css' %}">
-
     <link rel="stylesheet" href="{% static 'petsitting/css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'petsitting/css/style.css' %}">
-  </head>
-  <body>
+    <link rel="stylesheet" href="/static/css/paw_main.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 50%, #0d1f3c 100%) !important;
+            min-height: 100vh;
+        }
+        h1, h2, h3, h4, h5, h6 { color: #fff; }
+        p, li, span { color: rgba(255,255,255,0.85); }
+        .paw-teal { color: #20c997; }
 
-    <div class="wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 d-flex align-items-center">
-						<p class="mb-0 phone pl-md-2">
-							<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +91 77368 81574</a>
-							<a href="#"><span class="fa fa-paper-plane mr-1"></span> akv2217@gmail.com</a>
-						</p>
-					</div>
-					<div class="col-md-6 d-flex justify-content-md-end">
-						<div class="social-media">
-			    		<p class="mb-0 d-flex">
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-			    		</p>
-		        </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	    	<a class="navbar-brand" href="../"><span class="flaticon-pawprint-1 mr-2"></span>Paw Palace</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="fa fa-bars"></span> Menu
-	      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item"><a href="../" class="nav-link">Home</a></li>
-	        	<li class="nav-item active"><a href="#" class="nav-link">About</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url(static/petsitting/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-end">
-          <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="../">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>About us <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-0 bread">About Us</h1>
-          </div>
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+        .animate-fadeInLeft { animation: fadeInLeft 0.8s ease forwards; }
+        .animate-fadeInRight { animation: fadeInRight 0.8s ease forwards; }
+        .animate-pulse { animation: pulse 2s infinite; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+
+        .top-bar {
+            background: linear-gradient(90deg, #051f30 0%, #0a1628 100%);
+            color: #fff;
+            padding: 10px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        .top-bar a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; }
+        .top-bar a:hover { color: #20c997; }
+
+        .paw-nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            box-shadow: none;
+            padding: 15px 0;
+        }
+        .paw-nav .nav-link { color: rgba(255,255,255,0.8); font-weight: 500; font-family: 'Poppins', sans-serif; padding: 10px 18px; border-radius: 10px; transition: all 0.3s ease; }
+        .paw-nav .nav-link:hover, .paw-nav .nav-link.active { color: #20c997; background: rgba(32, 201, 151, 0.1); }
+        .paw-nav .nav-link.paw-gold { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #fff; }
+        .paw-nav .nav-link.paw-gold:hover { background: linear-gradient(135deg, #d97706 0%, #b45309 100%); }
+        .paw-nav-brand { font-size: 28px; font-weight: 700; font-family: 'Poppins', sans-serif; color: #fff; }
+
+        .hero-wrap {
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+            position: relative;
+        }
+        .hero-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(5,31,48,0.9) 0%, rgba(10,22,40,0.85) 100%);
+        }
+
+        .section-title { font-family: 'Poppins', sans-serif; font-weight: 700; color: #fff; }
+        .section-subtitle { color: #20c997; font-family: 'Poppins', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; font-weight: 600; }
+
+        .premium-section { padding: 80px 0; background: rgba(255,255,255,0.02); }
+        .about-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .about-card.visible { opacity: 1; transform: translateY(0); }
+        .about-card:hover { transform: translateY(-10px); box-shadow: 0 25px 60px rgba(0,0,0,0.3); border-color: rgba(32,201,151,0.3); }
+
+        .about-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(32, 201, 151, 0.15);
+            border: 2px solid rgba(32, 201, 151, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+        }
+        .about-card:hover .about-icon { transform: scale(1.1) rotate(10deg); background: rgba(32, 201, 151, 0.25); }
+        .about-icon i { font-size: 32px; color: #20c997; }
+        .about-card h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 15px; }
+        .about-card p { color: rgba(255,255,255,0.7); line-height: 1.8; }
+
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        .img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(32,201,151,0.2), transparent);
+            transition: 0.5s;
+        }
+        .img-wrapper:hover::before { left: 100%; }
+        .img-fluid { border-radius: 16px; transition: transform 0.4s ease; }
+        .img-wrapper:hover .img-fluid { transform: scale(1.05); }
+
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        .stat-card.visible { opacity: 1; transform: scale(1); }
+        .stat-card:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .stat-card i { font-size: 40px; color: #20c997; margin-bottom: 15px; transition: all 0.4s ease; }
+        .stat-card:hover i { transform: scale(1.2); }
+        .stat-number { font-size: 48px; font-weight: 700; color: #fff; }
+        .stat-label { color: rgba(255,255,255,0.7); font-size: 16px; }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+        .testimonial-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-color: rgba(32,201,151,0.3); }
+
+        .quote-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(32, 201, 151, 0.15);
+            border: 1px solid rgba(32, 201, 151, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+        .testimonial-card:hover .quote-icon { transform: rotate(360deg) scale(1.1); }
+        .quote-icon i { font-size: 24px; color: #20c997; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6f42c1 0%, #5a3799 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 14px 28px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 8px 25px rgba(111, 66, 193, 0.3);
+            transition: all 0.3s ease;
+            color: #fff;
+        }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(111, 66, 193, 0.4); background: linear-gradient(135deg, #5a3799 0%, #4a2c82 100%); color: #fff; }
+
+        .footer {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 100%);
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        .footer a { color: rgba(255, 255, 255, 0.7); transition: all 0.3s ease; }
+        .footer a:hover { color: #20c997; }
+        .footer p, .footer li { color: rgba(255,255,255,0.7); }
+
+        @media (max-width: 768px) {
+            .stat-card { margin-bottom: 20px; }
+            .about-card { margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <a href="tel:+917736881574"><i class="fas fa-phone me-2"></i> +91 77368 81574</a>
+                    <a href="mailto:pawpalace@email.com" class="ms-4"><i class="fas fa-envelope me-2"></i> pawpalace@email.com</a>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="#"><i class="fab fa-facebook-f mx-2"></i></a>
+                    <a href="#"><i class="fab fa-twitter mx-2"></i></a>
+                    <a href="#"><i class="fab fa-instagram mx-2"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg paw-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand paw-nav-brand" href="/">Paw<span class="paw-teal">Palace</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pawNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/userreg">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopregister">Register as Shop</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-wrap" style="background-image: url(static/petsitting/images/bg_2.jpg);">
+        <div class="container">
+            <div class="row align-items-end pb-5">
+                <div class="col-md-9">
+                    <p class="breadcrumbs mb-2 animate-fadeInUp" style="color: rgba(255,255,255,0.6);">
+                        <span class="mr-2"><a href="/" style="color: rgba(255,255,255,0.6);">Home <i class="fas fa-arrow-right"></i></a></span>
+                        <span style="color: rgba(255,255,255,0.8);">About Us</span>
+                    </p>
+                    <h1 class="mb-0 animate-fadeInUp" style="color: #fff; animation-delay: 0.2s;">About Us</h1>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="w3l-index3" id="about">
-    <div class="midd-w3 py-5">
-      <div class="container py-lg-5 py-md-3">
-        <div class="row">
-          <div class="col-lg-6 mb-lg-0 mb-md-5 mb-4 align-self pr-lg-5">
-            <div class="title-content text-left">
-              <h6 class="title-subhny mb-2"><span>Is Your Pet is Healthy?</span></h6>
-              <h3 class="title-w3l">Here is your Medicine..</h3>
-            </div>
-            <p class="mt-md-4 mt-3">"In the realm of pet care, vigilance is key. Administering your pets' medicine with care and precision
-                is a testament to your commitment to their health. Always consult with your veterinarian for the
-                right dosage and frequency, ensuring a happy and healthy life for your beloved companions."</p>
-          </div>
-          <div class="col-lg-6 mt-lg-0 mt-4">
-            <div class="position-relative">
-              <img src="{% static 'petspial/images/b3.jpg' %}" alt="" class="radius-image img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-6 mt-5 pt-lg-4">
-            <div class="position-relative">
-              <img src="{% static 'petspial/images/ParrotPlaying.jpg' %}" alt="" class="radius-image img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-6 mt-5 align-self pl-lg-5 pt-lg-4">
-            <div class="title-content text-left">
-              <h6 class="title-subhny mb-2"><span>Pet care</span></h6>
-              <h3 class="title-w3l">Reliable & Affordable in home pet Products.</h3>
-            </div>
-
-            <p class="mt-md-4 mt-3">"Providing reliable and affordable in-home pet products is not just a
-                service; it's a commitment to enhancing the well-being of your furry family members. Our
-                carefully curated selection ensures quality, convenience, and joy for both pets and their
-                owners. Welcome to a world where reliability meets affordability in the realm of pet care."</p>
-          </div>
-          <div class="col-lg-6 mt-5 align-self pl-lg-5 pt-lg-4">
-            <div class="title-content text-left">
-              <h6 class="title-subhny mb-2"><span>How Was Your Business?</span></h6>
-              <h3 class="title-w3l">Make Profit with Paw Palace.</h3>
-            </div>
-
-            <p class="mt-md-4 mt-3">"Paw Palace employs a comprehensive strategy to drive
-                profitability and customer satisfaction. The business stands out by offering
-                a diverse range of pet products and exclusive services, attracting a broad
-                customer base. Loyalty is fostered through membership programs, while a strong
-                online presence and digital marketing enhance accessibility."</p>
-          </div>
-            <div class="col-lg-6 mt-5 pt-lg-4">
-            <div class="position-relative">
-              <img src="{% static 'petspial/images/products.jpeg' %}" alt="" class="radius-image img-fluid">
-            </div>
-          </div>
-            <div class="col-lg-6 left-wthree-img">
-            <div class="position-relative">
-              <img src="{% static 'petspial/images/b11.jpg' %}" alt="" class="radius-image img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-6 mt-lg-0 mt-5 pl-lg-5 align-self">
-            <div class="title-content text-left">
-              <h6 class="title-subhny mb-2"><span>Why Choose Us</span></h6>
-              <h3 class="title-w3l">Why PawPalace?</h3>
-            </div>
-            <p class="mt-4">At Paw Palace, we take pride in being more than just a pet supply store.
-              We understand that your pets are not just animals; they are cherished members of your family.
-              Here's why you should choose Paw Palace for all your pet needs:
-            </p>
-            <ul class="w3l-right-book mt-4">
-              <li><span class="fa fa-check" aria-hidden="true"></span>Premium Quality Products</li>
-              <li><span class="fa fa-check" aria-hidden="true"></span>Expert Guidance</li>
-              <li><span class="fa fa-check" aria-hidden="true"></span>Health and Wellness Focus</li>
-              <li><span class="fa fa-check" aria-hidden="true"></span>User-Friendly Platform</li>
-              <li><span class="fa fa-check" aria-hidden="true"></span>Community and Support</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-    <section class="ftco-counter" id="section-counter">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                    <div class="text">
-                        <strong class="number" data-number="{{ data_count }}">0</strong>
-                    </div>
-                    <div class="text">
-                        <span>Customer</span>
+    <section class="premium-section">
+        <div class="container">
+            <div class="row align-items-center g-5 mb-5">
+                <div class="col-lg-6 animate-fadeInLeft">
+                    <span class="section-subtitle">Is Your Pet Healthy?</span>
+                    <h2 class="section-title mt-2 mb-4">Here is your Medicine..</h2>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px;">In the realm of pet care, vigilance is key. Administering your pets' medicine with care and precision is a testament to your commitment to their health. Always consult with your veterinarian for the right dosage and frequency, ensuring a happy and healthy life for your beloved companions.</p>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 25px;">Our platform connects you with trusted veterinarians and provides AI-powered health diagnostics to help identify potential issues early. We believe every pet deserves the best care possible.</p>
+                    <a href="/" class="btn btn-primary">Back to Home <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+                <div class="col-lg-6 animate-fadeInRight">
+                    <div class="img-wrapper">
+                        <img src="{% static 'petspial/images/b3.jpg' %}" alt="" class="img-fluid rounded-4 shadow-lg w-100">
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                    <div class="text">
-                        <strong class="number" data-number="{{ data_count2 }}">0</strong>
-                    </div>
-                    <div class="text">
-                        <span>Petshops</span>
+
+            <div class="row align-items-center g-5 mb-5">
+                <div class="col-lg-6 order-lg-2 animate-fadeInRight">
+                    <span class="section-subtitle">Pet Care</span>
+                    <h2 class="section-title mt-2 mb-4">Reliable & Affordable in Home Pet Products</h2>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px;">Providing reliable and affordable in-home pet products is not just a service; it's a commitment to enhancing the well-being of your furry family members.</p>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 25px;">Our carefully curated selection ensures quality, convenience, and joy for both pets and their owners. From premium food to innovative toys, we have everything your pet needs.</p>
+                </div>
+                <div class="col-lg-6 order-lg-1 animate-fadeInLeft">
+                    <div class="img-wrapper">
+                        <img src="{% static 'petspial/images/ParrotPlaying.jpg' %}" alt="" class="img-fluid rounded-4 shadow-lg w-100">
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                <div class="block-18 text-center">
-                    <div class="text">
-                        <strong class="number" data-number="{{ data_count3 }}">0</strong>
-                    </div>
-                    <div class="text">
-                        <span>Products</span>
+
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 animate-fadeInLeft">
+                    <span class="section-subtitle">For Business</span>
+                    <h2 class="section-title mt-2 mb-4">Make Profit with Paw Palace</h2>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 20px;">Paw Palace employs a comprehensive strategy to drive profitability and customer satisfaction. The business stands out by offering a diverse range of pet products and exclusive services.</p>
+                    <p style="color: rgba(255,255,255,0.7);">Join our network of pet shops and reach thousands of potential customers. Our platform provides the tools you need to grow your business and serve pet lovers everywhere.</p>
+                </div>
+                <div class="col-lg-6 animate-fadeInRight">
+                    <div class="img-wrapper">
+                        <img src="{% static 'petspial/images/products.jpeg' %}" alt="" class="img-fluid rounded-4 shadow-lg w-100">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-
-    <section class="ftco-section testimony-section" style="background-image: url(static/petsitting/images/bg_2.jpg);">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row justify-content-center pb-5 mb-3">
-            <div class="col-md-7 heading-section text-center ftco-animate">
-                <h2>Happy Clients &amp; Feedbacks</h2>
+    <section class="py-5" style="background: rgba(255,255,255,0.03);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="animate-fadeInUp" style="color: #fff; margin-bottom: 10px;">Our Achievements</h2>
+                <p class="animate-fadeInUp" style="color: rgba(255,255,255,0.7); animation-delay: 0.2s;">Trusted by thousands of pet lovers worldwide</p>
+            </div>
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="stat-card" data-delay="0">
+                        <i class="fas fa-users"></i>
+                        <h3 class="stat-number">{{ data_count|default:"0" }}</h3>
+                        <p class="stat-label">Happy Customers</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card" data-delay="200">
+                        <i class="fas fa-store"></i>
+                        <h3 class="stat-number">{{ data_count2|default:"0" }}</h3>
+                        <p class="stat-label">Pet Shops</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card" data-delay="400">
+                        <i class="fas fa-box"></i>
+                        <h3 class="stat-number">{{ data_count3|default:"0" }}</h3>
+                        <p class="stat-label">Products</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row ftco-animate">
-            <div class="col-md-4">
-                    {% for i in data %}
-                    <div class="testimony-wrap py-4">
-                        <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-quote-left"></span></div>
-                        <div class="text">
-                            <p class="mb-4">{{i.review}}</p>
-                            <div class="d-flex align-items-center">
-                                <div class="user-img"></div>
-                                <div class="pl-3">
-                                    <p class="name">{{i.user.name}}</p>
-                                    <span class="position">{{i.user.username}}</span>
+    </section>
+
+    <section class="premium-section" style="background: rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle animate-fadeInUp">Testimonials</span>
+                <h2 class="section-title animate-fadeInUp" style="animation-delay: 0.2s;">Happy Clients & Feedbacks</h2>
+            </div>
+            <div class="row g-4">
+                {% if data %}
+                <div class="col-md-4">
+                    <div class="testimonial-card" data-delay="0">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                <div class="quote-icon">
+                                    <i class="fas fa-quote-left paw-teal"></i>
                                 </div>
                             </div>
+                            <div class="ms-3">
+                                <h5 class="mb-0">{{ data.user.name|upper }}</h5>
+                            </div>
                         </div>
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 0;">{{ data.review }}</p>
                     </div>
-                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section class="premium-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle animate-fadeInUp">Our Values</span>
+                <h2 class="section-title animate-fadeInUp" style="animation-delay: 0.2s;">What Makes Us Special</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="about-card" data-delay="0">
+                        <div class="about-icon"><i class="fas fa-heart"></i></div>
+                        <h3>Compassion</h3>
+                        <p>We treat every pet as if they were our own, with love and dedication they deserve.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="about-card" data-delay="200">
+                        <div class="about-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Trust</h3>
+                        <p>Building lasting relationships with our community through transparency and reliability.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="about-card" data-delay="400">
+                        <div class="about-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Innovation</h3>
+                        <p>Leveraging technology like AI to provide cutting-edge solutions for pet care.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="about-card" data-delay="600">
+                        <div class="about-icon"><i class="fas fa-hands-helping"></i></div>
+                        <h3>Support</h3>
+                        <p>24/7 assistance for all your pet-related queries and concerns.</p>
+                    </div>
                 </div>
             </div>
         </div>
-</section>
-
+    </section>
 
     <footer class="footer">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">PawPalace</h2>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                <ul class="ftco-footer-social p-0">
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">Quick Links</h2>
-                <ul class="list-unstyled">
-                    <li><a href="../" class="py-2 d-block">Home</a></li>
-                    <li><a href="#" class="py-2 d-block">About</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">Have a Questions?</h2>
-                <div class="block-23 mb-3">
-                    <ul>
-                        <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                        <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                        <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h2 class="mb-4">Paw<span class="paw-teal">Palace</span></h2>
+                    <p class="mb-4" style="color: rgba(255,255,255,0.7);">I don't see a price tag.<br>
+                    I don't see a status symbol.<br>
+                    I don't see a pet.<br>
+                    <span style="color: #20c997;">I see a being.</span><br>
+                    <span style="color: #20c997;">I see a friend.</span><br>
+                    <span style="color: #20c997;">I see a soul.</span></p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light rounded-circle" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/"><i class="fas fa-chevron-right me-2" style="color:#20c997;font-size:12px;"></i>Home</a></li>
+                        <li class="mb-2"><a href="/about"><i class="fas fa-chevron-right me-2" style="color:#20c997;font-size:12px;"></i>About</a></li>
+                        <li class="mb-2"><a href="/userreg"><i class="fas fa-chevron-right me-2" style="color:#20c997;font-size:12px;"></i>Register</a></li>
+                        <li><a href="/shopregister"><i class="fas fa-chevron-right me-2" style="color:#20c997;font-size:12px;"></i>Register as Shop</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-3" style="color:#20c997;"></i>203 Fake St. Mountain View</li>
+                        <li class="mb-3"><i class="fas fa-phone me-3" style="color:#20c997;"></i>+91 7736881574</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-3" style="color:#20c997;"></i>pawpalace@email.com</li>
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-12 text-center">
-
+            <hr class="my-4" style="opacity: 0.2;">
+            <div class="text-center">
+                <p class="mb-0" style="color: rgba(255,255,255,0.6);">&copy; 2024 Paw Palace. All rights reserved.</p>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-    
-  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'petsitting/js/jquery.min.js' %}"></script>
+    <script src="{% static 'petsitting/js/main.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            var observerOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var delay = $(entry.target).data('delay') || 0;
+                        setTimeout(function() {
+                            $(entry.target).addClass('visible');
+                        }, delay);
+                    }
+                });
+            }, observerOptions);
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-  <script src="{% static 'petsitting/js/jquery.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery-migrate-3.0.1.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/popper.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.easing.1.3.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.waypoints.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.stellar.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.animateNumber.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/bootstrap-datepicker.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.timepicker.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/owl.carousel.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.magnific-popup.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/scrollax.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/main.js' %}"></script>
-
-    
-  </body>
+            $('.about-card, .stat-card, .testimonial-card').each(function() {
+                observer.observe(this);
+            });
+        });
+    </script>
+</body>
 </html>

@@ -1,532 +1,624 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
-<!doctype html>
-<html lang="zxx">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Paw Palace-shopregister</title>
-  <link href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Template CSS -->
-{% load static %}
-    <link rel="icon" type="image/png" sizes="32x32" href="{%static 'petsitting/images/paw-01.png' %}">
-  <link rel="stylesheet" href="{% static 'petspial/css/style-starter.css'%}">
-  <style>
-    .fixed-form {
-    position:absolute;
-    width:500px;
-    top: 50%; /* Adjust the top position as needed */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    z-index: 2; /* Ensure the form is above the slider content */
-}
-    #log{
-    display:none;
-    position:absolute;
-    width:500px;
-    top: 50%; /* Adjust the top position as needed */
-    left: 50%;
-    transform: translate(-130%, -40%);
-    padding: 20px;
-    z-index: 2; /* Ensure the form is above the slider content */
-}
-  </style>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script>
-        $(document).ready(function(){
-        $(".loged").click(function(){
-        $("#reg").hide();
-        $("#log").show();
-        $("#r1").parent().removeClass("active");
-        $(".loged").parent().addClass("active");
-      });
-    });
-    </script>
-  <style>
-    footer {
-        background-color: #f8f9fa;
-    }
+    {% load static %}
+    <title>Shop Register - Paw Palace</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'petsitting/images/paw-01.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'petsitting/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'petsitting/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'petsitting/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'petsitting/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'petsitting/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'petsitting/css/style.css' %}">
+    <link rel="stylesheet" href="/static/css/paw_main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 50%, #0d1f3c 100%) !important;
+            min-height: 100vh;
+        }
+        h1, h2, h3, h4, h5, h6 { color: #fff; }
+        p, li, span { color: rgba(255,255,255,0.85); }
+        .paw-teal { color: #20c997; }
 
-    .footer-logo a {
-        font-size: 24px;
-        font-weight: bold;
-        color: #333;
-        text-decoration: none;
-    }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+        @keyframes gradientFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-    .footer-logo a .sublog {
-        font-weight: normal;
-    }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+        .animate-fadeInScale { animation: fadeInScale 0.6s ease forwards; }
+        .animate-pulse { animation: pulse 2s infinite; }
 
-    .footer-top-29 {
-        padding: 30px 0;
-    }
+        .paw-nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            box-shadow: none;
+            padding: 15px 0;
+        }
+        .paw-nav .nav-link { color: rgba(255,255,255,0.8); font-weight: 500; font-family: 'Poppins', sans-serif; padding: 10px 18px; border-radius: 10px; transition: all 0.3s ease; }
+        .paw-nav .nav-link:hover, .paw-nav .nav-link.active { color: #20c997; background: rgba(32, 201, 151, 0.1); }
+        .paw-nav .nav-link.paw-gold { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #fff; }
+        .paw-nav .nav-link.paw-gold:hover { background: linear-gradient(135deg, #d97706 0%, #b45309 100%); }
+        .paw-nav-brand { font-size: 28px; font-weight: 700; font-family: 'Poppins', sans-serif; color: #fff; }
 
-    .footer-top-29 p {
-        color: #666;
-    }
+        .hero-wrap {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 50%, #0d1f3c 100%);
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 60px 0;
+        }
+        .hero-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("{% static 'petsitting/images/bg_1.jpg' %}") center/cover;
+            opacity: 0.05;
+        }
 
-    .main-social-footer-29 a {
-        font-size: 18px;
-        color: #333;
-        margin-right: 15px;
-    }
+        .register-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 600px;
+            padding: 45px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            animation: fadeInScale 0.6s ease;
+        }
+        .register-container:hover { box-shadow: 0 30px 70px rgba(0,0,0,0.3); }
 
-    .main-social-footer-29 a:hover {
-        color: #007bff;
-    }
+        .register-title { text-align: center; margin-bottom: 30px; }
+        .register-title h2 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+        .register-title p { color: rgba(255,255,255,0.7); font-size: 14px; }
+        .register-title i { animation: pulse 2s infinite; }
 
-    .footer-heading {
-        font-size: 20px;
-        color: #333;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
+        .form-control {
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #fff;
+            font-size: 15px;
+            margin-bottom: 18px;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            background: rgba(255,255,255,0.1);
+            border-color: #20c997;
+            box-shadow: 0 0 0 4px rgba(32, 201, 151, 0.15);
+            outline: none;
+            color: #fff;
+        }
+        .form-control::placeholder { color: rgba(255,255,255,0.4); }
+        .form-control.is-invalid { border-color: #dc3545; animation: shake 0.5s ease; }
 
-    .list-unstyled li a {
-        color: #666;
-        display: block;
-        padding: 8px 0;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
+        textarea.form-control { min-height: 100px; resize: vertical; }
 
-    .list-unstyled li a:hover {
-        color: #007bff;
-    }
+        .form-label { color: rgba(255,255,255,0.8); font-weight: 500; margin-bottom: 8px; display: block; }
 
-    .block-23 {
-        margin-top: 30px;
-    }
+        .input-icon { position: relative; }
+        .input-icon i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #20c997; transition: all 0.3s ease; z-index: 1; }
+        .form-control:focus ~ i { transform: translateY(-50%) scale(1.1); }
+        .input-icon .form-control { padding-left: 48px; }
+        textarea.form-control ~ i { top: 20px; transform: none; }
 
-    .block-23 li {
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-    }
+        .btn-primary {
+            background: linear-gradient(135deg, #6f42c1 0%, #5a3799 100%);
+            background-size: 200% 200%;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 28px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            box-shadow: 0 8px 25px rgba(111, 66, 193, 0.3);
+            transition: all 0.3s ease;
+            color: #fff;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(111, 66, 193, 0.4);
+            background: linear-gradient(135deg, #5a3799 0%, #4a2c82 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 2s ease infinite;
+            color: #fff;
+        }
+        .btn-primary:active { transform: translateY(-1px); }
 
-    .block-23 li .icon {
-        margin-right: 10px;
-        color: #333;
-    }
+        .benefits-section { padding: 80px 0; background: rgba(255,255,255,0.02); }
+        .benefit-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .benefit-card.visible { opacity: 1; transform: translateY(0); }
+        .benefit-card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(32,201,151,0.5); box-shadow: 0 25px 60px rgba(0,0,0,0.4); }
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(32, 201, 151, 0.15);
+            border: 2px solid rgba(32, 201, 151, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.4s ease;
+        }
+        .benefit-card:hover .benefit-icon { transform: rotate(360deg) scale(1.1); background: rgba(32, 201, 151, 0.25); }
+        .benefit-icon i { font-size: 32px; color: #20c997; }
+        .benefit-card h4 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+        .benefit-card p { font-size: 14px; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.6; }
 
-    .block-23 li .text {
-        color: #666;
-    }
-</style>
+        .stats-section { padding: 60px 0; background: rgba(255,255,255,0.03); }
+        .stat-box {
+            text-align: center;
+            padding: 30px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .stat-box.visible { opacity: 1; transform: translateY(0); }
+        .stat-box:hover { transform: scale(1.05); }
+        .stat-box i { font-size: 40px; color: #20c997; margin-bottom: 15px; }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: #fff; margin-bottom: 5px; }
+        .stat-text { color: rgba(255,255,255,0.7); font-size: 14px; }
+
+        .process-section { padding: 80px 0; background: rgba(255,255,255,0.02); }
+        .process-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .process-card.visible { opacity: 1; transform: translateY(0); }
+        .process-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #20c997, #1aab82);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 auto 20px;
+        }
+        .process-card h4 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+        .process-card p { font-size: 14px; color: rgba(255,255,255,0.7); margin: 0; }
+
+        .footer {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 100%);
+            color: #fff;
+            padding: 60px 0 30px;
+        }
+        .footer a { color: rgba(255, 255, 255, 0.7); transition: all 0.3s ease; }
+        .footer a:hover { color: #20c997; }
+        .footer p, .footer li { color: rgba(255,255,255,0.7); }
+
+        .alert {
+            background: rgba(32, 201, 151, 0.15);
+            border: 1px solid rgba(32, 201, 151, 0.3);
+            border-radius: 12px;
+            color: #fff;
+        }
+        .btn-close { filter: invert(1); }
+
+        @media (max-width: 768px) {
+            .register-container { padding: 30px 20px; }
+            .benefit-card, .stat-box, .process-card { margin-bottom: 20px; }
+        }
+    </style>
 </head>
 <body>
-  <header id="site-header" class="fixed-top">
-    <section class="w3l-header-4">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <h1> <a class="navbar-brand" href="../">
-              Paw<span class="sublog">Palace.</span>
-            </a></h1>
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="fa icon-expand fa-bars"></span>
-            <span class="fa icon-close fa-times"></span>
-          </button>
+    <nav class="navbar navbar-expand-lg paw-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand paw-nav-brand" href="/">Paw<span class="paw-teal">Palace</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pawNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/userreg">Register</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/shopregister">Register as Shop</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="../">Home </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about">About</a>
-              </li>
-              <li class="nav-item dropdown active">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Register<span class="fa fa-angle-down"></span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item active" href="#">Shop</a>
-                  <a class="dropdown-item" href="userreg">User</a>
+    <section class="hero-wrap">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="register-container">
+                        <div class="register-title">
+                            <i class="fas fa-store fa-3x paw-teal mb-3"></i>
+                            <h2>Register Your Pet Shop</h2>
+                            <p>Start selling your pet products today</p>
+                        </div>
+
+                        {% if messages %}
+                        <div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
+                        {% endif %}
+
+                        <form action="" method="post" onsubmit="return validateForm()">
+                            {% csrf_token %}
+
+                            <div class="mb-3">
+                                <label class="form-label">Shop Name</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-store"></i>
+                                    <input type="text" class="form-control" name="pts1" placeholder="Enter your shop name" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Owner Name</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" class="form-control" name="pts2" placeholder="Enter owner's name" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Shop Address</label>
+                                <div class="input-icon">
+                                    <i class="fas fa-map-marker-alt" style="top: 20px; transform: none;"></i>
+                                    <textarea class="form-control" name="pts3" placeholder="Enter shop address" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-phone"></i>
+                                        <input type="tel" class="form-control" name="pts4" placeholder="Enter 10-digit phone" id="phone" maxlength="10" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" class="form-control" name="pts5" placeholder="Enter email address" id="email" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="username" class="form-label">Username</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-at"></i>
+                                        <input type="text" class="form-control" name="pts6" placeholder="Choose a username" id="username" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" class="form-control" name="pts7" placeholder="Create password (min 8)" id="password" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mt-3">
+                                <i class="fas fa-store me-2"></i> Register Shop
+                            </button>
+
+                            <div class="text-center mt-4">
+                                <p style="color: rgba(255,255,255,0.6);">
+                                    Already have an account? <a href="/" style="color: #20c997; font-weight: 600;">Login here</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link loged" href="#">Log in</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav search-right mt-lg-0 mt-2">
-              <li class="nav-item mx-xl-4"><a href="tel:+(91)7736881574"
-                  class="btn btn-primary btn-white d-none d-lg-block btn-style mr-2 phone-btn"><span class="fa fa-phone mr-xl-3"
-                    aria-hidden="true"></span> +91 7736881574</a></li>
-            </ul>
-
-            <!-- //toggle switch for light and dark theme -->
-          </div>
-          <!-- toggle switch for light and dark theme -->
-          <div class="mobile-position">
-            <nav class="navigation">
-              <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                  <input type="checkbox" id="checkbox">
-                  <div class="mode-container">
-                    <i class="gg-sun"></i>
-                    <i class="gg-moon"></i>
-                  </div>
-                </label>
-              </div>
-            </nav>
-          </div>
-        </nav>
-      </div>
+            </div>
+        </div>
     </section>
-  </header>
-  <!--//header-->
-  <!-- main-slider -->
-  <section class="w3l-main-slider banner-slider" id="home">
-    <div class="owl-one owl-carousel owl-theme">
-      <div class="item">
-        <div class="slider-info banner-view banner-top1">
-          <div class="container">
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="slider-info banner-view banner-top2">
-          <div class="container">
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="slider-info banner-view banner-top3">
-          <div class="container">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-
-  <form id="reg" class="fixed-form" action="" method="post" onsubmit="re turn validateForm()" style="text-align:center;margin-top:100px;">
-    {% csrf_token %}
-    <input type="text" class="form-control" name="pts1" placeholder="Pet Shop's Name" required><br>
-    <input type="text" class="form-control" name="pts2" placeholder="Owner's Name" required><br>
-    <textarea class="form-control" name="pts3" placeholder="Address" required></textarea><br>
-    <input type="text" class="form-control" name="pts4" placeholder="Phone" id="phone" maxlength="10" required><br>
-    <input type="text" class="form-control" name="pts5" placeholder="Email" id="email" required><br>
-    <input type="text" class="form-control" name="pts6" placeholder="Username" id="username" required><br>
-    <input type="password" class="form-control" name="pts7" placeholder="Password" id="password" required><br>
-    <input type="submit" value="Register" class="btn btn-primary py-3 px-4">
-</form>
-
-<script>
-    function validateForm() {
-        // Phone number validation
-        var phoneRegex = /^\d{10}$/;
-        var phoneInput = document.getElementById('phone').value;
-        if (!phoneRegex.test(phoneInput)) {
-            alert('Please enter a valid 10-digit phone number');
-            return false;
-        }
-
-        // Email validation
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        var emailInput = document.getElementById('email').value;
-        if (!emailRegex.test(emailInput)) {
-            alert('Please enter a valid email address');
-            return false;
-        }
-
-        // Username validation
-        var usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
-        var usernameInput = document.getElementById('username').value;
-        if (!usernameRegex.test(usernameInput)) {
-            alert('Username must be 3-20 characters and can only contain letters, numbers, and underscores');
-            return false;
-        }
-
-        // Password validation
-
-        var passwordInput = document.getElementById('password').value;
-        if (passwordInput.length < 8) {
-            alert('Password must be at least 8 characters');
-            return false;
-        }
-
-        // Additional validations can be added as needed
-
-        // If all validations pass, return true to submit the form
-        return true;
-    }
-</script>
-  <form id="log" action="log" method="post" style="text-align:center;margin-top:70px;margin-left:400px;color:#00bd56;">
-    {% csrf_token %}
-  <input type="text" class="form-control border-0" style="height:55px;" name="un" placeholder="username" required><br>
-  <input type="password" class="form-control border-0" style="height:55px;" name="ps" placeholder="password" required><br>
-  <input type="submit" value="Log in" class="btn btn-primary py-3 px-4">
-</form>
-  {% if messages %}
-<div class="alert alert-info alert-dismissible">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    {% for message in messages %}
-    <p {% if message.tags %} class="{{ message.tags }}" {% endif %}><b>{{ message }}</b></p>
-    {% endfor %}
-</div>
-{% endif %}
-
-  <section class="w3l-index2" id="about1">
-    <div class="midd-w3 py-5">
-      <div class="container py-lg-5 py-md-4 py-2">
-        <div class="row">
-          <div class="col-lg-6 mt-5 pt-lg-4">
-            <div class="position-relative">
-              <img src="{% static 'petspial/images/ParrotPlaying.jpg' %}" alt="" class="radius-image img-fluid">
+    <section class="benefits-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 style="color: #fff; margin-bottom: 10px;" class="animate-fadeInUp">Why Sell on Paw Palace?</h2>
+                <p style="color: rgba(255,255,255,0.7);" class="animate-fadeInUp" style="animation-delay: 0.2s;">Grow your pet business with our powerful platform</p>
             </div>
-          </div>
-          <div class="col-lg-6 mt-5 align-self pl-lg-5 pt-lg-4">
-            <div class="title-content text-left">
-              <h6 class="title-subhny mb-2"><span>How Was Your Business?</span></h6>
-              <h3 class="title-w3l">Make Profit with Paw Palace.</h3>
-            </div>
-
-            <p class="mt-md-4 mt-3">"Paw Palace employs a comprehensive strategy to drive
-                profitability and customer satisfaction. The business stands out by offering
-                a diverse range of pet products and exclusive services, attracting a broad
-                customer base. Loyalty is fostered through membership programs, while a strong
-                online presence and digital marketing enhance accessibility."</p>
-            <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="about"> Read More</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <footer class="w3l-footer-29-main">
-    <div class="footer-29-w3l py-5">
-        <div class="container py-lg-4">
-            <div class="row footer-top-29 justify-content-center">
-                <div class="col-lg-4 col-md-6  footer-list-29 footer-1 pr-lg-5">
-                    <div class="footer-logo mb-3">
-                        <a class="footer-brand-logo" href="../">Paw<span class="sublog">Palace</span></a>
-                    </div>
-                    <p>When I look into a bird's eyes<br>
-                        ■ I don't see a price tag.<br>
-
-■ I don't see a status symbol<br>
-
-■ I don't see a pet.<br>
-
-♡ I see a being.<br>
-
-♡ I see a friend.<br>
-
-♡ I see a soul.</p>
-                    <div class="main-social-footer-29 mt-4">
-                        <a href="#" class="facebook"><span class="fa fa-facebook"></span></a>
-                        <a href="#" class="twitter"><span class="fa fa-twitter"></span></a>
-                        <a href="#" class="instagram"><span class="fa fa-instagram"></span></a>
-                        <a href="#" class="linkedin"><span class="fa fa-linkedin"></span></a>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="benefit-card" data-delay="0">
+                        <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                        <h4>Wide Customer Base</h4>
+                        <p>Access thousands of pet lovers looking for quality products and services.</p>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="benefit-card" data-delay="200">
+                        <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                        <h4>Easy Management</h4>
+                        <p>Simple dashboard to manage products, orders, inventory, and analytics.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card" data-delay="400">
+                        <div class="benefit-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <h4>Secure Payments</h4>
+                        <p>Integrated payment gateway for safe and quick transactions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card" data-delay="600">
+                        <div class="benefit-icon"><i class="fas fa-ad"></i></div>
+                        <h4>Marketing Tools</h4>
+                        <p>Promote your products with built-in marketing and promotional features.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card" data-delay="800">
+                        <div class="benefit-icon"><i class="fas fa-headset"></i></div>
+                        <h4>Dedicated Support</h4>
+                        <p>24/7 seller support to help you grow your business.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card" data-delay="1000">
+                        <div class="benefit-icon"><i class="fas fa-chart-bar"></i></div>
+                        <h4>Sales Analytics</h4>
+                        <p>Track your performance with detailed insights and reports.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                    <h2 class="footer-heading" style="color:green">Quick Links</h2>
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-box" data-delay="0">
+                        <i class="fas fa-store"></i>
+                        <div class="stat-number">{{ data_count2|default:"0" }}</div>
+                        <div class="stat-text">Pet Shops</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box" data-delay="200">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-number">{{ data_count|default:"0" }}</div>
+                        <div class="stat-text">Happy Customers</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box" data-delay="400">
+                        <i class="fas fa-box"></i>
+                        <div class="stat-number">{{ data_count3|default:"0" }}</div>
+                        <div class="stat-text">Products Listed</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box" data-delay="600">
+                        <i class="fas fa-star"></i>
+                        <div class="stat-number">4.8</div>
+                        <div class="stat-text">Average Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 style="color: #fff; margin-bottom: 10px;" class="animate-fadeInUp">How It Works</h2>
+                <p style="color: rgba(255,255,255,0.7);" class="animate-fadeInUp" style="animation-delay: 0.2s;">Get started in just 4 simple steps</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="process-card" data-delay="0">
+                        <div class="process-number">1</div>
+                        <h4>Register</h4>
+                        <p>Fill out the registration form with your shop details.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-card" data-delay="200">
+                        <div class="process-number">2</div>
+                        <h4>Verify</h4>
+                        <p>Complete verification to activate your seller account.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-card" data-delay="400">
+                        <div class="process-number">3</div>
+                        <h4>Add Products</h4>
+                        <p>List your products with descriptions and pricing.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="process-card" data-delay="600">
+                        <div class="process-number">4</div>
+                        <h4>Start Selling</h4>
+                        <p>Begin receiving orders and grow your business!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h2 class="mb-4">Paw<span class="paw-teal">Palace</span></h2>
+                    <p class="mb-4" style="color: rgba(255,255,255,0.7);">I don't see a price tag.<br>
+                    I don't see a status symbol.<br>
+                    I don't see a pet.<br>
+                    <span style="color: #20c997;">I see a being.</span><br>
+                    <span style="color: #20c997;">I see a friend.</span><br>
+                    <span style="color: #20c997;">I see a soul.</span></p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light rounded-circle" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Quick Links</h3>
                     <ul class="list-unstyled">
-                        <li><a href="../" class="py-2 d-block">Home</a></li>
-                        <li><a href="about" class="py-2 d-block">About</a></li>
-                        <li><a href="#" class="py-2 d-block loged">Login</a></li>
+                        <li class="mb-2"><a href="/"><i class="fas fa-chevron-right me-2" style="color:#20c997;font-size:12px;"></i>Home</a></li>
+                        <li class="mb-2"><a href="/about"><i class="fas fa-chevron-right me-2" style="color:#20c997;font-size:12px;"></i>About</a></li>
+                        <li class="mb-2"><a href="/userreg"><i class="fas fa-chevron-right me-2" style="color:#20c997;font-size:12px;"></i>Register</a></li>
+                        <li><a href="/shopregister"><i class="fas fa-chevron-right me-2" style="color:#20c997;font-size:12px;"></i>Register as Shop</a></li>
                     </ul>
                 </div>
-
-                <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                    <h2 class="footer-heading" style="color:green">Have a Questions?</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                            <li><a href="tel:+(91)7736881574"><span class="icon fa fa-phone"></span><span class="text">+91 7736881574</span></a></li>
-                            <li><a href="mailto:pawpalace@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">pawpalace@gmail.com</span></a></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-3" style="color:#20c997;"></i>203 Fake St. Mountain View</li>
+                        <li class="mb-3"><i class="fas fa-phone me-3" style="color:#20c997;"></i>+91 7736881574</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-3" style="color:#20c997;"></i>pawpalace@email.com</li>
+                    </ul>
                 </div>
             </div>
+            <hr class="my-4" style="opacity: 0.2;">
+            <div class="text-center">
+                <p class="mb-0" style="color: rgba(255,255,255,0.6);">&copy; 2024 Paw Palace. All rights reserved.</p>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-  <!-- move top -->
-    <button onclick="topFunction()" id="movetop" title="Go to top">
-        &#10548;
-    </button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'petsitting/js/jquery.min.js' %}"></script>
+    <script src="{% static 'petsitting/js/main.js' %}"></script>
     <script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function () {
-            scrollFunction()
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("movetop").style.display = "block";
-            } else {
-                document.getElementById("movetop").style.display = "none";
+        function validateForm() {
+            var phoneRegex = /^\d{10}$/;
+            var phoneInput = document.getElementById('phone').value;
+            if (!phoneRegex.test(phoneInput)) {
+                alert('Please enter a valid 10-digit phone number');
+                return false;
             }
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var emailInput = document.getElementById('email').value;
+            if (!emailRegex.test(emailInput)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            var usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+            var usernameInput = document.getElementById('username').value;
+            if (!usernameRegex.test(usernameInput)) {
+                alert('Username must be 3-20 characters and can only contain letters, numbers, and underscores');
+                return false;
+            }
+
+            var passwordInput = document.getElementById('password').value;
+            if (passwordInput.length < 8) {
+                alert('Password must be at least 8 characters');
+                return false;
+            }
+
+            return true;
         }
 
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
+        $(document).ready(function() {
+            var observerOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var delay = $(entry.target).data('delay') || 0;
+                        setTimeout(function() {
+                            $(entry.target).addClass('visible');
+                        }, delay);
+                    }
+                });
+            }, observerOptions);
+
+            $('.benefit-card, .stat-box, .process-card').each(function() {
+                observer.observe(this);
+            });
+
+            // Auto-display Django messages as toasts
+{% if messages %}
+{% for message in messages %}
+showPawToast('{{ message }}', '{% if message.tags == "error" %}error{% elif message.tags == "warning" %}warning{% elif message.tags == "info" %}info{% else %}success{% endif %}');
+{% endfor %}
+{% endif %}
+        });
+
+        // Toast notification system
+function showPawToast(message, type) {
+    var container = document.getElementById('pawToastContainer');
+    if (!container) return;
+    var toast = document.createElement('div');
+    var iconMap = {
+        'success': 'check-circle',
+        'error': 'exclamation-circle',
+        'warning': 'exclamation-triangle',
+        'info': 'info-circle'
+    };
+    var colorMap = {
+        'success': '#20c997',
+        'error': '#ef4444',
+        'warning': '#f59e0b',
+        'info': '#60a5fa'
+    };
+    var bgMap = {
+        'success': 'rgba(32,201,151,0.15)',
+        'error': 'rgba(239,68,68,0.15)',
+        'warning': 'rgba(245,158,11,0.15)',
+        'info': 'rgba(96,165,250,0.15)'
+    };
+    var t = type || 'success';
+    toast.innerHTML = '<i class="fas fa-' + (iconMap[t] || iconMap.info) + '" style="color:' + (colorMap[t] || colorMap.success) + ';margin-right:10px;font-size:18px;"></i><span style="flex:1;">' + message + '</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;margin-left:10px;">&times;</button>';
+    toast.style.cssText = 'display:flex;align-items:center;padding:14px 18px;border-radius:12px;font-family:Poppins,sans-serif;font-size:0.9rem;font-weight:500;animation:slideInRight 0.4s ease;box-shadow:0 10px 40px rgba(0,0,0,0.4);background:' + (bgMap[t] || bgMap.success) + ';border:1px solid ' + (colorMap[t] || colorMap.success) + '40;color:#fff;backdrop-filter:blur(10px);';
+    container.appendChild(toast);
+    setTimeout(function() {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.5s ease';
+        setTimeout(function() { if (toast.parentElement) toast.remove(); }, 500);
+    }, 4000);
+}
     </script>
-    <!-- /move top -->
-
-  <!-- //copyright -->
-  <!-- Template JavaScript -->
-  <script src="{% static 'petspial/js/jquery-3.3.1.min.js'%}"></script>
-  <script src="{% static 'petspial/js/theme-change.js'%}"></script>
-  <!-- owlcarousel -->
-  <!-- owl carousel -->
-  <script src="{% static 'petspial/js/owl.carousel.js'%}"></script>
-  <!-- script for banner slider-->
-  <script>
-    $(document).ready(function () {
-      $('.owl-one').owlCarousel({
-        loop: true,
-        margin: 0,
-        nav: false,
-        responsiveClass: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplaySpeed: 1000,
-        autoplayHoverPause: false,
-        responsive: {
-          0: {
-            items: 1
-          },
-          480: {
-            items: 1
-          },
-          667: {
-            items: 1
-          },
-          1000: {
-            items: 1
-          }
-        }
-      })
-    })
-  </script>
-  <!-- //script -->
-  <!-- script for tesimonials carousel slider -->
-  <script>
-    $(document).ready(function () {
-      $("#owl-demo2").owlCarousel({
-        loop: true,
-        nav: false,
-        margin: 50,
-        responsiveClass: true,
-        responsive: {
-          0: {
-            items: 1,
-            nav: false
-          },
-          736: {
-            items: 1,
-            nav: false
-          },
-          991: {
-            items: 2,
-            margin: 30,
-            nav: false
-          },
-          1080: {
-            items: 2,
-            nav: false
-          }
-        }
-      })
-    })
-  </script>
-  <!-- //script for tesimonials carousel slider -->
-
-  <!-- stats number counter-->
-  <script src="{% static 'petspial/js/jquery.waypoints.min.js'%}"></script>
-  <script src="{% static 'petspial/js/jquery.countup.js'%}"></script>
-  <script>
-    $('.counter').countUp();
-  </script>
-  <!-- //stats number counter -->
-  <!-- video popup -->
-  <script src="{% static 'petspial/js/jquery.magnific-popup.min.js'%}"></script>
-  <script>
-    $(document).ready(function () {
-      $('.popup-with-zoom-anim').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in'
-      });
-
-      $('.popup-with-move-anim').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-slide-bottom'
-      });
-    });
-  </script>
-  <!-- //video popup -->
-  <!--/MENU-JS-->
-  <script>
-    $(window).on("scroll", function () {
-      var scroll = $(window).scrollTop();
-
-      if (scroll >= 80) {
-        $("#site-header").addClass("nav-fixed");
-      } else {
-        $("#site-header").removeClass("nav-fixed");
-      }
-    });
-
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-      $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-      if ($(window).width() > 991) {
-        $("header").removeClass("active");
-      }
-      $(window).on("resize", function () {
-        if ($(window).width() > 991) {
-          $("header").removeClass("active");
-        }
-      });
-    });
-  </script>
-  <!--//MENU-JS-->
-
-  <script src="{% static 'petspial/js/bootstrap.min.js'%}"></script>
-
 </body>
-
 </html>

@@ -61,6 +61,8 @@ class Product(models.Model):
     category = models.CharField(max_length=20)
     qty = models.IntegerField()
     image = models.FileField()
+    pettype = models.CharField(max_length=30, default='All Pets', blank=True)
+    description = models.TextField(blank=True, default='')
     def __str__(self):
         return self.prodname
 
@@ -69,6 +71,7 @@ class Services(models.Model):
     servicename = models.CharField(max_length=20)
     price = models.IntegerField()
     desc = models.TextField()
+    duration = models.CharField(max_length=30, blank=True, default='')
     image = models.FileField(upload_to='static')
 
     def __str__(self):
@@ -89,8 +92,39 @@ class Placeanorder(models.Model):
 
 
 class Bookings(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('confirmed', 'Confirmed'),
+        ('dispatched', 'Dispatched'),
+        ('shipped', 'Shipped'),
+        ('out_for_delivery', 'Out for Delivery'),
+        ('delivered', 'Delivered'),
+        ('cancelled', 'Cancelled'),
+    ]
     user_details=models.ForeignKey(Petuser,on_delete=models.CASCADE)
     item_details=models.ForeignKey(Product,on_delete=models.CASCADE)
     date=models.DateField()
     quantity=models.IntegerField()
     total_price=models.IntegerField()
+    delivery_address=models.TextField(blank=True, null=True)
+    status=models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+
+class ServiceBooking(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('confirmed', 'Confirmed'),
+        ('completed', 'Completed'),
+        ('cancelled', 'Cancelled'),
+    ]
+    user = models.ForeignKey(Petuser, on_delete=models.CASCADE)
+    service = models.ForeignKey(Services, on_delete=models.CASCADE)
+    pet_name = models.CharField(max_length=50)
+    pet_type = models.CharField(max_length=50)
+    booking_date = models.DateField()
+    booking_slot = models.CharField(max_length=20)
+    notes = models.TextField(blank=True, null=True)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.pet_name} - {self.service.servicename}"
