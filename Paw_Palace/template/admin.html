@@ -1,647 +1,440 @@
 <!doctype html>
 <html lang="zxx">
-
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Admin Dashboard - Paw Palace</title>
   {% load static %}
-  <link href="//fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="{% static 'petspial/css/style-starter.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script>
-$(document).ready(function(){
-  $("#menu1").click(function(){
-    $(".menu").fadeToggle("slow");
-  });
-});
-</script>
-<style>
-          * {
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-}
-
-
-#w3lDemoBar.w3l-demo-bar {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  padding: 40px 5px;
-  padding-top:70px;
-  margin-bottom: 70px;
-  background: #0D1326;
-  border-top-left-radius: 9px;
-  border-bottom-left-radius: 9px;
-}
-
-#w3lDemoBar.w3l-demo-bar a {
-  display: block;
-  color: #e6ebff;
-  text-decoration: none;
-  line-height: 24px;
-  opacity: .6;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-#w3lDemoBar.w3l-demo-bar span.w3l-icon {
-  display: block;
-}
-
-#w3lDemoBar.w3l-demo-bar a:hover {
-  opacity: 1;
-}
-
-#w3lDemoBar.w3l-demo-bar .w3l-icon svg {
-  color: #e6ebff;
-}
-#w3lDemoBar.w3l-demo-bar .responsive-icons {
-  margin-top: 30px;
-  border-top: 1px solid #41414d;
-  padding-top: 40px;
-}
-#w3lDemoBar.w3l-demo-bar .demo-btns {
-  border-top: 1px solid #41414d;
-  padding-top: 30px;
-}
-#w3lDemoBar.w3l-demo-bar .responsive-icons a span.fa {
-  font-size: 26px;
-}
-#w3lDemoBar.w3l-demo-bar .no-margin-bottom{
-  margin-bottom:0;
-}
-.toggle-right-sidebar span {
-  background: #0D1326;
-  width: 50px;
-  height: 50px;
-  transform: translate(-5%, 140%);
-  line-height: 50px;
-  text-align: center;
-  color: #e6ebff;
-  border-radius: 50px;
-  font-size: 26px;
-  cursor: pointer;
-  opacity: .5;
-}
-.pull-right {
-  float: right;
-  position: fixed;
-  right: 0px;
-  top: 70px;
-  width: 90px;
-  z-index: 99999;
-  text-align: center;
-}
-/* ============================================================
-RIGHT SIDEBAR SECTION
-============================================================ */
-
-#right-sidebar {
-  width: 90px;
-  position: fixed;
-  height: 100%;
-  z-index: 1000;
-  right: 0px;
-  top: 70px;
-  margin-top: 60px;
-  -webkit-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
-  -o-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
-  overflow-y: auto;
-}
-
-
-/* ============================================================
-RIGHT SIDEBAR TOGGLE SECTION
-============================================================ */
-
-.hide-right-bar-notifications {
-  margin-right: -300px !important;
-  -webkit-transition: all .3s ease-in-out;
-  -moz-transition: all .3s ease-in-out;
-  -o-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
-}
-
-      </style>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-#main-container {
-    width: 100%;
-    background: linear-gradient(#051f30, #000000);
-}
-
-.menu {
-    display:none;
-    position:fixed;
-    height: 100%;
-    transition: .3s;
-    background: #ffffff12;
-    padding: 90px 20px 20px 0;
-    width: 85px;
-    box-shadow: 8px 0px 9px 0px #00000014;
-    transform: translate(0%, -119%);
-    backdrop-filter: blur(3px);
-    min-height: 100vh;
-    z-index:3;
-
-}
-
-.menu:hover {
-    width: 260px;
-}
-
-.menu:hover li span:nth-child(2) {
-    display: block;
-}
-
-.menu-content li {
-    list-style: none;
-    border-radius: 0px 50px 50px 0;
-    transition: .3s;
-    margin-bottom: 20px;
-    padding-left: -50px;
-}
-
-.menu-content li:hover {
-    background: #0c0c0c;
-}
-
-.menu-content li span:nth-child(2) {
-    display: none;
-}
-
-a {
-    text-decoration: none;
-    color: rgb(213, 213, 213);
-    display: flex;
-    align-items: center;
-    font-family: 'calibri';
-}
-
-.material-symbols-outlined {
-    font-size: 25px;
-    margin-right: 10px;
-    background: #0c0c0c;
-    border-radius: 50%;
-    padding: 10px;
-}
-  .custom-navbar{
-  z-index:200;
-  }
-
-
-  #menu1{
-  transform: translate(-70%, 0%);
-  }
-[aria-hidden="true"] {
-  color: green; /* Add your desired color */
-  /* Add other styles as needed */
-}
-</style>
-<style>
-    footer {
-        background-color: #0D1326;
-    }
-
-    .footer-logo a {
-        font-size: 24px;
-        font-weight: bold;
-        color: #fff;
-        text-decoration: none;
-    }
-
-    .footer-logo a .sublog {
-        font-weight: normal;
-        color: #20c997;
-    }
-
-    .footer-top-29 {
-        padding: 30px 0;
-    }
-
-    .footer-top-29 p {
-        color: rgba(255,255,255,0.7);
-    }
-
-    .main-social-footer-29 a {
-        font-size: 18px;
-        color: rgba(255,255,255,0.7);
-        margin-right: 15px;
-    }
-
-    .main-social-footer-29 a:hover {
-        color: #20c997;
-    }
-
-    .footer-heading {
-        font-size: 20px;
-        color: #fff;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-
-    .list-unstyled li a {
-        color: rgba(255,255,255,0.7);
-        display: block;
-        padding: 8px 0;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    .list-unstyled li a:hover {
-        color: #20c997;
-    }
-
-    .block-23 {
-        margin-top: 30px;
-    }
-
-    .block-23 li {
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-    }
-
-    .block-23 li .icon {
-        margin-right: 10px;
-        color: #20c997;
-    }
-
-    .block-23 li .text {
-        color: rgba(255,255,255,0.7);
-    }
-</style>
-  <style>
-    .main-cont-wthree-fea {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'petsitting/css/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'petsitting/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'petsitting/css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'petsitting/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'petsitting/css/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'petsitting/css/style.css' %}">
   <link rel="stylesheet" href="/static/css/paw_main.css">
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <style>
+    :root { --primary: #20c997; --primary-dark: #1aab82; --dark: #051f30; --darker: #0a1628; }
+    body { background: linear-gradient(135deg, #051f30 0%, #0a1628 50%, #0d1f3c 100%) !important; min-height: 100vh; font-family: 'Poppins', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { color: #fff; }
+    p, li, span { color: rgba(255,255,255,0.85); }
+    .paw-teal { color: var(--primary); }
 
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+    .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+    .animate-fadeInLeft { animation: fadeInLeft 0.8s ease forwards; }
+    .animate-fadeInRight { animation: fadeInRight 0.8s ease forwards; }
+
+    .top-bar { background: linear-gradient(90deg, #051f30 0%, #0a1628 100%); color: #fff; padding: 10px 0; font-family: 'Poppins', sans-serif; font-size: 14px; }
+    .top-bar a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; }
+    .top-bar a:hover { color: var(--primary); }
+    .topbar-social { transition: all 0.3s ease; }
+    .topbar-social:hover { transform: scale(1.2); color: var(--primary); }
+
+    .paw-nav { background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 15px 0; }
+    .paw-nav .nav-link { color: rgba(255,255,255,0.8); font-weight: 500; font-family: 'Poppins', sans-serif; padding: 10px 18px; border-radius: 10px; transition: all 0.3s ease; }
+    .paw-nav .nav-link:hover, .paw-nav .nav-link.active { color: var(--primary); background: rgba(32, 201, 151, 0.1); }
+    .paw-nav-brand { font-size: 28px; font-weight: 700; font-family: 'Poppins', sans-serif; color: #fff; }
+
+    .hero-wrap { background-size: cover; background-position: center; min-height: 55vh; position: relative; display: flex; align-items: center; }
+    .hero-wrap::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(5,31,48,0.85) 0%, rgba(10,22,40,0.8) 100%); }
+    .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 15px; animation: fadeInUp 1s ease; }
+    .hero-title span { color: var(--primary); }
+    .section-title { font-family: 'Poppins', sans-serif; font-weight: 700; color: #fff; }
+    .section-subtitle { color: var(--primary); font-family: 'Poppins', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; font-weight: 600; }
+
+    .premium-section { padding: 80px 0; background: rgba(255,255,255,0.02); }
+    .alt-bg { background: rgba(255,255,255,0.03); }
+
+    .stat-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; text-align: center; transition: all 0.4s ease; opacity: 0; transform: scale(0.9); }
+    .stat-card.visible { opacity: 1; transform: scale(1); }
+    .stat-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 25px 60px rgba(0,0,0,0.4); border-color: rgba(32,201,151,0.5); }
+    .stat-card i { font-size: 40px; color: var(--primary); margin-bottom: 15px; transition: all 0.4s ease; }
+    .stat-card:hover i { transform: scale(1.2); }
+    .stat-number { font-size: 40px; font-weight: 700; color: #fff; }
+    .stat-label { color: rgba(255,255,255,0.7); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+
+    .review-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 25px; transition: all 0.4s ease; height: 100%; opacity: 0; transform: translateY(30px); }
+    .review-card.visible { opacity: 1; transform: translateY(0); }
+    .review-card:hover { transform: translateY(-8px); border-color: rgba(32,201,151,0.5); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+    .review-card .review-text { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 15px; font-style: italic; }
+    .review-card .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-card .author-avatar { width: 40px; height: 40px; background: rgba(32,201,151,0.2); border: 2px solid rgba(32,201,151,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .review-card .author-avatar i { color: var(--primary); font-size: 16px; }
+    .review-card .author-name { font-weight: 600; color: #fff; font-size: 14px; }
+    .review-card .author-label { font-size: 11px; color: rgba(255,255,255,0.5); }
+
+    .admin-action-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; text-align: center; transition: all 0.4s ease; height: 100%; opacity: 0; transform: translateY(30px); cursor: pointer; }
+    .admin-action-card.visible { opacity: 1; transform: translateY(0); }
+    .admin-action-card:hover { transform: translateY(-8px); border-color: rgba(32,201,151,0.5); box-shadow: 0 20px 50px rgba(0,0,0,0.3); background: rgba(32,201,151,0.08); }
+    .admin-action-card .action-icon { width: 70px; height: 70px; background: rgba(32,201,151,0.15); border: 2px solid rgba(32,201,151,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; transition: all 0.4s ease; }
+    .admin-action-card:hover .action-icon { transform: scale(1.1); background: rgba(32,201,151,0.25); }
+    .admin-action-card .action-icon i { font-size: 28px; color: var(--primary); }
+    .admin-action-card h5 { font-weight: 600; margin-bottom: 5px; }
+    .admin-action-card p { font-size: 13px; color: rgba(255,255,255,0.6); margin: 0; }
+    .admin-action-card .action-badge { position: absolute; top: 15px; right: 15px; background: rgba(239,68,68,0.8); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 50px; }
+
+    .quick-link-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px; transition: all 0.3s ease; }
+    .quick-link-card:hover { transform: translateY(-5px); border-color: rgba(32,201,151,0.5); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+    .quick-link-card i { font-size: 24px; color: var(--primary); margin-bottom: 10px; }
+
+    .btn-teal { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border: none; border-radius: 12px; padding: 14px 28px; font-weight: 600; font-family: 'Poppins', sans-serif; box-shadow: 0 8px 25px rgba(32, 201, 151, 0.3); transition: all 0.3s ease; color: #fff; }
+    .btn-teal:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(32, 201, 151, 0.4); background: linear-gradient(135deg, var(--primary-dark) 0%, #159d70 100%); color: #fff; }
+
+    .footer { background: linear-gradient(135deg, #051f30 0%, #0a1628 100%); color: #fff; padding: 60px 0 30px; }
+    .footer h2, .footer h3 { color: #fff; font-family: 'Poppins', sans-serif; }
+    .footer a { color: rgba(255, 255, 255, 0.7); transition: all 0.3s ease; text-decoration: none; }
+    .footer a:hover { color: var(--primary); transform: translateX(3px); }
+    .footer p, .footer li { color: rgba(255,255,255,0.7); }
+    .footer-social { transition: all 0.3s ease; }
+    .footer-social:hover { transform: scale(1.1) translateY(-3px); background: var(--primary) !important; border-color: var(--primary) !important; color: #fff !important; box-shadow: 0 5px 20px rgba(32, 201, 151, 0.4); }
+    .btn-outline-light { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: #fff; border-radius: 12px; padding: 14px 28px; font-weight: 600; transition: all 0.3s ease; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+    .btn-outline-light:hover { background: var(--primary); border-color: var(--primary); color: #fff; transform: translateY(-3px); }
+    .btn-outline-light.rounded-circle { border-radius: 50% !important; padding: 0; width: 40px; height: 40px; }
+    .footer-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+    .chevron-icon { font-size: 12px; }
+    .footer-divider { opacity: 0.2; }
+    .footer-copyright { color: rgba(255,255,255,0.6); }
+    .hero-subtitle { color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 600px; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-600 { animation-delay: 0.6s; }
+    .hero-bg { background-image: url('{% static "petsitting/images/petshop.jpg" %}'); }
+
+    @media (max-width: 768px) { .hero-title { font-size: 2.5rem; } .stat-card { margin-bottom: 20px; } }
+  </style>
+</head>
 <body>
 
-  <nav class="navbar navbar-expand-lg paw-nav">
+  <div class="top-bar">
     <div class="container">
-        <a class="navbar-brand paw-nav-brand" href="/admin">Paw<span class="paw-teal">Palace</span> <small style="font-size:12px; opacity:0.6;">Admin</small></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="pawNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/admin">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/userdetails">Users</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/petshopdetails">Shops</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/allorders">Orders</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/admingallery">Gallery Req</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/review">Reviews</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/adminlogout">Logout</a></li>
-            </ul>
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <a href="tel:+917736881574"><i class="fas fa-phone me-2"></i> +91 7736881574</a>
+          <a href="mailto:pawpalace@email.com" class="ms-4"><i class="fas fa-envelope me-2"></i> pawpalace@email.com</a>
         </div>
+        <div class="col-md-6 text-end">
+          <a href="#" class="topbar-social"><i class="fab fa-facebook-f mx-2"></i></a>
+          <a href="#" class="topbar-social"><i class="fab fa-twitter mx-2"></i></a>
+          <a href="#" class="topbar-social"><i class="fab fa-instagram mx-2"></i></a>
+        </div>
+      </div>
     </div>
-</nav>
-  <!--//header-->
+  </div>
 
-  <!-- main-slider -->
- <section class="w3l-main-slider banner-slider" id="home">
-    <div class="owl-one owl-carousel owl-theme">
-      <div class="item">
-        <div class="slider-info banner-view banner-top1">
-          <div class="container">
+  <nav class="navbar navbar-expand-lg paw-nav sticky-top">
+    <div class="container">
+      <a class="navbar-brand paw-nav-brand" href="/admin">Paw<span class="paw-teal">Palace</span> <small style="font-size:12px; opacity:0.6;">Admin</small></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="pawNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="/admin">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="/userdetails">Users</a></li>
+          <li class="nav-item"><a class="nav-link" href="/petshopdetails">Shops</a></li>
+          <li class="nav-item"><a class="nav-link" href="/allorders">Orders</a></li>
+          <li class="nav-item"><a class="nav-link" href="/admingallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="/review">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="/adminlogout">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-            <div class="banner-info">
-              <h3>Whiskers and Wonders</h3>
-              <div class="banner-info-top">
-                <p>" Unleashing the Joyful Journey of Pet Companionship." </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="slider-info banner-view banner-top2">
-          <div class="container">
-            <div class="banner-info">
-              <h3>Caring is More Daring.</h3>
-              <div class="banner-info-top">
-                <p>"Companionship, care, and a wagging tail – where pets leave pawprints on our hearts." </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="slider-info banner-view banner-top3">
-          <div class="container">
-            <div class="banner-info">
-              <h3>Grooming & Pet Supplies.</h3>
-              <div class="banner-info-top">
-                <p>"Tailored Care, Happy Pets: Elevate the Grooming Experience with Our Premium Pet Supplies." </p>
-              </div>
-            </div>
+  <!-- Hero Section -->
+  <section class="hero-wrap hero-bg" data-stellar-background-ratio="0.5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8 animate-fadeInLeft">
+          <span class="section-subtitle">Control Center</span>
+          <h1 class="hero-title mt-3">Admin <span>Dashboard</span></h1>
+          <p class="hero-subtitle">Manage your Paw Palace platform — users, shops, orders, and more — all from one place.</p>
+          <div class="mt-4 animate-fadeInUp delay-200">
+            <a href="/userdetails" class="btn btn-teal me-3"><i class="fas fa-users me-2"></i>Manage Users</a>
+            <a href="/allorders" class="btn btn-outline-light"><i class="fas fa-shopping-bag me-2"></i>View Orders</a>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- /main-slider -->
-  <div class="menu">
-            <ul class="menu-content">
-                <li><a href="#"><span class="material-symbols-outlined">person</span><span>Admin</span></a></li>
-                <li><a href="adminlogout"><span class="material-symbols-outlined">logout</span><span>Logout</span></a></li>
-            </ul>
-  </div>
 
-
-  <!-- testimonials section -->
-  <section class="w3l-clients w3l-test py-5" id="testimonials">
-    <div class="container py-lg-5 py-md-4 pt-2 pb-5">
-        <div class="row w3test-grids p-md-5 pb-0">
-            <div class="col-lg-4 testimonials-con-left-info">
-                <div class="title-content text-left p-xl-3">
-                    <h6 class="title-subhny mb-2"><span>Reviews</span></h6>
-                    <h3 class="title-w3l two">Testimonials</h3>
-                    <p class="test-p mt-3">"PawPalace has been an absolute delight for me and
-                        my furry friend! The platform offers a seamless experience, from connecting
-                        with fellow pet lovers to discovering exciting pet-related activities. The community
-                        at PawPalace is warm and welcoming, making it a perfect place for pet enthusiasts like
-                        myself!"</p>
-                </div>
-            </div>
-            <div class="col-lg-8 testimonials-con-right mt-lg-0 mt-5 p-xl-3">
-                <div class="row">
-                    {% for review in feedback %}
-                    <div class="col-md-6">
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-<!--                                    <blockquote>-->
-                                        <q>{{ review.review }}</q>
-<!--                                    </blockquote>-->
-                                </div>
-                                <div class="bottom-info mt-4">
-                                    <div class="people-info align-self">
-                                        <h3>{{ review.user.username }}</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
+  <!-- Quick Stats -->
+  <section class="premium-section">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="stat-card" data-delay="0">
+            <i class="fas fa-users"></i>
+            <h3 class="stat-number">{{ user_count|default:"0" }}</h3>
+            <p class="stat-label">Total Users</p>
+          </div>
         </div>
-
-        <div class="row stats-con pt-md-5 mt-5">
-            <!-- Your existing statistics section remains unchanged -->
+        <div class="col-lg-3 col-md-6">
+          <div class="stat-card" data-delay="100">
+            <i class="fas fa-store"></i>
+            <h3 class="stat-number">{{ shop_count|default:"0" }}</h3>
+            <p class="stat-label">Partner Shops</p>
+          </div>
         </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="stat-card" data-delay="200">
+            <i class="fas fa-shopping-bag"></i>
+            <h3 class="stat-number">{{ order_count|default:"0" }}</h3>
+            <p class="stat-label">Total Orders</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="stat-card" data-delay="300">
+            <i class="fas fa-star"></i>
+            <h3 class="stat-number">{{ review_count|default:"0" }}</h3>
+            <p class="stat-label">Reviews</p>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
-  <!-- //testimonials section -->
+  </section>
 
-
-  <footer class="w3l-footer-29-main">
-    <div class="footer-29-w3l py-5">
-        <div class="container py-lg-4">
-            <div class="row footer-top-29 justify-content-center">
-                <div class="col-lg-4 col-md-6  footer-list-29 footer-1 pr-lg-5">
-                    <div class="footer-logo mb-3">
-                        <a class="footer-brand-logo" href="shop">Paw<span class="sublog">Palace</span></a>
-                    </div>
-                    <p>When I look into a bird's eyes<br>
-                        ■ I don't see a price tag.<br>
-
-■ I don't see a status symbol<br>
-
-■ I don't see a pet.<br>
-
-♡ I see a being.<br>
-
-♡ I see a friend.<br>
-
-♡ I see a soul.</p>
-                    <div class="main-social-footer-29 mt-4">
-                        <a href="#" class="facebook"><span class="fa fa-facebook"></span></a>
-                        <a href="#" class="twitter"><span class="fa fa-twitter"></span></a>
-                        <a href="#" class="instagram"><span class="fa fa-instagram"></span></a>
-                        <a href="#" class="linkedin"><span class="fa fa-linkedin"></span></a>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                    <h2 class="footer-heading" style="color:#fff">Quick Links</h2>
-                    <ul class="list-unstyled">
-                       <li><a href="#" class="py-2 d-block">Home</a></li>
-                       <li><a href="review" class="py-2 d-block">Review</a></li>
-                       <li><a href="allorders" class="py-2 d-block">All orders</a></li>
-                    <li><a href="admingallery" class="py-2 d-block">Gallery</a></li>
-                    <li><a href="userdetails" class="py-2 d-block">User</a></li>
-                    <li><a href="petshopdetails" class="py-2 d-block">Shop</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                    <h2 class="footer-heading" style="color:#fff">Have a Questions?</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                            <li><a href="tel:+91 7736881574"><span class="icon fa fa-phone"></span><span class="text">+91 7736881574</span></a></li>
-                            <li><a href="mailto:pawpalace@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">pawpalace@gmail.com</span></a></li>
-                        </ul>
-                    </div>
-                </div>
+  <!-- Quick Actions -->
+  <section class="premium-section alt-bg">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-subtitle animate-fadeInUp">Navigation</span>
+        <h2 class="section-title animate-fadeInUp delay-200">Quick Actions</h2>
+        <p class="animate-fadeInUp delay-400" style="color: rgba(255,255,255,0.7);">Jump to any admin section instantly</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <a href="/userdetails" class="text-decoration-none">
+            <div class="admin-action-card">
+              <div class="action-icon"><i class="fas fa-users"></i></div>
+              <h5>Users</h5>
+              <p>Manage registered users</p>
             </div>
+          </a>
         </div>
+        <div class="col-lg-3 col-md-6">
+          <a href="/petshopdetails" class="text-decoration-none">
+            <div class="admin-action-card">
+              <div class="action-icon"><i class="fas fa-store"></i></div>
+              <h5>Shops</h5>
+              <p>View & manage pet shops</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <a href="/allorders" class="text-decoration-none">
+            <div class="admin-action-card">
+              <div class="action-icon"><i class="fas fa-shopping-bag"></i></div>
+              <h5>Orders</h5>
+              <p>Track all platform orders</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <a href="/admingallery" class="text-decoration-none">
+            <div class="admin-action-card">
+              <div class="action-icon"><i class="fas fa-images"></i></div>
+              <h5>Gallery</h5>
+              <p>Manage photo gallery</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <a href="/review" class="text-decoration-none">
+            <div class="admin-action-card">
+              <div class="action-icon"><i class="fas fa-star"></i></div>
+              <h5>Reviews</h5>
+              <p>View user feedback</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <a href="/addnotification" class="text-decoration-none">
+            <div class="admin-action-card">
+              <div class="action-icon"><i class="fas fa-bell"></i></div>
+              <h5>Notifications</h5>
+              <p>Send platform alerts</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <a href="/photoreq" class="text-decoration-none">
+            <div class="admin-action-card">
+              <div class="action-icon"><i class="fas fa-camera"></i></div>
+              <h5>Photo Requests</h5>
+              <p>Pending photo approvals</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <a href="/adminlogout" class="text-decoration-none">
+            <div class="admin-action-card">
+              <div class="action-icon"><i class="fas fa-sign-out-alt"></i></div>
+              <h5>Logout</h5>
+              <p>Sign out of admin</p>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
-      <!-- move top -->
-    <button onclick="topFunction()" id="movetop" title="Go to top">
-        &#10548;
-    </button>
-    <script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function () {
-            scrollFunction()
-        };
+  </section>
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("movetop").style.display = "block";
-            } else {
-                document.getElementById("movetop").style.display = "none";
-            }
-        }
+  <!-- Recent Reviews -->
+  <section class="premium-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-subtitle animate-fadeInUp">Feedback</span>
+        <h2 class="section-title animate-fadeInUp delay-200">Recent Reviews</h2>
+        <p class="animate-fadeInUp delay-400" style="color: rgba(255,255,255,0.7);">What users are saying about Paw Palace</p>
+      </div>
+      {% if feedback %}
+      <div class="row g-4">
+        {% for review in feedback %}
+        <div class="col-lg-4 col-md-6">
+          <div class="review-card" data-delay="{{ forloop.counter0|add:'0' }}00">
+            <div class="review-text"><i class="fas fa-quote-left me-2" style="color: rgba(32,201,151,0.4);"></i>{{ review.review }}</div>
+            <div class="review-author">
+              <div class="author-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div>
+                <div class="author-name">{{ review.user.username }}</div>
+                <div class="author-label">Customer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="text-center mt-5 animate-fadeInUp">
+        <a href="/review" class="btn btn-teal"><i class="fas fa-star me-2"></i>View All Reviews</a>
+      </div>
+      {% else %}
+      <div class="text-center py-5">
+        <i class="fas fa-star fa-4x mb-3" style="color: rgba(255,255,255,0.15);"></i>
+        <p style="color: rgba(255,255,255,0.5);">No reviews yet</p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
 
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-    </script>
-    <!-- /move top -->
-</footer>
+  <!-- Platform Summary -->
+  <section class="premium-section alt-bg">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-subtitle animate-fadeInUp">Overview</span>
+        <h2 class="section-title animate-fadeInUp delay-200">Platform at a Glance</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="quick-link-card">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h5 class="text-white">Happy Pet Owners</h5>
+            <p class="mb-0" style="font-size: 13px;">Serving thousands of pet lovers across the platform with quality products and services.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="quick-link-card">
+            <i class="fas fa-paw"></i>
+            <h5 class="text-white">Partner Network</h5>
+            <p class="mb-0" style="font-size: 13px;">Trusted pet shops providing verified products, grooming, veterinary care, and more.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="quick-link-card">
+            <i class="fas fa-headset"></i>
+            <h5 class="text-white">Always Available</h5>
+            <p class="mb-0" style="font-size: 13px;">24/7 platform monitoring ensuring smooth operations for all users and shop partners.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- //copyright -->
-  <!-- Template JavaScript -->
-<!--  <script src="{% static 'petspial/js/jquery-3.3.1.min.js' %}"></script>-->
-  <script src="{% static 'petspial/js/theme-change.js' %}"></script>
-  <!-- owlcarousel -->
-  <!-- owl carousel -->
-  <script src="{% static 'petspial/js/owl.carousel.js' %}"></script>
-  <!-- script for banner slider-->
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <h2 class="mb-4">Paw<span class="paw-teal">Palace</span> <small style="font-size:14px; opacity:0.6;">Admin</small></h2>
+          <p class="mb-4">I don't see a price tag.<br>
+          I don't see a status symbol.<br>
+          I don't see a pet.<br>
+          <span class="paw-teal">I see a being.</span><br>
+          <span class="paw-teal">I see a friend.</span><br>
+          <span class="paw-teal">I see a soul.</span></p>
+          <div class="d-flex gap-3">
+            <a href="#" class="btn btn-outline-light rounded-circle footer-social footer-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="btn btn-outline-light rounded-circle footer-social footer-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="btn btn-outline-light rounded-circle footer-social footer-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h3 class="mb-4">Quick Links</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/admin"><i class="fas fa-chevron-right me-2 paw-teal chevron-icon"></i>Dashboard</a></li>
+            <li class="mb-2"><a href="/userdetails"><i class="fas fa-chevron-right me-2 paw-teal chevron-icon"></i>Users</a></li>
+            <li class="mb-2"><a href="/petshopdetails"><i class="fas fa-chevron-right me-2 paw-teal chevron-icon"></i>Shops</a></li>
+            <li class="mb-2"><a href="/allorders"><i class="fas fa-chevron-right me-2 paw-teal chevron-icon"></i>Orders</a></li>
+            <li class="mb-2"><a href="/admingallery"><i class="fas fa-chevron-right me-2 paw-teal chevron-icon"></i>Gallery</a></li>
+            <li class="mb-2"><a href="/review"><i class="fas fa-chevron-right me-2 paw-teal chevron-icon"></i>Reviews</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h3 class="mb-4">Contact Us</h3>
+          <ul class="list-unstyled">
+            <li class="mb-3"><i class="fas fa-map-marker-alt me-3 paw-teal"></i>203 Fake St. Mountain View</li>
+            <li class="mb-3"><i class="fas fa-phone me-3 paw-teal"></i>+91 7736881574</li>
+            <li class="mb-3"><i class="fas fa-envelope me-3 paw-teal"></i>pawpalace@email.com</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="my-4 footer-divider">
+      <div class="text-center">
+        <p class="mb-0 footer-copyright">&copy; 2024 Paw Palace. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'petsitting/js/main.js' %}"></script>
   <script>
-    $(document).ready(function () {
-      $('.owl-one').owlCarousel({
-        loop: true,
-        margin: 0,
-        nav: false,
-        responsiveClass: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplaySpeed: 1000,
-        autoplayHoverPause: false,
-        responsive: {
-          0: {
-            items: 1
-          },
-          480: {
-            items: 1
-          },
-          667: {
-            items: 1
-          },
-          1000: {
-            items: 1
+    $(document).ready(function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var delay = $(entry.target).data('delay') || 0;
+            setTimeout(function() { $(entry.target).addClass('visible'); }, delay);
           }
-        }
-      })
-    })
-  </script>
-  <!-- //script -->
-  <!-- script for tesimonials carousel slider -->
-  <script>
-    $(document).ready(function () {
-      $("#owl-demo2").owlCarousel({
-        loop: true,
-        nav: false,
-        margin: 50,
-        responsiveClass: true,
-        responsive: {
-          0: {
-            items: 1,
-            nav: false
-          },
-          736: {
-            items: 1,
-            nav: false
-          },
-          991: {
-            items: 2,
-            margin: 30,
-            nav: false
-          },
-          1080: {
-            items: 2,
-            nav: false
-          }
-        }
-      })
-    })
-  </script>
-  <!-- //script for tesimonials carousel slider -->
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+      $('.stat-card, .review-card, .admin-action-card, .quick-link-card').each(function() { observer.observe(this); });
 
-  <!-- stats number counter-->
-  <script src="{% static 'petspial/js/jquery.waypoints.min.js' %}"></script>
-  <!-- //stats number counter -->
-  <!-- video popup -->
-  <script src="{% static 'petspial/js/jquery.magnific-popup.min.js' %}"></script>
-  <script>
-    $(document).ready(function () {
-      $('.popup-with-zoom-anim').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-zoom-in'
-      });
-
-      $('.popup-with-move-anim').magnificPopup({
-        type: 'inline',
-
-        fixedContentPos: false,
-        fixedBgPos: true,
-
-        overflowY: 'auto',
-
-        closeBtnInside: true,
-        preloader: false,
-
-        midClick: true,
-        removalDelay: 300,
-        mainClass: 'my-mfp-slide-bottom'
+      // Stat counter animation
+      $('.stat-number').each(function() {
+        var $this = $(this);
+        var target = parseInt($this.text());
+        if (isNaN(target) || target === 0) return;
+        $this.text('0');
+        var count = 0;
+        var step = Math.max(1, Math.floor(target / 30));
+        var timer = setInterval(function() {
+          count += step;
+          if (count >= target) { count = target; clearInterval(timer); }
+          $this.text(count);
+        }, 40);
       });
     });
   </script>
-  <!-- //video popup -->
-  <!--/MENU-JS-->
-  <script>
-    $(window).on("scroll", function () {
-      var scroll = $(window).scrollTop();
-
-      if (scroll >= 80) {
-        $("#site-header").addClass("nav-fixed");
-      } else {
-        $("#site-header").removeClass("nav-fixed");
-      }
-    });
-
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-      $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-      if ($(window).width() > 991) {
-        $("header").removeClass("active");
-      }
-      $(window).on("resize", function () {
-        if ($(window).width() > 991) {
-          $("header").removeClass("active");
-        }
-      });
-    });
-  </script>
-  <!--//MENU-JS-->
-
-  <script src="{% static 'petspial/js/bootstrap.min.js' %}"></script>
-
-
 </body>
-
 </html>

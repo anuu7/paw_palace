@@ -278,6 +278,8 @@
                         <div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
                         {% endif %}
 
+                        {% with "" as _ %}{% for m in messages %}<span class="paw-msg" data-msg="{{ m }}" data-tag="{% if m.tags == 'error' %}error{% elif m.tags == 'warning' %}warning{% elif m.tags == 'info' %}info{% else %}success{% endif %}"></span>{% endfor %}{% endwith %}
+
                         <form action="" method="post" onsubmit="return validateForm()">
                             {% csrf_token %}
 
@@ -579,11 +581,9 @@
             });
 
             // Auto-display Django messages as toasts
-{% if messages %}
-{% for message in messages %}
-showPawToast('{{ message }}', '{% if message.tags == "error" %}error{% elif message.tags == "warning" %}warning{% elif message.tags == "info" %}info{% else %}success{% endif %}');
-{% endfor %}
-{% endif %}
+            document.querySelectorAll('.paw-msg').forEach(function(el) {
+                showPawToast(el.dataset.msg, el.dataset.tag);
+            });
         });
 
         // Toast notification system

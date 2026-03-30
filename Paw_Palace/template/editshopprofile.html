@@ -1,297 +1,356 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <title>Paw Palace-Edit Shop Profile</title>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Edit Shop Profile - Paw Palace</title>
     <meta charset="utf-8">
-	  {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="{% static 'petspial/css/style-starter.css' %}">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{% static 'petsitting/css/animate.css' %}">
-
     <link rel="stylesheet" href="{% static 'petsitting/css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'petsitting/css/owl.theme.default.min.css' %}">
     <link rel="stylesheet" href="{% static 'petsitting/css/magnific-popup.css' %}">
-
-
-    <link rel="stylesheet" href="{% static 'petsitting/css/bootstrap-datepicker.css' %}">
-    <link rel="stylesheet" href="{% static 'petsitting/css/jquery.timepicker.css' %}">
-
     <link rel="stylesheet" href="{% static 'petsitting/css/flaticon.css' %}">
     <link rel="stylesheet" href="{% static 'petsitting/css/style.css' %}">
-      <!--    message-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/paw_main.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/static/css/paw_main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols-Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #20c997;
+            --primary-dark: #1aab82;
+            --dark: #051f30;
+            --darker: #0a1628;
+        }
 
-      <style>
-    a {
-      text-decoration: none;
-    }
+        body {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 50%, #0d1f3c 100%) !important;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    a:visited {
-      color: #800080;
-    }
+        h1, h2, h3, h4, h5, h6 { color: #fff; }
+        p, li, span { color: rgba(255,255,255,0.85); }
+        .paw-teal { color: var(--primary); }
 
-    a:hover {
-      text-decoration: none;
-      color: #0000FF;
-    }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .top-bar {
+            background: linear-gradient(90deg, #051f30 0%, #0a1628 100%);
+            color: #fff;
+            padding: 10px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        .top-bar a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; }
+        .top-bar a:hover { color: var(--primary); }
+
+        .paw-nav {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            box-shadow: none;
+            padding: 15px 0;
+        }
+        .paw-nav .nav-link {
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            padding: 10px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .paw-nav .nav-link:hover, .paw-nav .nav-link.active {
+            color: var(--primary);
+            background: rgba(32, 201, 151, 0.1);
+        }
+        .paw-nav .nav-link.paw-gold:not(.active) {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+        }
+        .paw-nav .nav-link.paw-gold:not(.active):hover {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+        }
+        .paw-nav-brand { font-size: 28px; font-weight: 700; font-family: 'Poppins', sans-serif; color: #fff; }
+
+        .footer {
+            background: linear-gradient(135deg, #051f30 0%, #0a1628 100%);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .footer h2, .footer h3 { color: #fff; font-family: 'Poppins', sans-serif; }
+        .footer a { color: rgba(255, 255, 255, 0.7); transition: all 0.3s ease; }
+        .footer a:hover { color: var(--primary); transform: translateX(3px); }
+        .footer p, .footer li { color: rgba(255,255,255,0.7); }
+        .footer-social { transition: all 0.3s ease; }
+        .footer-social:hover { transform: scale(1.1) translateY(-3px); background: var(--primary) !important; border-color: var(--primary) !important; color: #fff !important; box-shadow: 0 5px 20px rgba(32, 201, 151, 0.4); }
+
+        a { text-decoration: none; }
+        a:visited { color: #800080; }
+        a:hover { text-decoration: none; color: #0000FF; }
+    </style>
 </head>
-  <body>
+<body>
 
-    <div class="wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 d-flex align-items-center">
-						<p class="mb-0 phone pl-md-2">
-							<a href="tel:+91 7736881574" class="mr-2"><span class="fa fa-phone mr-1"></span> +91 7736881574</a>
-							<a href="mailto:pawpalace@gmail.com"><span class="fa fa-paper-plane mr-1"></span> pawpalace@email.com</a>
-						</p>
-					</div>
-					<div class="col-md-6 d-flex justify-content-md-end">
-						<div class="social-media">
-			    		<p class="mb-0 d-flex">
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-			    		</p>
-		        </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<nav class="navbar navbar-expand-lg paw-nav">
-    <div class="container">
-        <a class="navbar-brand paw-nav-brand" href="/shop">Paw<span class="paw-teal">Palace</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="pawNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link paw-nav-link active" href="/shop">Home</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/shopproducts">Products</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/shopservices">Services</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/shopgallery">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/review">Reviews</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/shopabout">About</a></li>
-                <li class="nav-item"><a class="nav-link paw-nav-link" href="/shoplogout">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-    <!-- END nav -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url(static/petsitting/images/petshop.jpg);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-end">
-          <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="shop">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Account <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-0 bread">Update Profile</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ftco-section ftco-no-pt ftco-no-pb">
-    	<div class="container">
-    		<div class="row d-flex no-gutters">
-    			<div class="col-md-7 pl-md-5 py-md-5">
-    				<div class="heading-section pt-md-5"><br>
-                        <form  class="fixed-form" action="updatesppf" method="post" onsubmit="return validateForm()">
-                            {% csrf_token %}
-                            <input type="text" class="form-control" name="pts1" value="{{data.shopname}}"  placeholder="Pet Shop's Name" required><br>
-                            <input type="text" class="form-control" name="pts2" value="{{data.ownername}}"  placeholder="Owner's Name" required><br>
-                            <textarea class="form-control" name="pts3" value="{{data.adress}}" placeholder="Address" required></textarea><br>
-                            <input type="text" class="form-control" id="phone" name="pts4" value="{{data.phone}}" placeholder="Phone" minlength="10" maxlength="10" required><br>
-                            <input type="text" class="form-control" id="email" name="pts5" value="{{data.email}}" placeholder="Email" required><br>
-                            <input type="text" class="form-control" id="username" name="pts6" value="{{data.username}}" placeholder="Username" required><br>
-                            <input type="password" class="form-control" id="password" name="pts7" value="{{data.password}}" placeholder="Password" required><br>
-                            <input type="submit" value="Update" class="btn btn-primary py-3 px-4">
-                        </form>
-                        <script>
-    function validateForm() {
-        // Phone number validation
-        var phoneRegex = /^\d{10}$/;
-        var phoneInput = document.getElementById('phone').value;
-        if (!phoneRegex.test(phoneInput)) {
-            alert('Please enter a valid 10-digit phone number');
-            return false;
-        }
-
-        // Email validation
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        var emailInput = document.getElementById('email').value;
-        if (!emailRegex.test(emailInput)) {
-            alert('Please enter a valid email address');
-            return false;
-        }
-
-        // Username validation
-        var usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
-        var usernameInput = document.getElementById('username').value;
-        if (!usernameRegex.test(usernameInput)) {
-            alert('Username must be 3-20 characters and can only contain letters, numbers, and underscores');
-            return false;
-        }
-
-        // Password validation
-
-        var passwordInput = document.getElementById('password').value;
-        if (passwordInput.length < 8) {
-            alert('Password must be at least 8 characters');
-            return false;
-        }
-
-        // Additional validations can be added as needed
-
-        // If all validations pass, return true to submit the form
-        return true;
-    }
-</script>
-    				</div>
-	        </div>
-        </div>
-    	</div>
-    </section>
-
-   {% if messages %}
-<div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
-{% endif %}
-
-    <footer class="footer">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">PawPalace</h2>
-                <p>When I look into a bird's eyes<br>
-
-■ I don't see a price tag.<br>
-
-■ I don't see a status symbol<br>
-
-■ I don't see a pet.<br>
-
-♡ I see a being.<br>
-
-♡ I see a friend.<br>
-
-♡ I see a soul.</p>
-                <ul class="ftco-footer-social p-0">
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
-                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">Quick Links</h2>
-                <ul class="list-unstyled">
-                    <li><a href="shop" class="py-2 d-block">Home</a></li>
-                    <li><a href="shopabout" class="py-2 d-block">About</a></li>
-                    <li><a href="addproducts" class="py-2 d-block">Product</a></li>
-                    <li><a href="addservices" class="py-2 d-block">Services</a></li>
-                    <li><a href="addnotification" class="py-2 d-block">Notifications</a></li>
-                    <li><a href="shopgallery" class="py-2 d-block">Gallery</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-6 col-lg-3 mb-4 mb-md-0 text-center">
-                <h2 class="footer-heading">Have a Questions?</h2>
-                <div class="block-23 mb-3">
-                    <ul>
-                        <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                        <li><a href="tel:+91 7736881574"><span class="icon fa fa-phone"></span><span class="text">+91 7736881574</span></a></li>
-                        <li><a href="mailto:pawpalace@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">pawpalace@gmail.com</span></a></li>
-                    </ul>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <a href="tel:+917736881574"><i class="fas fa-phone me-2"></i> +91 7736881574</a>
+                    <a href="mailto:pawpalace@email.com" class="ms-4"><i class="fas fa-envelope me-2"></i> pawpalace@email.com</a>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="#" class="topbar-social"><i class="fab fa-facebook-f mx-2"></i></a>
+                    <a href="#" class="topbar-social"><i class="fab fa-twitter mx-2"></i></a>
+                    <a href="#" class="topbar-social"><i class="fab fa-instagram mx-2"></i></a>
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-md-12 text-center">
+    </div>
 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg paw-nav sticky-top">
+        <div class="container">
+            <a class="navbar-brand paw-nav-brand" href="/shop">Paw<span class="paw-teal">Palace</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#pawNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pawNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/shop">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopproducts">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopservices">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopgallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopabout">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopnotification">Notify</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle" style="font-size:2em;vertical-align:middle;"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/editshopprofile"><i class="fas fa-user-edit me-2"></i>Edit Profile</a></li>
+                            <li><hr class="dropdown-divider" style="border-color:rgba(255,255,255,0.1);margin:4px 0;"></li>
+                            <li><a class="dropdown-item" href="/shoplogout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% if messages %}
+    <div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
+    {% endif %}
+
+    {% with "" as _ %}{% for m in messages %}<span class="paw-msg" data-msg="{{ m }}" data-tag="{% if m.tags == 'error' %}error{% elif m.tags == 'warning' %}warning{% elif m.tags == 'info' %}info{% else %}success{% endif %}"></span>{% endfor %}{% endwith %}
+
+    <!-- Main Content -->
+    <div class="paw-container">
+        <div class="paw-page-header">
+            <div class="paw-badge">
+                <i class="fas fa-store"></i> Shop Settings
+            </div>
+            <h1 class="paw-title">Edit Shop Profile</h1>
+            <p class="paw-subtitle">Update your shop information and keep your business details up to date.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-9 col-lg-8">
+                <div class="paw-card">
+                    <form action="updatesppf" method="post" onsubmit="return validateForm()" autocomplete="off">
+                        {% csrf_token %}
+
+                        <div class="paw-form-group">
+                            <label class="paw-label">
+                                <i class="fas fa-store-alt"></i> Shop Name
+                            </label>
+                            <input type="text" class="paw-input" name="pts1" value="{{data.shopname}}" placeholder="Enter shop name" required>
+                        </div>
+
+                        <div class="paw-form-group">
+                            <label class="paw-label">
+                                <i class="fas fa-user-tie"></i> Owner Name
+                            </label>
+                            <input type="text" class="paw-input" name="pts2" value="{{data.ownername}}" placeholder="Enter owner name" required>
+                        </div>
+
+                        <div class="paw-form-group">
+                            <label class="paw-label">
+                                <i class="fas fa-map-marker-alt"></i> Address
+                            </label>
+                            <textarea class="paw-input" name="pts3" rows="3" placeholder="Enter full address" required>{{data.adress}}</textarea>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="paw-form-group">
+                                    <label class="paw-label">
+                                        <i class="fas fa-phone-alt"></i> Phone
+                                    </label>
+                                    <input type="text" id="phone" class="paw-input" name="pts4" value="{{data.phone}}" placeholder="10-digit number" maxlength="10" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="paw-form-group">
+                                    <label class="paw-label">
+                                        <i class="fas fa-envelope"></i> Email
+                                    </label>
+                                    <input type="email" id="email" class="paw-input" name="pts5" value="{{data.email}}" placeholder="your@email.com" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="paw-form-group">
+                            <label class="paw-label">
+                                <i class="fas fa-at"></i> Username
+                            </label>
+                            <input type="text" id="username" class="paw-input" name="pts6" value="{{data.username}}" placeholder="Choose a username" required>
+                        </div>
+
+                        <div class="paw-form-group">
+                            <label class="paw-label">
+                                <i class="fas fa-lock"></i> Password
+                            </label>
+                            <div style="position:relative;">
+                                <input type="password" id="password" class="paw-input" name="pts7" value="{{data.password}}" placeholder="Min. 8 characters" style="padding-right:44px;" required>
+                                <i class="fas fa-eye password-icon" onclick="togglePasswordVisibility()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.4);cursor:pointer;font-size:16px;"></i>
+                            </div>
+                        </div>
+
+                        <hr class="paw-divider">
+
+                        <div class="paw-actions">
+                            <button type="submit" class="paw-btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <a href="/shop" class="paw-btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</footer>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h2 class="mb-4">Paw<span class="paw-teal">Palace</span></h2>
+                    <p class="mb-4">I don't see a price tag.<br>I don't see a status symbol.<br>I don't see a pet.<br>
+                    <span class="paw-teal">I see a being.</span><br><span class="paw-teal">I see a friend.</span><br>
+                    <span class="paw-teal">I see a soul.</span></p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle footer-social" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/shop"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Home</a></li>
+                        <li class="mb-2"><a href="/shopproducts"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Products</a></li>
+                        <li class="mb-2"><a href="/shopservices"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Services</a></li>
+                        <li class="mb-2"><a href="/shopgallery"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Gallery</a></li>
+                        <li class="mb-2"><a href="/health/ai-diagnosis"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>Pet Doctor</a></li>
+                        <li class="mb-2"><a href="/shopabout"><i class="fas fa-chevron-right me-2 paw-teal" style="font-size:12px;"></i>About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="mb-4">Contact Us</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-3 paw-teal"></i>203 Fake St. Mountain View</li>
+                        <li class="mb-3"><i class="fas fa-phone me-3 paw-teal"></i>+91 7736881574</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-3 paw-teal"></i>pawpalace@email.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="opacity: 0.2;">
+            <div class="text-center">
+                <p class="mb-0" style="color: rgba(255,255,255,0.6);">&copy; 2024 Paw Palace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'petsitting/js/jquery.min.js' %}"></script>
+    <script src="{% static 'petsitting/js/main.js' %}"></script>
 
+    <script>
+        function togglePasswordVisibility() {
+            var p = document.getElementById('password');
+            var icon = document.querySelector('.password-icon');
+            if (p.type === 'password') {
+                p.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                p.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+        function validateForm() {
+            var phoneInput = document.getElementById('phone').value;
+            var emailInput = document.getElementById('email').value;
+            var usernameInput = document.getElementById('username').value;
+            var passwordInput = document.getElementById('password').value;
 
+            if (!/^\d{10}$/.test(phoneInput)) {
+                showPawToast('Please enter a valid 10-digit phone number', 'error');
+                return false;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput)) {
+                showPawToast('Please enter a valid email address', 'error');
+                return false;
+            }
+            if (!/^[a-zA-Z0-9_]{3,20}$/.test(usernameInput)) {
+                showPawToast('Username must be 3-20 characters (letters, numbers, underscores)', 'error');
+                return false;
+            }
+            if (passwordInput.length < 8) {
+                showPawToast('Password must be at least 8 characters', 'error');
+                return false;
+            }
+            return true;
+        }
 
-  <script src="{% static 'petsitting/js/jquery.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery-migrate-3.0.1.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/popper.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.easing.1.3.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.waypoints.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.stellar.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.animateNumber.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/bootstrap-datepicker.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.timepicker.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/owl.carousel.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/jquery.magnific-popup.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/scrollax.min.js' %}"></script>
-  <script src="{% static 'petsitting/js/main.js' %}"></script>
+        function showPawToast(message, type) {
+            var container = document.getElementById('pawToastContainer');
+            if (!container) return;
+            var toast = document.createElement('div');
+            var iconMap = { 'success': 'check-circle', 'error': 'exclamation-circle', 'warning': 'exclamation-triangle', 'info': 'info-circle' };
+            var colorMap = { 'success': '#20c997', 'error': '#ef4444', 'warning': '#f59e0b', 'info': '#60a5fa' };
+            var bgMap = { 'success': 'rgba(32,201,151,0.15)', 'error': 'rgba(239,68,68,0.15)', 'warning': 'rgba(245,158,11,0.15)', 'info': 'rgba(96,165,250,0.15)' };
+            var t = type || 'success';
+            toast.innerHTML = '<i class="fas fa-' + (iconMap[t] || iconMap.info) + '" style="color:' + (colorMap[t] || colorMap.success) + ';margin-right:10px;font-size:18px;"></i><span style="flex:1;">' + message + '</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;margin-left:10px;">&times;</button>';
+            toast.style.cssText = 'display:flex;align-items:center;padding:14px 18px;border-radius:12px;font-family:Poppins,sans-serif;font-size:0.9rem;font-weight:500;animation:slideInRight 0.4s ease;box-shadow:0 10px 40px rgba(0,0,0,0.4);background:' + (bgMap[t] || bgMap.success) + ';border:1px solid ' + (colorMap[t] || colorMap.success) + '40;color:#fff;backdrop-filter:blur(10px);';
+            container.appendChild(toast);
+            setTimeout(function() {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.5s ease';
+                setTimeout(function() { if (toast.parentElement) toast.remove(); }, 500);
+            }, 4000);
+        }
 
-  <script>
-        // Toast notification system
-function showPawToast(message, type) {
-    var container = document.getElementById('pawToastContainer');
-    if (!container) return;
-    var toast = document.createElement('div');
-    var iconMap = {
-        'success': 'check-circle',
-        'error': 'exclamation-circle',
-        'warning': 'exclamation-triangle',
-        'info': 'info-circle'
-    };
-    var colorMap = {
-        'success': '#20c997',
-        'error': '#ef4444',
-        'warning': '#f59e0b',
-        'info': '#60a5fa'
-    };
-    var bgMap = {
-        'success': 'rgba(32,201,151,0.15)',
-        'error': 'rgba(239,68,68,0.15)',
-        'warning': 'rgba(245,158,11,0.15)',
-        'info': 'rgba(96,165,250,0.15)'
-    };
-    var t = type || 'success';
-    toast.innerHTML = '<i class="fas fa-' + (iconMap[t] || iconMap.info) + '" style="color:' + (colorMap[t] || colorMap.success) + ';margin-right:10px;font-size:18px;"></i><span style="flex:1;">' + message + '</span><button onclick="this.parentElement.remove()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;margin-left:10px;">&times;</button>';
-    toast.style.cssText = 'display:flex;align-items:center;padding:14px 18px;border-radius:12px;font-family:Poppins,sans-serif;font-size:0.9rem;font-weight:500;animation:slideInRight 0.4s ease;box-shadow:0 10px 40px rgba(0,0,0,0.4);background:' + (bgMap[t] || bgMap.success) + ';border:1px solid ' + (colorMap[t] || colorMap.success) + '40;color:#fff;backdrop-filter:blur(10px);';
-    container.appendChild(toast);
-    setTimeout(function() {
-        toast.style.opacity = '0';
-        toast.style.transition = 'opacity 0.5s ease';
-        setTimeout(function() { if (toast.parentElement) toast.remove(); }, 500);
-    }, 4000);
-}
+        document.querySelectorAll('.paw-msg').forEach(function(el) {
+            showPawToast(el.dataset.msg, el.dataset.tag);
+        });
+    </script>
 
-        // Auto-display Django messages as toasts
-{% if messages %}
-{% for message in messages %}
-var type = 'success';
-{% if message.tags == 'error' %}type = 'error';{% endif %}
-{% if message.tags == 'warning' %}type = 'warning';{% endif %}
-{% if message.tags == 'info' %}type = 'info';{% endif %}
-showPawToast('{{ message }}', type);
-{% endfor %}
-{% endif %}
-  </script>
-
-  </body>
+</body>
 </html>

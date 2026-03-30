@@ -824,6 +824,38 @@ textarea.paw-input { resize: vertical; min-height: 100px; }
   .paw-col-3, .paw-col-4, .paw-col-6 { flex: 0 0 100%; }
 }
 
+/* ---- Navbar Person Icon Dropdown ---- */
+.dropdown-toggle::after { display: none; }
+.paw-nav .dropdown-menu {
+  background: rgba(5, 31, 48, 0.97) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  min-width: 180px;
+  margin-top: 4px !important;
+}
+.paw-nav .dropdown-item {
+  color: rgba(255,255,255,0.85) !important;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 14px !important;
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.paw-nav .dropdown-item:hover,
+.paw-nav .dropdown-item:focus {
+  background: rgba(111,66,193,0.15) !important;
+  color: #c9b3f0 !important;
+}
+.paw-nav .dropdown-item i { color: var(--paw-teal); }
+.paw-nav .dropdown-item:hover i { color: #c9b3f0; }
+
 /* ---- Overlay & Sidebar Menu ---- */
 .paw-overlay {
   display: none;

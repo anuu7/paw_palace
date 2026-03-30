@@ -33,6 +33,7 @@ urlpatterns = [
     path('adminlogout',views.adminlogout),
     path('shoplogout',views.shoplogout),
     path('addnotification',views.addnotfication),
+    path('shopnotification',views.shopnotification),
     path('userdetails',views.userdetails),
     path('petshopdetails',views.petshopdetails),
     path('unsuspense/<id>',views.unsuspense),

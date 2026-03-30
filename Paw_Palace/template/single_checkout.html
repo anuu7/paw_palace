@@ -509,7 +509,6 @@
                     <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a></li>
                     <li class="nav-item"><a class="nav-link" href="/userabout">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/userlogout">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -519,6 +518,8 @@
     {% if messages %}
     <div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
     {% endif %}
+
+    {% with "" as _ %}{% for m in messages %}<span class="paw-msg" data-msg="{{ m }}" data-tag="{% if m.tags == 'error' %}error{% elif m.tags == 'warning' %}warning{% elif m.tags == 'info' %}info{% else %}success{% endif %}"></span>{% endfor %}{% endwith %}
 
     <!-- Page Header -->
     <div style="background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06);">
@@ -1150,11 +1151,9 @@
         // Initialize on load
         $(document).ready(function() {
             // Auto-display Django messages as toasts
-{% if messages %}
-{% for message in messages %}
-showPawToast('{{ message }}', '{% if message.tags == "error" %}error{% elif message.tags == "warning" %}warning{% elif message.tags == "info" %}info{% else %}success{% endif %}');
-{% endfor %}
-{% endif %}
+            document.querySelectorAll('.paw-msg').forEach(function(el) {
+                showPawToast(el.dataset.msg, el.dataset.tag);
+            });
 
             // Intersection observer for animations
             var observerOptions = { threshold: 0.15 };

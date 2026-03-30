@@ -30,6 +30,7 @@ class Notification(models.Model):
     shop = models.ForeignKey(Petshop, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     message = models.TextField()
+    sender_name = models.CharField(max_length=100, default='')
     def __str__(self):
         return self.message
 
@@ -37,8 +38,19 @@ class UserNotification(models.Model):
     user = models.ForeignKey(Petuser, on_delete=models.CASCADE)
     notification = models.ForeignKey(Notification, on_delete=models.CASCADE)
     seen = models.BooleanField(default=False)
+    class Meta:
+        unique_together = ('user', 'notification')
     def __str__(self):
-        return self.seen
+        return str(self.seen)
+
+class ShopNotification(models.Model):
+    shop = models.ForeignKey(Petshop, on_delete=models.CASCADE)
+    notification = models.ForeignKey(Notification, on_delete=models.CASCADE)
+    seen = models.BooleanField(default=False)
+    class Meta:
+        unique_together = ('shop', 'notification')
+    def __str__(self):
+        return str(self.seen)
 
 
 class Gallery(models.Model):

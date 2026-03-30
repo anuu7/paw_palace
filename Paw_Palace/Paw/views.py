@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 import json
+from django.contrib import messages as django_messages
 from .models import *
 from django.contrib import messages
 import datetime
@@ -113,8 +114,8 @@ def shophome(re):
         product_count = Product.objects.filter(shop=shop).count()
         shop_count = Petshop.objects.all().count()
         # Notifications for this shop
-        notifications = Notification.objects.filter(shop=shop).order_by('-date')[:10]
-        unread_count = UserNotification.objects.filter(notification__shop=shop, seen=False).count()
+        notifications = ShopNotification.objects.filter(shop=shop, seen=False).order_by('-notification__date')[:10]
+        unread_count = notifications.count()
         return render(re,'shophome.html',{
             'feedback': latest_reviews,
             'shop': shop,
@@ -155,7 +156,13 @@ def shoplogout(re):
 def adminhome(re):
     if 'id2' in re.session:
         latest_reviews = Reviews.objects.order_by('-id')[:4]
-        return render(re,'admin.html',{'feedback': latest_reviews})
+        return render(re,'admin.html',{
+            'feedback': latest_reviews,
+            'user_count': Petuser.objects.all().count(),
+            'shop_count': Petshop.objects.all().count(),
+            'order_count': Bookings.objects.all().count(),
+            'review_count': Reviews.objects.all().count(),
+        })
     else:
         return redirect(log)
 
@@ -190,35 +197,70 @@ def userabout(re):
     data=Reviews.objects.all()
     return render(re,'userabout.html',{'data_count': data_count,'data_count2': data_count2,'data_count3': data_count3,'data':data})
 def addnotfication(re):
+    # Support both shop (id1) and admin (id2) sessions
+    msg_list = [{'message': str(m), 'type': m.tags or 'success'} for m in django_messages.get_messages(re)]
+    messages_json = json.dumps(msg_list)
     if 'id1' in re.session:
         shop = Petshop.objects.get(username=re.session['id1'])
         if re.method == 'POST':
             message = re.POST['nty']
-            notification = Notification.objects.create(shop=shop,message=message)
-
-            # Attach the notification to all users
-            users = Petuser.objects.all()
-            for user in users:
-                UserNotification.objects.create(user=user, notification=notification, seen=False)
-
-            messages.success(re, 'Notification posted successfully')
+            notification = Notification.objects.create(shop=shop, message=message, sender_name=shop.shopname)
+            for user in Petuser.objects.all():
+                UserNotification.objects.get_or_create(user=user, notification=notification)
+            django_messages.success(re, 'Notification posted successfully')
             return redirect(addnotfication)
-
-        return render(re, 'addnotification.html')
+        return render(re, 'addnotification.html', {'messages_json': messages_json})
+    elif 'id2' in re.session:
+        # Admin session - create platform-wide notification for all users and shops
+        if re.method == 'POST':
+            message = re.POST['nty']
+            # Use first shop as FK placeholder; sender_name='Admin' overrides display
+            shop = Petshop.objects.first()
+            if not shop:
+                django_messages.warning(re, 'No shops registered yet. Notification not sent.')
+                return redirect(addnotfication)
+            notification = Notification.objects.create(shop=shop, message=message, sender_name='Admin')
+            # Notify all users
+            for user in Petuser.objects.all():
+                UserNotification.objects.get_or_create(user=user, notification=notification)
+            # Notify all shops
+            for s in Petshop.objects.all():
+                ShopNotification.objects.get_or_create(shop=s, notification=notification)
+            django_messages.success(re, 'Notification sent to all users')
+            return redirect(addnotfication)
+        return render(re, 'addnotification.html', {'messages_json': messages_json})
     else:
         return redirect(log)
 
 def userdetails(re):
     if 'id2' in re.session:
-        data=Petuser.objects.all()
-        return render(re,'users.html',{'data':data})
+        search_query = re.GET.get('search', '').strip()
+        data = Petuser.objects.all()
+        if search_query:
+            data = data.filter(name__icontains=search_query)
+        paginator = Paginator(data, 8)
+        page_number = re.GET.get('page', 1)
+        page_obj = paginator.get_page(page_number)
+        return render(re,'users.html',{'data': page_obj, 'total_count': data.count(), 'search_query': search_query})
     else:
         return (log)
 
 def petshopdetails(re):
     if 'id2' in re.session:
-        data=Petshop.objects.all()
-        return render(re,'shops.html',{'data':data})
+        search_query = re.GET.get('search', '').strip()
+        data = Petshop.objects.all()
+        if search_query:
+            data = data.filter(shopname__icontains=search_query)
+        paginator = Paginator(data, 8)
+        page_number = re.GET.get('page', 1)
+        page_obj = paginator.get_page(page_number)
+        return render(re,'shops.html',{
+            'data': page_obj,
+            'total_count': data.count(),
+            'active_shops': Petshop.objects.filter(suspense=False).count(),
+            'suspended_shops': Petshop.objects.filter(suspense=True).count(),
+            'search_query': search_query,
+        })
     else:
         return (log)
 def gallery(re):
@@ -261,9 +303,25 @@ def markallseen(re):
         return JsonResponse({'success': True, 'message': f'{updated} notification(s) marked as read'})
     if 'id1' in re.session:
         shop = Petshop.objects.get(username=re.session['id1'])
-        updated = UserNotification.objects.filter(notification__shop=shop, seen=False).update(seen=True)
+        updated = ShopNotification.objects.filter(shop=shop, seen=False).update(seen=True)
         return JsonResponse({'success': True, 'message': f'{updated} notification(s) marked as read'})
     return JsonResponse({'success': False, 'message': 'Unauthorized'}, status=401)
+
+def shopnotification(re):
+    """Shop-only notification view."""
+    if 'id1' not in re.session:
+        return redirect(log)
+    msg_list = [{'message': str(m), 'type': m.tags or 'success'} for m in django_messages.get_messages(re)]
+    messages_json = json.dumps(msg_list)
+    if re.method == 'POST':
+        message = re.POST['nty']
+        shop = Petshop.objects.get(username=re.session['id1'])
+        notification = Notification.objects.create(shop=shop, message=message, sender_name=shop.shopname)
+        for user in Petuser.objects.all():
+            UserNotification.objects.get_or_create(user=user, notification=notification)
+        django_messages.success(re, 'Notification posted successfully')
+        return redirect(shopnotification)
+    return render(re, 'shopnotification.html', {'messages_json': messages_json})
 
 def addphotos(re):
     if 'id' in re.session or 'id1' in re.session:
@@ -344,6 +402,9 @@ def updateuspf(re):
             username = re.POST['us4']
             password = re.POST['us5']
             data1 = Petuser.objects.filter(username=uname).update(name=name, phone=phone, email=email, username=username, password=password)
+            # Update session if username changed
+            re.session['id'] = username
+            re.session.modified = True
             messages.success(re,'Profile Updated')
             return redirect(editprofile)
         else:
@@ -363,6 +424,9 @@ def updatesppf(re):
             username = re.POST['pts6']
             password = re.POST['pts7']
             data1 = Petshop.objects.filter(username=uname).update(shopname=petshopname,ownername=ownername,adress=adress, phone=phone, email=email, username=username, password=password)
+            # Update session if username changed
+            re.session['id1'] = username
+            re.session.modified = True
             messages.success(re,'Profile Updated')
             return redirect(editshopprofile)
         else:
@@ -435,9 +499,10 @@ def book_service(re):
         # Create notification for shop owner
         notification = Notification.objects.create(
             shop=service.shop,
-            message=f"New booking for {service.servicename} by {user.name} for {pet_name} on {booking_date} at {booking_slot}"
+            message=f"New booking for {service.servicename} by {user.name} for {pet_name} on {booking_date} at {booking_slot}",
+            sender_name=user.name
         )
-        UserNotification.objects.create(user=user, notification=notification, seen=False)
+        ShopNotification.objects.get_or_create(shop=service.shop, notification=notification)
 
         return JsonResponse({'success': True, 'message': 'Service booked successfully!'})
     else:
@@ -817,14 +882,38 @@ def update_order_status(re, booking_id):
 def review(re):
     if 'id2' in re.session:
         data=Reviews.objects.all()
-        return render(re,'review.html',{'data':data})
+        return render(re,'review.html',{'data': data})
     else:
         return redirect(log)
 
 def allorders(re):
     if 'id2' in re.session:
-        data=Bookings.objects.all()
-        return render(re,'orders.html',{'data':data})
+        data = Bookings.objects.all().order_by('-date')
+        from_date = re.GET.get('from_date', '')
+        to_date = re.GET.get('to_date', '')
+        shop_search = re.GET.get('shop_search', '').strip()
+
+        if from_date:
+            data = data.filter(date__gte=from_date)
+        if to_date:
+            data = data.filter(date__lte=to_date)
+        if shop_search:
+            data = data.filter(item_details__shop__shopname__icontains=shop_search)
+
+        paginator = Paginator(data, 8)
+        page_number = re.GET.get('page', 1)
+        page_obj = paginator.get_page(page_number)
+
+        return render(re,'orders.html',{
+            'data': page_obj,
+            'total_count': data.count(),
+            'pending_count': Bookings.objects.filter(status='pending').count(),
+            'shipped_count': Bookings.objects.filter(status__in=['dispatched','shipped','out_for_delivery']).count(),
+            'delivered_count': Bookings.objects.filter(status='delivered').count(),
+            'from_date': from_date,
+            'to_date': to_date,
+            'shop_search': shop_search,
+        })
     else:
         return redirect(log)
 

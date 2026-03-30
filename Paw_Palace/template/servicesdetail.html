@@ -87,9 +87,6 @@ $(document).ready(function(){
                 <li class="nav-item">
                     <a class="nav-link paw-nav-link" href="/userabout">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link paw-nav-link" href="/userlogout">Logout</a>
-                </li>
             </ul>
         </div>
     </div>
@@ -120,9 +117,6 @@ $(document).ready(function(){
                 </li>
                 <li class="nav-item">
                     <a class="nav-link paw-nav-link" href="/userabout">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link paw-nav-link" href="/userlogout">Logout</a>
                 </li>
             </ul>
         </div>
@@ -160,6 +154,8 @@ $(document).ready(function(){
     {% if messages %}
 <div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
 {% endif %}
+
+{% with "" as _ %}{% for m in messages %}<span class="paw-msg" data-msg="{{ m }}" data-tag="{% if m.tags == 'error' %}error{% elif m.tags == 'warning' %}warning{% elif m.tags == 'info' %}info{% else %}success{% endif %}"></span>{% endfor %}{% endwith %}
 
     <!-- Start Brands -->
     <section class="py-5" style="background: rgba(255,255,255,0.03);">
@@ -392,16 +388,10 @@ function showPawToast(message, type) {
 }
 
         // Auto-display Django messages as toasts
-{% if messages %}
-{% for message in messages %}
-var type = 'success';
-{% if message.tags == 'error' %}type = 'error';{% endif %}
-{% if message.tags == 'warning' %}type = 'warning';{% endif %}
-{% if message.tags == 'info' %}type = 'info';{% endif %}
-showPawToast('{{ message }}', type);
-{% endfor %}
-{% endif %}
-  </script>
+        document.querySelectorAll('.paw-msg').forEach(function(el) {
+            showPawToast(el.dataset.msg, el.dataset.tag);
+        });
+    </script>
 
 </body>
 

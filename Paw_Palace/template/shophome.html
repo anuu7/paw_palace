@@ -495,7 +495,17 @@
                     <li class="nav-item"><a class="nav-link" href="/shopgallery">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a></li>
                     <li class="nav-item"><a class="nav-link" href="/shopabout">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/shoplogout">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shopnotification">Notify</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle" style="font-size:2em;vertical-align:middle;"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/editshopprofile"><i class="fas fa-user-edit me-2"></i>Edit Profile</a></li>
+                            <li><hr class="dropdown-divider" style="border-color:rgba(255,255,255,0.1);margin:4px 0;"></li>
+                            <li><a class="dropdown-item" href="/shoplogout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -530,8 +540,8 @@
                     <i class="fas fa-bell" style="color:#fff;font-size:14px;"></i>
                 </div>
                 <div style="flex:1;min-width:0;">
-                    <p style="color:rgba(255,255,255,0.9);font-size:0.85rem;margin:0 0 4px;line-height:1.4;">{{ n.message }}</p>
-                    <small style="color:var(--primary);font-size:0.75rem;">{{ n.date|date:"M d, Y" }}</small>
+                    <p style="color:rgba(255,255,255,0.9);font-size:0.85rem;margin:0 0 4px;line-height:1.4;">{{ n.notification.message }}</p>
+                    <small style="color:var(--primary);font-size:0.75rem;">{{ n.notification.sender_name|default:n.notification.shop.shopname }} &middot; {{ n.notification.date|date:"M d, Y" }}</small>
                 </div>
             </div>
         </div>
@@ -896,7 +906,6 @@
             }
         });
 
-        // Mark all as seen
         $('#markAllSeen').on('click', function() {
             var btn = $(this);
             btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>...');
@@ -909,7 +918,6 @@
                     $('#notifPanel').fadeOut('fast', function() {
                         $(this).remove();
                     });
-                    // Refresh to update server-rendered badge
                     location.reload();
                 },
                 error: function() {

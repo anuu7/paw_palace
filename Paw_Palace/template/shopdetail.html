@@ -369,7 +369,6 @@
                     <li class="nav-item"><a class="nav-link" href="/userorders">My Orders</a></li>
                     <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
                     <li class="nav-item"><a class="nav-link" href="/shopabout">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/shoplogout">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -477,7 +476,10 @@
                                     <p class="service-desc">{{ service.desc }}</p>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <span class="service-price">₹{{ service.price }}</span>
-                                        <button class="btn btn-teal btn-sm" onclick="openBookingModal({{ service.pk }}, '{{ service.servicename }}', {{ service.price }})">
+                                        <button class="btn btn-teal btn-sm book-btn"
+                                            data-id="{{ service.pk }}"
+                                            data-name="{{ service.servicename }}"
+                                            data-price="{{ service.price }}">
                                             <i class="fas fa-calendar-check me-2"></i>Book Now
                                         </button>
                                     </div>
@@ -682,6 +684,13 @@
                     })
                     .catch(function() {});
             });
+        });
+
+        $(document).on('click', '.book-btn', function() {
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            var price = $(this).data('price');
+            openBookingModal(id, name, price);
         });
 
         function openBookingModal(serviceId, serviceName, servicePrice) {

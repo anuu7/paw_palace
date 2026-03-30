@@ -50,6 +50,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
   <body>
+    <span id="pawSlotsData" data-slots="{{ booked_slots_json|safe }}" style="display:none;"></span>
 
     <div class="wrap">
 			<div class="container">
@@ -95,9 +96,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link paw-nav-link" href="/userabout">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link paw-nav-link" href="/userlogout">Logout</a>
                 </li>
             </ul>
         </div>
@@ -237,7 +235,7 @@ function renderSlots(date, initialBooked) {
 }
 
 // On page load, render slots for the pre-selected date
-var preBookedSlots = {{ booked_slots_json|safe }};
+var preBookedSlots = JSON.parse(document.getElementById('pawSlotsData').dataset.slots || '[]');
 renderSlots(document.getElementById('booking_date').value, preBookedSlots);
 
 // On date change, fetch booked slots and re-render
@@ -266,6 +264,8 @@ document.getElementById('booking_date').addEventListener('change', function() {
    {% if messages %}
 <div id="pawToastContainer" style="position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;max-width:380px;"></div>
 {% endif %}
+
+{% with "" as _ %}{% for m in messages %}<span class="paw-msg" data-msg="{{ m }}" data-tag="{% if m.tags == 'error' %}error{% elif m.tags == 'warning' %}warning{% elif m.tags == 'info' %}info{% else %}success{% endif %}"></span>{% endfor %}{% endwith %}
 
     <footer class="footer">
     <div class="container">
@@ -381,15 +381,9 @@ function showPawToast(message, type) {
 }
 
         // Auto-display Django messages as toasts
-{% if messages %}
-{% for message in messages %}
-var type = 'success';
-{% if message.tags == 'error' %}type = 'error';{% endif %}
-{% if message.tags == 'warning' %}type = 'warning';{% endif %}
-{% if message.tags == 'info' %}type = 'info';{% endif %}
-showPawToast('{{ message }}', type);
-{% endfor %}
-{% endif %}
+        document.querySelectorAll('.paw-msg').forEach(function(el) {
+            showPawToast(el.dataset.msg, el.dataset.tag);
+        });
   </script>
 
   </body>

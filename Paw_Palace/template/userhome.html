@@ -485,7 +485,16 @@
                     <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link paw-gold" href="/health/ai-diagnosis">Pet Doctor</a></li>
                     <li class="nav-item"><a class="nav-link" href="/userabout">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/userlogout">Logout</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle" style="font-size:2em;vertical-align:middle;"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/editprofile"><i class="fas fa-user-edit me-2"></i>Edit Profile</a></li>
+                            <li><hr class="dropdown-divider" style="border-color:rgba(255,255,255,0.1);margin:4px 0;"></li>
+                            <li><a class="dropdown-item" href="/userlogout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -528,7 +537,7 @@
                 <div>
                     <p class="mb-1" style="color:rgba(255,255,255,0.9);font-size:14px;font-weight:500;line-height:1.5;">{{ notification.notification.message }}</p>
                     <div class="d-flex align-items-center gap-2">
-                        <span style="color:#20c997;font-size:12px;font-weight:600;"><i class="fas fa-store me-1" style="font-size:10px;"></i>{{ notification.notification.shop.shopname }}</span>
+                        <span style="color:#20c997;font-size:12px;font-weight:600;"><i class="fas fa-store me-1" style="font-size:10px;"></i>{{ notification.notification.sender_name|default:notification.notification.shop.shopname }}</span>
                         <span style="color:rgba(255,255,255,0.4);font-size:11px;">{{ notification.notification.date|date:"M d, Y" }}</span>
                     </div>
                 </div>
